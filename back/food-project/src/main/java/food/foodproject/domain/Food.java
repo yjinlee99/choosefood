@@ -21,7 +21,7 @@ public class Food {
     private String name;
 
     //재료
-    private List<String> ingredients = new ArrayList<>();
+    private String ingredients;
 
     //레시피
     private String recipe;
