@@ -1,0 +1,45 @@
+.Header { 
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 80px;
+    z-index: 100;
+}
+
+#FindedId {
+    display: flex;
+    justify-content: center;
+}
+
+#wrapFindedId {
+    height : 350px;
+    width : 400px;
+    margin-top : 150px;
+    border : 2px solid #ff6161;
+    border-radius : 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#wrapFindedId2 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#buttonFindedId {
+    background-color: white;
+    border: 2px none white;
+    width: 150px;
+    border : 2px solid #ff6161;
+    border-radius : 5px;
+    margin : 10px;
+}
+
+#buttonFindedId2 {
+    background-color: white;
+    border: 2px none white;
+    width: 150px;
+    border : 2px solid #ff6161;
+    border-radius : 5px;
+    margin : 10px;
+}

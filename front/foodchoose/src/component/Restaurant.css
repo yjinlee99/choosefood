@@ -1,0 +1,76 @@
+.Header { 
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 80px;
+    z-index: 100;
+}
+
+#Restaurant {
+    margin-top: 100px;
+    
+}
+#info {
+    display: inline-block;
+    height: 100%;
+    width : 22%;
+    border-right : 1px solid gray;
+}
+
+#menuName {
+    border : 2px solid #ff6161;
+    border-radius: 5px;
+    margin-left : 40px;
+    width: 250px;
+    height: 30px;
+    text-align: center;
+}
+#menuName2 {
+    margin: 5px;
+}
+
+#location {
+    margin : 20px;
+}
+
+#ArrayRestaurant {
+    margin-left: 60px;
+}
+
+#restaurantContainer1 {
+    text-align: center;
+    margin: 20px;
+    width : 300px;
+    border-top: 1px solid gray;
+}
+
+#restaurantContainer2 {
+    text-align: center;
+    margin : 10px;
+    width : 250px;
+}
+
+#img {
+    margin-top: 10px;
+    width : 250px;
+    height : 150px;
+    border: 1px solid gray;
+}
+
+#count {
+    font-size: 0.7em;
+    margin: 10px;
+}
+
+#explanation {
+    text-align: center;
+    color: gray;
+}
+
+#map {
+    border : 1px none gray;
+    text-align: center;
+    display: inline-block;
+    width: 70%;
+    height: 300px;
+}
