@@ -24,6 +24,7 @@ import MyComment from './component/MyComment';
 import MyMenu from './component/MyMenu';
 import MyRestaurant from './component/MyRestaurant';
 import MyWriting from './component/MyWriting';
+import Tab from './Tab';
 
 function App() {
   return (
@@ -32,10 +33,11 @@ function App() {
       <Route path="/Option" element={<Option />} />
       <Route path="/Main" element={<Main />} />
       <Route path="/Recipe" element={<Recipe />} />
-      <Route path="/SingleRecipe" element={<SingleRecipe />} />
-      <Route path="/SearchedRecipe" element={<SearchedRecipe />} />
+      <Route path="/SingleRecipe" element={<SingleRecipe />} />      
       <Route path="/Board" element={<Board />} />
+      <Route path="/SearchedRecipe" element={<SearchedRecipe />} />
       <Route path="/Writing" element={<Writing />} />
+      <Route path="/Tab" element={<Tab />} />
       
       <Route path="/Refrigerator" element={<Refrigerator />} />
       <Route path="/LoginForm" element={<LoginForm />} />
@@ -52,7 +54,7 @@ function App() {
       <Route path="/MyMenu" element={<MyMenu />} />
       <Route path="/MyRestaurant" element={<MyRestaurant />} />
       <Route path="/MyWriting" element={<MyWriting />} />
-
+      
     </Routes>
   );
 }
