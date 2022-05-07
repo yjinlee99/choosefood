@@ -5,3 +5,8 @@
     height: 80px;
     z-index: 100;
 }
+
+#myrestMain {
+    margin-top: 130px;
+    text-align: center;
+}

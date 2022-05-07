@@ -7,14 +7,16 @@
 }
 
 #Restaurant {
-    margin-top: 100px;
-    
+    margin-top: 81px;
+    display: flex;
 }
+
 #info {
+    margin-top: 10px;
     display: inline-block;
-    height: 100%;
-    width : 22%;
+    width : 400px;
     border-right : 1px solid gray;
+    table-layout: fixed;
 }
 
 #menuName {
@@ -24,6 +26,7 @@
     width: 250px;
     height: 30px;
     text-align: center;
+    margin-top: 10px;
 }
 #menuName2 {
     margin: 5px;
@@ -37,11 +40,15 @@
     margin-left: 60px;
 }
 
+
+
+
 #restaurantContainer1 {
     text-align: center;
     margin: 20px;
-    width : 300px;
+    width : 270px;
     border-top: 1px solid gray;
+    justify-content: center;
 }
 
 #restaurantContainer2 {
@@ -68,9 +75,8 @@
 }
 
 #map {
-    border : 1px none gray;
     text-align: center;
     display: inline-block;
-    width: 70%;
-    height: 300px;
+    width: 100%;
+    text-align: right;
 }

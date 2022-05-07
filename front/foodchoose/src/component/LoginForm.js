@@ -40,7 +40,7 @@ function LoginForm() {
                 <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
                     label="아이디 기억하기" />
-                <Button id='submit' type="submit" fullWidth variant="contained">로그인</Button>
+                <Button id='submit' type="submit" fullWidth variant="contained" onClick={()=> alert("로그인 완료!")}>로그인</Button>
                 <Grid container>
                     <Grid item xs='4'>
                         <Link to='/FindId'>아이디 찾기</Link>
