@@ -21,7 +21,7 @@ function Recipe() {
                 <input className="Search-input" type="text" />
                 <Link to="/SearchedRecipe"><SearchIcon className="Search-icon"/></Link>
             </div>   
-          
+
             <div className="Header"><Banner/></div>
             <select id="Array">
                 <option> 이름순 </option>

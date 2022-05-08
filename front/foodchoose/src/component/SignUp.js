@@ -1,17 +1,11 @@
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
-<<<<<<< HEAD
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import React, { Component }  from 'react';
-=======
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import React from 'react';
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 import Banner from '../Banner';
 
 function SignUp() {

@@ -7,7 +7,6 @@
 }
 
 #Restaurant {
-<<<<<<< HEAD
     margin-top: 100px;
     
 }
@@ -16,18 +15,6 @@
     height: 100%;
     width : 22%;
     border-right : 1px solid gray;
-=======
-    margin-top: 81px;
-    display: flex;
-}
-
-#info {
-    margin-top: 10px;
-    display: inline-block;
-    width : 400px;
-    border-right : 1px solid gray;
-    table-layout: fixed;
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 }
 
 #menuName {
@@ -37,10 +24,6 @@
     width: 250px;
     height: 30px;
     text-align: center;
-<<<<<<< HEAD
-=======
-    margin-top: 10px;
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 }
 #menuName2 {
     margin: 5px;
@@ -54,23 +37,11 @@
     margin-left: 60px;
 }
 
-<<<<<<< HEAD
 #restaurantContainer1 {
     text-align: center;
     margin: 20px;
     width : 300px;
     border-top: 1px solid gray;
-=======
-
-
-
-#restaurantContainer1 {
-    text-align: center;
-    margin: 20px;
-    width : 270px;
-    border-top: 1px solid gray;
-    justify-content: center;
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 }
 
 #restaurantContainer2 {
@@ -97,16 +68,9 @@
 }
 
 #map {
-<<<<<<< HEAD
     border : 1px none gray;
     text-align: center;
     display: inline-block;
     width: 70%;
     height: 300px;
-=======
-    text-align: center;
-    display: inline-block;
-    width: 100%;
-    text-align: right;
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 import React, { Component} from 'react';
-=======
-import React from 'react';
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Refrigerator from './component/Refrigerator';
@@ -22,16 +18,6 @@ import SearchedRecipe from './SearchedRecipe';
 import Board from './Board';
 import Writing from './Writing';
 import Restaurant from './component/Restaurant';
-<<<<<<< HEAD
-=======
-import EditInfo from './component/EditInfo';
-import EditProfile from './component/EditProfile';
-import MyComment from './component/MyComment';
-import MyMenu from './component/MyMenu';
-import MyRestaurant from './component/MyRestaurant';
-import MyWriting from './component/MyWriting';
-import Tab from './Tab';
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 
 function App() {
   return (
@@ -40,18 +26,10 @@ function App() {
       <Route path="/Option" element={<Option />} />
       <Route path="/Main" element={<Main />} />
       <Route path="/Recipe" element={<Recipe />} />
-<<<<<<< HEAD
       <Route path="/SingleRecipe" element={<SingleRecipe />} />
       <Route path="/SearchedRecipe" element={<SearchedRecipe />} />
       <Route path="/Board" element={<Board />} />
       <Route path="/Writing" element={<Writing />} />
-=======
-      <Route path="/SingleRecipe" element={<SingleRecipe />} />      
-      <Route path="/Board" element={<Board />} />
-      <Route path="/SearchedRecipe" element={<SearchedRecipe />} />
-      <Route path="/Writing" element={<Writing />} />
-      <Route path="/Tab" element={<Tab />} />
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
       
       <Route path="/Refrigerator" element={<Refrigerator />} />
       <Route path="/LoginForm" element={<LoginForm />} />
@@ -62,20 +40,9 @@ function App() {
       <Route path="/FindedPasswd" element={<FindedPasswd />} />
       <Route path="/MyPage" element={<MyPage />} />
       <Route path="/Restaurant" element={<Restaurant />} />
-<<<<<<< HEAD
 
 
       </Routes>
-=======
-      <Route path="/EditInfo" element={<EditInfo />} />
-      <Route path="/EditProfile" element={<EditProfile />} />
-      <Route path="/MyComment" element={<MyComment />} />
-      <Route path="/MyMenu" element={<MyMenu />} />
-      <Route path="/MyRestaurant" element={<MyRestaurant />} />
-      <Route path="/MyWriting" element={<MyWriting />} />
-      
-    </Routes>
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
   );
 }
 

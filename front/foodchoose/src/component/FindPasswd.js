@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React, { Component }  from 'react';
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
@@ -6,12 +5,6 @@ import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Grid from '@mui/material/Grid';
-=======
-import React from 'react';
-import { Link } from 'react-router-dom';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
->>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Banner from '../Banner';
