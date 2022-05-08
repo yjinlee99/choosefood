@@ -1,5 +1,6 @@
 package food.foodproject.domain;
 
+import food.foodproject.dto.MemberFormDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,15 +13,16 @@ import javax.persistence.Id;
 @Entity
 @Getter @Setter
 public class Member {
-    //아이디 (기본키)
+    //일련번호
     @Id
-    @Column(name = "member_id")
+    @GeneratedValue
+    @Column(name = "member_id", unique = true)
     private Long id;
 
     //비밀번호
     private String password;
 
-    //이름
+    //아이디
     private String name;
 
     //닉네임
@@ -30,5 +32,11 @@ public class Member {
     private Long phone;
 
     //냉장고 재료
-    private String having_ingredient;
+    private String havingIngredient;
+
+    //냉장고 수정
+    public void modHavingIngredient(String food){
+        this.havingIngredient = food;
+    }
+
 }

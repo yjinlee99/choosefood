@@ -25,8 +25,13 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+<<<<<<< Updated upstream
 	implementation 'mysql:mysql-connector-java'
 	implementation 'org.jsoup:jsoup:1.11.2'
+=======
+	implementation 'org.jsoup:jsoup:1.11.2'
+	implementation 'mysql:mysql-connector-java:8.0.26'
+>>>>>>> Stashed changes
 }
 
 test {
