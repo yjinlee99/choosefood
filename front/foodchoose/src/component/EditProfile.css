@@ -1,0 +1,81 @@
+.Header { 
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 80px;
+    z-index: 100;
+}
+
+#main{
+    margin-top: 150px;
+}
+
+#EditProfile{
+    text-align: center;
+    align-items: center;
+}
+
+#EditProfile2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#EditProfile3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#EditProfile4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#EditProfile5{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+#EditProfile6{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+#editProfileButton{
+    border: 2px solid #ff6161;
+    border-radius: 5px;
+    background-color: white;
+    margin: 5px;
+}
+
+#editProfileInput {
+    border: 2px solid #ff6161;
+    border-radius: 5px;
+    background-color: white;
+    margin: 5px;
+    width: 200px;
+}
+
+#editProfileH4{
+    width : 100px;
+}
+
+#editProfileImg {
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+#editProfileInput {
+    border: 2px solid #ff6161;
+    height: 20px;
+    border-radius: 5px;
+}
