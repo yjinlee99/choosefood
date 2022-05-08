@@ -1,0 +1,76 @@
+.Header { 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 80px;
+    z-index: 100;
+    border-bottom: 3px solid #ff6f61;
+}
+
+.Choose {
+    margin-top: 150px;
+}
+
+.Choose-table {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center; 
+    left: 50%;
+    text-decoration: none;
+}
+
+.Choose-table li {
+    margin: 5px 0px 0px 20px;
+    list-style: none;
+    cursor: pointer;
+    background-color: white;
+    position: relative;
+    width: 400px;
+    height: 250px;
+    line-height: 250px;
+    font-size: 23px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.Choose-table li a {
+    position: relative;
+    display: block;
+    width: 400px;
+    height: 250px;
+    color: black;
+    text-decoration: none;
+}
+
+.Choose-table li:after,
+.Choose-table li:before, 
+.Choose-table li a:before,  
+.Choose-table li a:after {
+    content: "";
+    display: block;
+    position: absolute;
+    background: #ff6f61;
+    transition: 0.2s all ease;
+}
+
+.Choose-table li:after, li:before { width: 0%; height: 3px; }
+.Choose-table li a:before,  li a:after { width: 3px; height: 0%; } 
+.Choose-table li a:before { left: -0.5px; bottom: 1px; }
+.Choose-table li a:after { right: 0; top: 0px; }
+.Choose-table li:after { top: -0.5px; }
+.Choose-table li:before { bottom: -1px; right: 0.3px; }
+
+.Choose-table li:hover:after,  li:hover:before { width: 100%; }
+.Choose-table li:hover a:before, li:hover a:after { height: 100%; }
+.Choose-table li:hover a:after { transition-delay: 0.2s; }
+.Choose-table li:hover:before { transition-delay: 0.4s; }
+.Choose-table li:hover a:before { transition-delay: 0.6s; }
+
+
+
+
+
+
