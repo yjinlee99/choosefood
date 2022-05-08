@@ -68,7 +68,7 @@ function Recipe() {
                     <div className="Content">
                         <Link to="/SingleRecipe">
                         <div className="Thump">
-                                <img src="" width="290" height="160"  />썸네일
+                                <img src={dtos[1]?.thumbnail} width="290" height="160"  />썸네일
                         </div>
                         </Link>
                         <div className="Detail">
@@ -78,7 +78,7 @@ function Recipe() {
                                 </Link>
                             </div>
                             <h4 className="Title">
-                                <Link to=""><div className="Title-link">제목</div></Link>
+                                <Link to=""><div className="Title-link">{(dtos[1]?.title)}</div></Link>
                             </h4>
                             <div>
                                 <div className="Stars">
