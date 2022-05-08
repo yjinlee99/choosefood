@@ -1,0 +1,148 @@
+#Conditions {
+    position: relative;
+    width: 90%;
+    top: 100px;
+    margin: 0 auto;
+}
+
+.Condition {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px;
+}
+
+.Con {
+    position: absolute;
+    border: 1px solid black;
+    font-weight: bold;
+    align-items: center;
+    width: 130px;
+    height: 40px;
+    left: 10%;
+    line-height: 40px;
+}
+
+textarea {
+    position: relative;
+    align-items: center;
+    margin-left: 50px;
+    width: 60%;
+    transform: translate(40%);
+    resize: none;
+    padding: 10px;
+    font-size: 15px;
+}
+
+.Naming-textarea {
+    height: 20px;
+}
+
+#Introducing {
+    position: relative;
+    top: 10px;
+}
+
+.Introducing-textarea {
+    height: 40px;
+    top: 10px;
+}
+
+#Cataloging {
+    position: relative;
+    top: 40px;
+}
+
+#Catal-options {
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-left: 50px;
+    left: 25%;
+}
+
+.Catal-option {
+    position: relative;
+    align-items: center;
+    border: 1px solid black;
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 20px;
+}
+
+#Need {
+    position: relative;
+    top: 45px;
+}
+
+.Need-textarea {
+    height: 40px;
+    top: 10px;
+}
+
+#Steps {
+    position: relative;
+    top: 15px;
+}
+
+#Step {
+    position: relative;
+    top: 40px;
+    left: 10%;
+    margin-left: 40px;
+}
+
+#Step-textarea {
+    position: relative;
+    align-items: center;
+    margin-left: -40px;
+    top: 60px;
+    width: 40%;
+    height: 140px;
+    transform: translate(60%);
+    resize: none;
+    padding: 10px;
+    font-size: 15px;
+}
+
+#Step-photo {
+    position: inherit;
+    border: 1px solid black;
+    width: 18.5%;
+    height: 159px;
+    line-height: 159px;
+    left: 25%;
+    top: 60px;
+    margin-left: 20px;
+}
+
+#Step-add {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 20px;
+    top: 50px;
+    width: 30px;
+    height: 30px;
+    left: 25%;
+    margin-left: 20px;
+    line-height: 25px;
+    font-size: x-large;
+}
+
+#Submit {
+    position: absolute;
+    border: 2px solid #ff6f61;
+    left: 40%;
+    bottom: -150px;
+    width: 18%;
+    height: 35px;
+    line-height: 35px;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    z-index: 100;
+}
+
