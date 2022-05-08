@@ -1,0 +1,12 @@
+.Header { 
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 80px;
+    z-index: 100;
+}
+
+#mymenuMain {
+    margin-top: 130px;
+    text-align: center;
+}

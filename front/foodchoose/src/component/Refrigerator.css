@@ -1,0 +1,84 @@
+.Header { 
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: 80px;
+    z-index: 100;
+}
+
+#Refrigerator {
+    text-align: center;
+}
+
+#wrap1 {
+    margin-top: 150px;
+}
+
+#addText {
+    width: 200px;
+    height: 30px;
+    margin: 10px;
+    background-color: white;
+    border: 2px solid #ff6161;
+    border-radius: 5px;
+}
+
+#addButton {
+    background-color: white;
+    border: 2px none white;
+    width: 50px;
+    border : 2px solid #ff6161;
+    border-radius : 5px;
+}
+
+#wrap {
+    height : 350px;
+    margin-left : 200px;
+    margin-right : 200px;
+    margin-top: 10px;
+    border : 2px solid #ff6161;
+    border-radius : 5px;         
+}
+
+#wrap2 {
+    height : 250px;
+    margin : 10px;
+}
+
+#addedIngredient {
+    text-align: center;
+    font-size: 14px;
+    display: inline-block;
+    width: 90px;
+    height: 25px;
+    background-color : white;
+    border : 2px solid #ff6161;
+    border-radius : 20px;
+    margin: 5px;
+}
+
+#deleteButton {
+    background-color: white;
+    border: 2px none white;
+    width: 10px;
+}
+
+#edit {
+    background-color : #ff6161;
+    border : 2px solid #ff6161;
+    border-radius : 5px;
+    color: white;
+}
+
+#searchRecipe {
+    margin : 30px;
+    height : 50px;
+    background-color : white;
+    border : 2px solid #ff6161;
+    border-radius : 5px;
+}
+
+#addedIngredientContainer{
+    width: 100px;
+    display: inline-flex;
+}
