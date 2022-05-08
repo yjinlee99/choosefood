@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
+=======
+import React from 'react';
+>>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 import Banner from '../Banner';
 import { Link } from 'react-router-dom';
 import './FindedPasswd.css';
 
 function FindedPasswd() {
     return (
+<<<<<<< HEAD
       <div>
+=======
+      <div id='FindedPasswd'>
+>>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
         <div className="Header"><Banner/></div>
         <div id='wrapFindedPasswd1'><br /><br />
               <div id='wrapFindedPasswd2'>

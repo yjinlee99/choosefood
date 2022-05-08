@@ -6,13 +6,27 @@
     z-index: 100;
 }
 
+<<<<<<< HEAD
 #wrapFindedId {
     text-align: center;
+=======
+#FindedId {
+    display: flex;
+    justify-content: center;
+}
+
+#wrapFindedId {
+>>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
     height : 350px;
     width : 400px;
     margin-top : 150px;
     border : 2px solid #ff6161;
     border-radius : 5px;
+<<<<<<< HEAD
+=======
+    display: flex;
+    justify-content: center;
+>>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 }
 
 #wrapFindedId2 {

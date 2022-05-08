@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 import React, { useState } from 'react';
+=======
+import React from 'react';
+>>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
 import { Link } from 'react-router-dom';
 import Banner from '../Banner';
 import './FindedId.css';
 
 function FindedId() {
     return (
+<<<<<<< HEAD
       <div>
+=======
+      <div id='FindedId'>
+>>>>>>> b30ff4544911c22b8445efdc92ad25b7580e087f
         <div className="Header"><Banner/></div>
 
         <div id='wrapFindedId'>
