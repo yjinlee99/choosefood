@@ -15,9 +15,13 @@ import java.util.List;
 @Getter @Setter
 public class Food {
     
-    //이름(기본키)
+    //기본키
     @Id
-    @Column(name = "food_name")
+    @GeneratedValue
+    @Column(name = "food_id",unique = true)
+    private Long id;
+
+    //이름
     private String name;
 
     //재료

@@ -1,33 +1,29 @@
 package food.foodproject.dto;
 
+import com.querydsl.core.annotations.QueryProjection;
 import food.foodproject.domain.Food;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.SneakyThrows;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
 public class FoodDto {
     private String name;
     private String ingredients;
+    private String recipe;
     private String theme;
     private String cook;
     private String taste;
     private String situation;
+    private String img;
 
-    public FoodDto(Food entity){
-        this.name = entity.getName();
-        this.ingredients = entity.getIngredients();
-        this.theme = entity.getTheme();
-        this.cook = entity.getCook();
-        this.taste = entity.getTaste();
-        this.situation = entity.getSituation();
-    }
-
-    public void setFoodDto(String ) {
-
+    @SneakyThrows
+    @QueryProjection
+    public FoodDto(Food food){
+        this.name = food.getName();
+        this.ingredients = food.getIngredients();
+        this.recipe = food.getRecipe();
+        this.theme = food.getTheme();
+        this.cook = food.getCook();
+        this.taste = food.getTaste();
+        this.situation = food.getSituation();
+        this.img = food.getImg();
     }
 }

@@ -1,10 +1,15 @@
 package food.foodproject.repository;
 
 import food.foodproject.domain.Food;
+import food.foodproject.dto.FoodDto;
+import food.foodproject.dto.FoodOptionDto;
+import food.foodproject.dto.FoodSearchCondition;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 public interface FoodRepositoryCustom {
-    Page<Food> findBySearchOption(Pageable pageable, String name, String ingredients, String recipe,
-                                 String theme, String cook, String taste, String situation, String img);
+    List<FoodDto> findBySearchOption(FoodOptionDto condition);
 }

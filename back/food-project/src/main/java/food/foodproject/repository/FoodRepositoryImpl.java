@@ -1,65 +1,68 @@
 package food.foodproject.repository;
 
-import com.querydsl.core.types.Predicate;
+import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.jpa.JPQLQuery;
+import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import food.foodproject.domain.Food;
 import static food.foodproject.domain.QFood.food;
+
+import food.foodproject.dto.FoodDto;
+import food.foodproject.dto.FoodOptionDto;
+import food.foodproject.dto.QFoodDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
-public class FoodRepositoryImpl extends QuerydslRepositorySupport implements FoodRepositoryCustom {
-    @Autowired
-    private JPAQueryFactory queryFactory;
+@Repository
+@RequiredArgsConstructor
+public class FoodRepositoryImpl implements FoodRepositoryCustom {
 
-    public FoodRepositoryImpl() {
-        super(Food.class);
-    }
+    private final JPAQueryFactory queryFactory;
 
     @Override
-    public Page<Food> findBySearchOption(Pageable pageable, String name, String ingredients, String recipe,
-                                  String theme, String cook, String taste, String situation, String img){
-        JPQLQuery<Food> query = queryFactory.selectFrom(food)
-                .where(eqingredients(ingredients), eqtheme(theme), eqcook(cook), eqtaste(taste), eqsituation(situation));
+    public List<FoodDto> findBySearchOption(FoodOptionDto condition) {
 
-        List<Food> foods = this.getQuerydsl().applyPagination(pageable,query).fetch();
-        return new PageImpl<Food>(foods, pageable, query.fetchCount());
+        return queryFactory
+
+                        .select(new QFoodDto(food))
+                        .distinct()
+                        .from(food)
+                        .where(
+                            foodIsNotNull(),
+                            themeEq(condition.getTheme())
+                            )
+                        .fetch();
+
     }
 
-    private BooleanExpression eqingredients(String ingredients) {
-        if(ingredients == null || ingredients.isEmpty()) {
-            return null;
-        }
-        return food.ingredients.eq(ingredients);
+    private BooleanExpression foodIsNotNull(){
+        return food.id.isNotNull();
     }
-    private BooleanExpression eqtheme(String theme) {
-        if(theme == null || theme.isEmpty()) {
-            return null;
+
+    private BooleanBuilder themeEq(List<String> themeCondition){
+        BooleanBuilder builder = new BooleanBuilder();
+
+        if(themeCondition.contains("매콤")){
+            builder.and(food.theme.contains("매콤"));
         }
-        return food.theme.eq(theme);
-    }
-    private BooleanExpression eqcook(String cook) {
-        if(cook == null || cook.isEmpty()) {
-            return null;
+        if(themeCondition.contains("달콤")){
+            builder.and(food.theme.contains("달콤"));
         }
-        return food.cook.eq(cook);
-    }
-    private BooleanExpression eqtaste(String taste) {
-        if(taste == null || taste.isEmpty()) {
-            return null;
+        if(themeCondition.contains("고소")){
+            builder.and(food.theme.contains("고소"));
         }
-        return food.taste.eq(taste);
-    }
-    private BooleanExpression eqsituation(String situation) {
-        if(situation == null || situation.isEmpty()) {
-            return null;
+        if(themeCondition.contains("짭짤")){
+            builder.and(food.theme.contains("짭짤"));
         }
-        return food.situation.eq(situation);
+        return builder;
     }
+
+
 }
