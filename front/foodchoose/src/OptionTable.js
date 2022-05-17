@@ -46,6 +46,8 @@ const OptionTable = () => {
     const clickHandler = ({ target }) => {
         setIsClicked(!isClicked);
         clickedOptionHandler(target.parentNode, target.value, target.checked);
+        console.log(target.parentNode, target.value, target.clicked);
+        console.log(clickedOption);
     };
 
     const clickedOptionHandler = (box, id, isClicked) => {
