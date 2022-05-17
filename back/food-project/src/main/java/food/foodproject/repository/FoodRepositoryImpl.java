@@ -103,7 +103,7 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
                     .or(food.name.contains("해물"))
                     .or(food.name.contains("새우"))
                     .or(food.name.contains("초밥"))
-                    .or(food.name.contains("회"))
+                    .or(food.name.contains("회"));
         }
         if(ingredientCondition.contains("과일")){
             builder.or(food.name.contains("딸기"))
