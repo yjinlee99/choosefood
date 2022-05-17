@@ -30,11 +30,11 @@ function LoginForm() {
                     로그인
                 </Typography>
                 <TextField
-                    label="Email Adress" name="email"
+                    label="이메일" name="email"
                     autoComplete="email"
                     autoFocus fullWidth />
                 <TextField
-                    label="Password" name="password" type="password"
+                    label="비밀번호" name="password" type="password"
                     autoComplete="current-password"
                     fullWidth />
                 <FormControlLabel
