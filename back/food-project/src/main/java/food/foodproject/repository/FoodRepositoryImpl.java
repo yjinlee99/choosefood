@@ -2,22 +2,15 @@ package food.foodproject.repository;
 
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import food.foodproject.domain.Food;
 import static food.foodproject.domain.QFood.food;
 
 import food.foodproject.dto.FoodDto;
 import food.foodproject.dto.FoodOptionDto;
 import food.foodproject.dto.QFoodDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 @Repository

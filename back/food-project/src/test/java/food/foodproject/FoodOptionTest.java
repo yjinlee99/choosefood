@@ -5,13 +5,16 @@ import food.foodproject.dto.FoodDto;
 import food.foodproject.dto.FoodOptionDto;
 import food.foodproject.repository.FoodRepository;
 import food.foodproject.repository.FoodRepositoryImpl;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @SpringBootTest
+@Transactional
 public class FoodOptionTest {
     @Autowired
     FoodRepository foodRepository;
@@ -37,5 +40,8 @@ public class FoodOptionTest {
         FoodOptionDto condition = new FoodOptionDto();
         condition.setTheme("매콤");
 
-        List<FoodDto> results = foodRepositorylmpl.findBySearchOption(condition);}
+        List<FoodDto> results = foodRepositorylmpl.findBySearchOption(condition);
+        Assertions.assertEquals(results.get(0).getName(), food1.getName());
+    }
+
 }
