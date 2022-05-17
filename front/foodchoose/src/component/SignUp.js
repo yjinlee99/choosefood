@@ -19,8 +19,7 @@ function SignUp() {
         }}>
             <Typography component="h1" variant="h5"sx={{
                 mt: 2, mb:3
-            }}>
-            회원가입
+            }}>회원가입
             </Typography>
 
                 <TextField
@@ -29,7 +28,7 @@ function SignUp() {
                   required
                   fullWidth
                   id="name"
-                  label="Name"
+                  label="이름(닉네임)"
                   autoFocus
                 />
 
@@ -37,7 +36,7 @@ function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="이메일"
                   name="email"
                   autoComplete="email"
                 />
@@ -45,8 +44,17 @@ function SignUp() {
                 <TextField
                   required
                   fullWidth
+                  id="phone"
+                  label="전화번호"
+                  name="phone"
+                  autoComplete="phone"
+                />
+
+                <TextField
+                  required
+                  fullWidth
                   name="password"
-                  label="Password"
+                  label="비밀번호"
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -55,6 +63,8 @@ function SignUp() {
             <Button type="submit" onClick={()=>{alert("회원가입 완료!")}} fullWidth variant="contained" style={{
                 backgroundColor: "#ff6161", marginTop:"30px"              
             }}>회원가입</Button>
+
+
         </Container>
         </div>
     );
