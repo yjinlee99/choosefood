@@ -12,15 +12,12 @@
      position: fixed;
      width: 100%;
      display: flex;
-<<<<<<< HEAD
-     top: 83px;
+
+     top: 46px;
      height: 150px;
      align-items: center;
      background-color: white;
      z-index: 100;
-=======
-     top: 46px;
->>>>>>> 21234b307b40673e6989ebd3ab3378dd5dc6a9ed
 }
 
 .Search-input {
