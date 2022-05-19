@@ -8,10 +8,36 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Banner from '../Banner';
-import SignUp from './SignUp';
 import './LoginForm.css';
+import { useState } from 'react';
 
 function LoginForm() {
+    const [email, setEmail] = useState("")
+    const [passwd, setPasswd] = useState("")
+
+    const onEmailHandler = (event) => {
+        setEmail(event.currentTarget.value)
+    }
+    const onPasswdHandler = (event) => {
+        setPasswd(event.currentTarget.value)
+      }
+
+
+      const goBackend = () => {
+        fetch('/test', {
+          method: 'post',
+          body: JSON.stringify({
+              email:email,
+              passwd:passwd,
+          })
+      })
+      .then(res => res.json())
+      .then(res => {
+          if (res.success) {
+              alert("저장 완료");
+          }
+      })
+      }
     return(
 
         <><div>
@@ -30,17 +56,19 @@ function LoginForm() {
                     로그인
                 </Typography>
                 <TextField
-                    label="Email Adress" name="email"
+                    label="이메일" name="email"
                     autoComplete="email"
-                    autoFocus fullWidth />
+                    autoFocus fullWidth 
+                    onChange={onEmailHandler}/>
                 <TextField
-                    label="Password" name="password" type="password"
+                    label="비밀번호" name="password" type="password"
                     autoComplete="current-password"
-                    fullWidth />
+                    fullWidth
+                    onChange={onPasswdHandler} />
                 <FormControlLabel
                     control={<Checkbox value="remember" color="primary" />}
                     label="아이디 기억하기" />
-                <Button id='submit' type="submit" fullWidth variant="contained" onClick={()=> alert("로그인 완료!")}>로그인</Button>
+                <Button id='submit' type="submit" onClick={goBackend} fullWidth variant="contained">로그인</Button>
                 <Grid container>
                     <Grid item xs='4'>
                         <Link to='/FindId'>아이디 찾기</Link>

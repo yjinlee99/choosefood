@@ -11,5 +11,5 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 public interface FoodRepositoryCustom {
-    List<FoodDto> findBySearchOption(FoodOptionDto condition);
+    List<Food> findBySearchOption(List<String> themes, List<String> tastes, List<String> ingredients, List<String> situations);
 }

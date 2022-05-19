@@ -26,7 +26,7 @@ function FindId() {
             </Typography>
             <p>회원정보에 등록한 휴대폰번호를 입력해주세요.</p>
             <TextField
-                label="휴대폰번호 입력" name="email"
+                label="휴대폰번호 입력" name="phone"
                 autoComplete="phone"
                 autoFocus fullWidth /><br />
             <Button id='submit' type="submit" fullWidth variant="contained">인증번호 받기</Button><br /><br />
