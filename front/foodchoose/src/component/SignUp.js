@@ -7,24 +7,7 @@ import Banner from '../Banner';
 import {useState, useEffect} from 'react';
 
 function SignUp() {
-<<<<<<< HEAD
-    //const [dtos, setDtos] = useState([[]]);
-    useEffect(() => {
-        fetch('/test', {
-            method: 'post',
-            body: JSON.stringify({
-                name: "yeri",
-                batch: 1
-            })
-        })
-        .then(res => res.json())
-        .then(res => {
-            if (res.success) {
-                alert("저장 완료");
-            }
-        })
-    },[])
-=======
+
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -65,7 +48,7 @@ function SignUp() {
   })
   }
   
->>>>>>> e8c6ee842e7be9f9b87ed55fac5ee855df686131
+
     return(
         <div>
         <div className="Header"><Banner /></div>
