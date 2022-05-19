@@ -25,16 +25,13 @@ public class Food {
     private String name;
 
     //재료
-    private String ingredients;
+    private String ingredient;
 
     //레시피
     private String recipe;
 
     //테마별
     private String theme;
-
-    //조리별
-    private String cook;
 
     //미각별
     private String taste;
