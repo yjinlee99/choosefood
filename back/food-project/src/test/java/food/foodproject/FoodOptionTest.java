@@ -1,6 +1,7 @@
 package food.foodproject;
 
 import food.foodproject.domain.Food;
+import food.foodproject.dto.FoodDto;
 import food.foodproject.dto.FoodOptionDto;
 import food.foodproject.repository.FoodRepository;
 import food.foodproject.repository.FoodRepositoryImpl;
@@ -23,7 +24,7 @@ public class FoodOptionTest {
 
     @Test
     void contextLoads() {
-        String[] names = {"쭈꾸미", "배", "치킨", "고기"};
+        String[] names = {"쭈꾸미", "배", "사과", "고기"};
         String[] tastes = {"매콤", "달콤", "고소", "짭짤"};
         String[] theme = {"테마"};
         String[] ingredients = {"쭈꾸미", "사과", "닭", "돼지"};
@@ -50,22 +51,11 @@ public class FoodOptionTest {
             foodRepository.save(food);
         }
 
-        FoodOptionDto condition = new FoodOptionDto(Arrays.asList(theme), Arrays.asList(tastes), Arrays.asList(), List.of("후식", "야식"));
-
-        List<Food> foods = foodRepositorylmpl.findFoods(theme[0]);
-        for(Food food : foods) {
-            System.out.println(food.getId() + " " + food.getName() + " " + food.getTheme() + " " +food.getTaste() +" "+ food.getIngredient() + " " + food.getSituation());
-        }
-//        testCase(new String[3], theme, tastes, ingredients, 0);
-
-        System.out.println("---------------- 원하는 음식 검색 ------------- ");
-        List<Food> foodsInSearch = foodRepositorylmpl.findFoodsInSearch(condition.getTheme(), condition.getTaste(), condition.getIngredients(), condition.getSituations());
-        for(Food food : foodsInSearch) {
-            System.out.println(food.getId() + " " + food.getName() + " " + food.getTheme() + " " +food.getTaste() +" "+ food.getIngredient() + " " + food.getSituation());
-        }
+        FoodOptionDto condition = new FoodOptionDto(Arrays.asList(theme), Arrays.asList(tastes), Arrays.asList("과일", "고기"), Arrays.asList(situations));
+        
 
         System.out.println("---------------- 원하는 음식 검색2 ------------- ");
-        List<Food> foodsInSearch2 = foodRepositorylmpl.findFoodsInSearch2(condition.getTheme(), condition.getTaste(), condition.getIngredients(), condition.getSituations());
+        List<Food> foodsInSearch2 = foodRepositorylmpl.findBySearchOption(condition.getTheme(), condition.getTaste(), condition.getIngredients(), condition.getSituations());
         for(Food food : foodsInSearch2) {
             System.out.println(food.getId() + " " + food.getName() + " " + food.getTheme() + " " +food.getTaste() +" "+ food.getIngredient() + " " + food.getSituation());
         }
