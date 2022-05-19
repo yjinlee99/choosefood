@@ -2,11 +2,12 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import Banner from '../Banner';
 import {useState, useEffect} from 'react';
 
 function SignUp() {
+
 
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
@@ -47,6 +48,7 @@ function SignUp() {
   })
   }
   
+
     return(
         <div>
         <div className="Header"><Banner /></div>
