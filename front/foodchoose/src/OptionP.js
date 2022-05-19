@@ -10,6 +10,7 @@ const onHandleClickedOption = (id, isClicked) => {
         clickedOption.delete(id);
         setClickedOption(clickedOption);
     }
+    console.log('clickedOption', clickedOption)
 };
 
 function OptioneThemeP () {
