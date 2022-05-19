@@ -18,4 +18,4 @@ const DetailList = (props) => {
 }
 
 
-export default DetailList
+export default DetailList;

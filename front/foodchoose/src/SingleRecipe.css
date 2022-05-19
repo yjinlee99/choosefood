@@ -1,91 +1,91 @@
- .Single-recipe {
-     position: relative;   
-     top: 90px;
-     margin: 10px;
- }
-
- .Recipe-img {
-     border: 1px solid black;
-     position: relative;
-     text-align: center;
-     transform: translate(50%);
-     width: 50%;
-     height: 45%;
-     line-height: 280px;
- }
-
- .Star{
-    position: relative;
-    transform: translate(76%);
-    width: 40%;
-    height: 20px;
-    bottom: 130px;
-    text-align: center;
-    color: rgba(255, 234, 0, 0.905); 
- }
-
- .Recipe-name {
-     border: 1px solid black;
-     border-left: none;
-     border-right: none;
-     border-top: 2px solid black;
-     position: relative;
-     transform: translate(50.3%);
-     top: 5px;
-     width: 50%;
-     height: 40px;
-     line-height: 40px;
-     font-weight: bold;
- }
-
- .Hit {
-    position: relative;
-    border: 1px solid black;
-    left: 82%;
-    top: -92%;
-    width: 15%;
-    height: 80%;
-    line-height: 30px;
-    font-size: smaller;
-    text-align: center;
+.Single-recipe {
+    position: relative;   
+    top: 90px;
+    margin: 10px;
 }
 
- .Recipe-intro{
-     position: relative;
-     border: 1px solid black;
-     border-left: none;
-     border-right: none;
-     transform: translate(50.3%);
-     top: 5px;
-     width: 50%;
-     height: 40px;
-     line-height: 40px;
-     font-weight: bold;
- }
- 
- .Recipe-Ingre{
+.Recipe-img {
+    border: 1px solid black;
     position: relative;
+    text-align: center;
+    transform: translate(50%);
+    width: 50%;
+    height: 45%;
+    line-height: 280px;
+}
+
+.Star{
+   position: relative;
+   transform: translate(76%);
+   width: 40%;
+   height: 20px;
+   bottom: 130px;
+   text-align: center;
+   color: rgba(255, 234, 0, 0.905); 
+}
+
+.Recipe-name {
     border: 1px solid black;
     border-left: none;
     border-right: none;
+    border-top: 2px solid black;
+    position: relative;
     transform: translate(50.3%);
     top: 5px;
     width: 50%;
-    height: 80px;
+    height: 40px;
     line-height: 40px;
     font-weight: bold;
- }
+}
 
- .Recipe-detail{
+.Hit {
+   position: relative;
+   border: 1px solid black;
+   left: 82%;
+   top: -92%;
+   width: 15%;
+   height: 80%;
+   line-height: 30px;
+   font-size: smaller;
+   text-align: center;
+}
+
+.Recipe-intro{
     position: relative;
     border: 1px solid black;
     border-left: none;
     border-right: none;
-    border-bottom: 2px solid black;
     transform: translate(50.3%);
     top: 5px;
     width: 50%;
-    height: 160px;
-    line-height: 45px;
+    height: 40px;
+    line-height: 40px;
     font-weight: bold;
- }
+}
+
+.Recipe-Ingre{
+   position: relative;
+   border: 1px solid black;
+   border-left: none;
+   border-right: none;
+   transform: translate(50.3%);
+   top: 5px;
+   width: 50%;
+   height: 80px;
+   line-height: 40px;
+   font-weight: bold;
+}
+
+.Recipe-detail{
+   position: relative;
+   border: 1px solid black;
+   border-left: none;
+   border-right: none;
+   border-bottom: 2px solid black;
+   transform: translate(50.3%);
+   top: 5px;
+   width: 50%;
+   height: 160px;
+   line-height: 45px;
+   font-weight: bold;
+}

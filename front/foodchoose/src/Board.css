@@ -5,20 +5,25 @@
     height: 80px;
     z-index: 100;
     border-bottom: 3px solid #ff6f61;
+    background-color: white;
 }
 
 .Search {
-     position: relative;
+     position: fixed;
      width: 100%;
      display: flex;
-     top: 120px;
+     top: 83px;
+     height: 150px;
+     align-items: center;
+     background-color: white;
+     z-index: 100;
 }
 
 .Search-input {
-    position: relative;
-    transform: translate(78%);
+    position: fixed;
+    transform: translate(76%);
     height: 50px;
-    width: 38%;
+    width: 39%;
     border: 2px solid black;
     font-weight: bold;
     font-size: large;
@@ -26,39 +31,42 @@
 
 .Search-icon {
     position: absolute;
-    right: 31%;
-    top: 2px;
+    right: 30%;
+    top: 50px;
     padding: 14px;
     color: black;
 }
 
 .GotoWrite {
-    position: absolute;
-    left: 72%;
-    top: 40px;
+    position: fixed;
     background-color: white;
     border: 2px solid black;
     border-radius: 1px;
     display: inline-block;
+    top: 135.55px;
+    left: 75%;
+    transform: translate(80%);
     width: 91px;
-    height: 33px;
+    height: 35px;
     line-height: 33px;
     text-align: center;
     font-size: smaller;
     color: black;
+    z-index: 100;
 }
 
-.Array {
-    position: absolute;
+#Array {
+    position: fixed;
     left: 72%;
+    top: 135px;
     width: 95px;
     height: 40px;
-    top: -10px;
     background-color: white;
     border: 2px solid black;
     display: inline-block;
     line-height: 32px;
     padding: 3px 15px 0px 15px;
+    z-index: 100;
     
     margin: 0 auto;
     -webkit-box-sizing: border-box;
@@ -83,35 +91,18 @@
 }
 
 #Container {
-    position: fixed;
-    width: 100%;
-    top: 210px;
-}
-
-.Content-list {
     position: absolute;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     width: 100%;
-}
-
-#List1 {
-    position: relative;
-    top: 0;
-    margin: 0 auto;
-}
-
-#List2 {
-    position: relative;
-    margin-top: 5px;
-    margin: 0 auto;
+    top: 225px;
+    overflow: hidden;
 }
 
 .Content {
     position: relative;
-    justify-content: center;
-    border: 1px solid black;
-    width: 293px;
+    width: 360px;
     height: 222px;
     padding: 3px;
     margin: 10px;
@@ -120,7 +111,7 @@
 .Thump {
     position: relative;
     border: 1px solid black;
-    width: 290px;
+    width: 350px;
     height: 160px;
     line-height: 150px;
     text-align: center;
@@ -128,20 +119,18 @@
 
 .Detail {
     position: relative;
-    border: 1px solid black;
     top: 5px; 
-    width: 290px;
+    width: 350px;
     height: 53px;
 }
 
 .Profile {
     position: relative;
     border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
     top: 3px;
-    left: 3px;
-    width: 45px;
-    height: 45px;
-    line-height: 45px;
     text-align: center;
     font-size: 10px;
 }
@@ -149,18 +138,20 @@
 .Title {
     position: relative;
     border: 1px solid black;
-    top: -65px;
-    left: 54px;
-    width: 230px;
+    top: -70px;
+    left: 60px;
+    width: 290px;
+    height: 25px;
+    line-height: 25px;
     text-align: center;
 }
 
 .Stars {
     position: relative;
     border: 1px solid black;
-    top: -85px;
-    left: 54px;
-    width: 150px;
+    top: -88px;
+    left: 60px;
+    width: 200px;
     height: 20px;
     text-align: center;
     color: rgba(255, 234, 0, 0.905);
@@ -170,9 +161,9 @@
 .Hits {
     position: relative;
     border: 1px solid black;
-    top: -128.5px;
-    left: 210px;
-    width: 74px;
+    top: -131.5px;
+    left: 265px;
+    width: 85px;
     height: 20.5px;
     line-height: 20.5px;
     font-size: 12px;

@@ -2,10 +2,26 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Banner from '../Banner';
 
 function SignUp() {
+    useEffect(() => {
+      fetch('/test', {
+          method: 'post',
+          body: JSON.stringify({
+              name: "yeri",
+              batch: 1
+          })
+      })
+      .then(res => res.json())
+      .then(res => {
+          if (res.success) {
+              alert("저장 완료");
+          }
+      })
+    },[])
+
     return(
         <div>
         <div className="Header"><Banner /></div>
