@@ -2,26 +2,51 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import React, { useEffect } from 'react';
+import React from 'react';
 import Banner from '../Banner';
+import {useState, useEffect} from 'react';
 
 function SignUp() {
-    useEffect(() => {
-      fetch('/test', {
-          method: 'post',
-          body: JSON.stringify({
-              name: "yeri",
-              batch: 1
-          })
-      })
-      .then(res => res.json())
-      .then(res => {
-          if (res.success) {
-              alert("저장 완료");
-          }
-      })
-    },[])
 
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+  const [passwd, setPasswd] = useState("")
+
+  const onNameHandler = (event) => {
+    setName(event.currentTarget.value)
+  }
+  const onEmailHandler = (event) => {
+      setEmail(event.currentTarget.value)
+  }
+
+  const onPhoneHandler = (event) => {
+    setPhone(event.currentTarget.value)
+  }
+
+  const onPasswdHandler = (event) => {
+    setPasswd(event.currentTarget.value)
+  }
+
+  const goBackend = () => {
+    alert(name+"님의 회원가입이 완료되었습니다!")
+    fetch('/test', {
+      method: 'post',
+      body: JSON.stringify({
+          name: name,
+          email:email,
+          phone:phone,
+          passwd:passwd,
+      })
+  })
+  .then(res => res.json())
+  .then(res => {
+      if (res.success) {
+          alert("저장 완료");
+      }
+  })
+  }
+  
     return(
         <div>
         <div className="Header"><Banner /></div>
@@ -46,6 +71,7 @@ function SignUp() {
                   id="name"
                   label="이름(닉네임)"
                   autoFocus
+                  onChange={onNameHandler}
                 />
 
                 <TextField
@@ -55,6 +81,7 @@ function SignUp() {
                   label="이메일"
                   name="email"
                   autoComplete="email"
+                  onChange={onEmailHandler}
                 />
 
                 <TextField
@@ -64,19 +91,21 @@ function SignUp() {
                   label="전화번호"
                   name="phone"
                   autoComplete="phone"
+                  onChange={onPhoneHandler}
                 />
 
                 <TextField
                   required
                   fullWidth
-                  name="password"
+                  name="passwd"
                   label="비밀번호"
                   type="password"
-                  id="password"
+                  id="passwd"
                   autoComplete="new-password"
+                  onChange={onPasswdHandler}
                 />
 
-            <Button type="submit" onClick={()=>{alert("회원가입 완료!")}} fullWidth variant="contained" style={{
+            <Button id="registerBtn" onClick={goBackend} type="submit" fullWidth variant="contained" style={{
                 backgroundColor: "#ff6161", marginTop:"30px"              
             }}>회원가입</Button>
 
