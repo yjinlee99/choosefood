@@ -1,6 +1,7 @@
 package food.foodproject.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import SQL.DTO;
 import SQL.DAO;
@@ -62,6 +65,13 @@ public class TestController {
     public String test(@RequestBody String str) {
         System.out.println(str);
 
-        return "testIndex";
+        JSONObject jObject = new JSONObject(str);
+        String email = jObject.getString("email");
+        String passwd = jObject.getString("passwd");
+
+        System.out.println(email);
+        System.out.println(passwd);
+
+        return "text";
     }
 }

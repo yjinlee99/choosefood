@@ -845,86 +845,39 @@ public class DAO {
 		}
 	}
 
-	// 타이틀 추가
-	public static void addTitle(String name, String title) {
+	// 해당하는 번호의 방이 있는지 체크
+	public static Boolean checkLogin(String email, String passwd) {
 		try {
-			Connection con = getConnection();
-			PreparedStatement insert = con.prepareStatement(""
-					+ "INSERT INTO " + name
-					+ "(title) "
-					+ "VALUES "
-					+ "('" + title + "')");
-			insert.executeUpdate();
+			Connection con = ConnectionPool.cp.getConnection();
+			String sql = "SELECT COUNT(*) cnt FROM users" +
+					" where email = ? and passwd = ?";
+			PreparedStatement statement = con.prepareStatement(sql);
+			statement.setString(1, email);
+			statement.setString(2, passwd);
+			ResultSet result = statement.executeQuery();
+			if(result.next()) {
+				int cnt = result.getInt("cnt");
+				if (cnt>0)
+					return true;
+			}
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
+		return false;
 	}
 
-	public static void addIntro(String name, String intro) {
+	// 값 추가
+	public static void addUserValues(String email, String passwd, String name, String phone) {
 		try {
-			Connection con = getConnection();
+			//Connection con = getConnection();
+			Connection con = ConnectionPool.cp.getConnection();
 			PreparedStatement insert = con.prepareStatement(""
-					+ "INSERT INTO " + name
-					+ "(intro) "
-					+ "VALUES "
-					+ "('" + intro + "')");
+					+ "INSERT INTO users VALUES "
+					+ "('" + email + "', '" + passwd + "', '" + name + "', '" + phone + "')");
 			insert.executeUpdate();
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
-	public static void addIngredient(String name, String ingredient) {
-		try {
-			Connection con = getConnection();
-			PreparedStatement insert = con.prepareStatement(""
-					+ "INSERT INTO " + name
-					+ "(ingredient) "
-					+ "VALUES "
-					+ "('" + ingredient + "')");
-			insert.executeUpdate();
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
-	public static void addStep(String name, String step) {
-		try {
-			Connection con = getConnection();
-			PreparedStatement insert = con.prepareStatement(""
-					+ "INSERT INTO " + name
-					+ "(step) "
-					+ "VALUES "
-					+ "('" + step + "')");
-			insert.executeUpdate();
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
-	public static void addThumbnail(String name, String thumbnail) {
-		try {
-			Connection con = getConnection();
-			PreparedStatement insert = con.prepareStatement(""
-					+ "INSERT INTO " + name
-					+ "(thumbnail) "
-					+ "VALUES "
-					+ "('" + thumbnail + "')");
-			insert.executeUpdate();
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
-	public static void addStepImg(String name, String stepimg) {
-		try {
-			Connection con = getConnection();
-			PreparedStatement insert = con.prepareStatement(""
-					+ "INSERT INTO " + name
-					+ "(stepimg) "
-					+ "VALUES "
-					+ "('" + stepimg + "')");
-			insert.executeUpdate();
+			if (con != null) {
+				ConnectionPool.cp.releaseConnection(con);
+			}
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
 		}
@@ -997,11 +950,11 @@ public class DAO {
 			Connection con = ConnectionPool.cp.getConnection();
 			PreparedStatement statement = con
 					.prepareStatement("CREATE TABLE IF NOT EXISTS users("
-							+ "id varChar(255),"
-							+ "pwd varChar(255),"
+							+ "email varChar(255),"
+							+ "passwd varChar(255),"
 							+ "name varChar(255),"
 							+ "phone varChar(255),"
-							+ "PRIMARY KEY(id))");
+							+ "PRIMARY KEY(email))");
 			statement.execute();
 			if (con != null) {
 				ConnectionPool.cp.releaseConnection(con);
