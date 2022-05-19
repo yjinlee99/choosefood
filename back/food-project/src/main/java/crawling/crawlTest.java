@@ -4,8 +4,7 @@ import SQL.DAO;
 
 public class crawlTest {
     public static void main(String[] args) {
-
-        DAO.createFoodTable(); // 음식 테이블 생성
+        DAO.createFoodTable();
         //한식
         crawl.getCrawl("https://www.10000recipe.com/recipe/6751412"); //        소고기 미역국
         DAO.addValues(crawl.title, crawl.intro, crawl.ingredient, crawl.step, crawl.thumbnail, crawl.stepimg, "한식", "고소", "해장_식사");

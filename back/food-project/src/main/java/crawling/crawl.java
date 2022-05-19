@@ -37,6 +37,7 @@ public class crawl {
             saveImg(getTitle(doc).text(), getTitle(doc).text(), getThumbnail(doc).attr("src"), 1); // image 폴더에 썸네일 저장
 
             intro = getIntro(doc).text(); // 소개 삽입
+            intro = apostrophe(intro); // 소개 따옴표 -> 삭제 후 삽입
             System.out.println("요리 소개: " + getIntro(doc).text()); // 소개 출력
 
             int i = 1;
@@ -62,6 +63,7 @@ public class crawl {
                 System.out.println(i + ") " + str);
                 i++;
             }
+            step = apostrophe(step); // 순서 따옴표 -> 삭제 후 삽입
 
             for (int j = 1; j <= i; j++) { // image 폴더에 순서 이미지 저장
                 saveImg(getTitle(doc).text(),getTitle(doc).text() + j, getStepImg(doc).select("div[id=stepimg" + j + "]")
@@ -124,6 +126,13 @@ public class crawl {
     // 문자열 공백 언더바 치환
     public static String underBarSpace(String name) {
         name = name.replaceAll(" ", "_");
+        return name;
+    }
+
+    // 문자열 따옴표 삭제
+    public static String apostrophe(String name) {
+        name = name.replaceAll("\'", "");
+        name = name.replaceAll("\"", "");
         return name;
     }
 

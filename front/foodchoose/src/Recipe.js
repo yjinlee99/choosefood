@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect }  from 'react';
 import './Recipe.css';
 import SearchIcon from '@material-ui/icons/Search';
 import StarIcon from '@material-ui/icons/StarRounded';
@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 
 
 function Recipe() {
+    
     const [dtos, setDtos] = useState([[]]);
     useEffect(() => {
         fetch('/dtos')
@@ -16,6 +17,10 @@ function Recipe() {
                 setDtos(dtos);
             });
     },[])
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 46cec87c1c41275df533c3392807236371f3c358
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
         { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
@@ -50,7 +55,11 @@ function Recipe() {
                     <div className="Content">  
                         <div className="Thump">
                             <Link to="/SingleRecipe">
+<<<<<<< HEAD
                                 <div className="Thump-link">
+=======
+                                <div className="Thump-link"> 
+>>>>>>> 46cec87c1c41275df533c3392807236371f3c358
                                     <img src={a.thumbnail} width="350" height="160" />
                                 </div>
                             </Link>

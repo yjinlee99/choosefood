@@ -128,6 +128,12 @@
     text-align: center;
 }
 
+.Title-link:first-child {
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
 .Stars {
     position: relative;
     border: 1px solid black;
