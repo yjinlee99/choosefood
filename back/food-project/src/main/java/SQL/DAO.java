@@ -436,9 +436,9 @@ public class DAO {
 	// DB 연결
 	public static Connection getConnection() {
 		try {
-			String dbURL = "jdbc:mysql://localhost:3306/capstone";
-			String dbID = "root";
-			String dbPW = "qwe123"; // 개인 환경에 맞는 SQL 비밀번호 수정 필요
+			String dbURL = "jdbc:mysql://capstone.cs6kilq1qdog.us-west-1.rds.amazonaws.com:3306/capstone";
+			String dbID = "admin";
+			String dbPW = "capstone"; // 개인 환경에 맞는 SQL 비밀번호 수정 필요
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager.getConnection(dbURL, dbID, dbPW);
 			System.out.println("The Connection Successful");
