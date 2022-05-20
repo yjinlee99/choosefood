@@ -1,7 +1,6 @@
 package food.foodproject.controller;
 
 import SQL.DAO;
-import SQL.DTO;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,6 +27,7 @@ public class LoginController {
         System.out.println(getLogin());
         return "text";
     }
+
     @GetMapping("/login")
     public Boolean getLogin(){
         System.out.println(DAO.checkLogin(email, passwd));
