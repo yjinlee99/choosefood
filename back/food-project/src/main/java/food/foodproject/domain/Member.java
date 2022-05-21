@@ -1,6 +1,5 @@
 package food.foodproject.domain;
 
-import food.foodproject.dto.MemberFormDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,21 +21,45 @@ public class Member {
     //비밀번호
     private String password;
 
-    //아이디
-    private String name;
-
     //닉네임
     private String nickname;
 
     //핸드폰 번호
-    private Long phone;
+    private String phone;
+
+    //이메일
+    private String email;
+
+    //이미지
+    private String img;
 
     //냉장고 재료
     private String havingIngredient;
 
-    //냉장고 수정
-    public void modHavingIngredient(String food){
-        this.havingIngredient = food;
+    //닉네임 수정
+    public void updateNickname(String nickname) {
+        this.nickname = nickname;
     }
+
+    //핸드폰 번호 수정
+    public void updatePhone(String phone) {
+        this.phone = phone;
+    }
+
+    //이메일 수정
+    public void updateEmail(String email) {
+        this.email = email;
+    }
+
+    //비밀번호 수정
+    public void updatePassword(String password) {
+        this.password = password;
+    }
+
+    //냉장고 수정
+    public void updateHavingIngredient(String havingIngredient){
+        this.havingIngredient = havingIngredient;
+    }
+
 
 }
