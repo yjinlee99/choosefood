@@ -17,7 +17,7 @@ function Recipe() {
                 setDtos(dtos);
             });
     },[])
-
+    
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
         { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
@@ -52,9 +52,7 @@ function Recipe() {
                     <div className="Content">  
                         <div className="Thump">
                             <Link to="/SingleRecipe">
-
                                 <div className="Thump-link"> 
-
                                     <img src={a.thumbnail} width="350" height="160" />
                                 </div>
                             </Link>
