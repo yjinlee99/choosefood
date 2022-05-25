@@ -10,7 +10,7 @@ function Option() {
         <div className="Option">         
             <div className="Header"><Banner/></div>
             <OptionTable />
-            <Link to="/Recipe"><input type="submit" id="Find" value="찾기" /></Link>
+            {/* <Link to="/Recipe"><input type="submit" id="Find" value="찾기" /></Link> */}
         </div>
     );
 };

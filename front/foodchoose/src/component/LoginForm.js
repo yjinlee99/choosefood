@@ -9,9 +9,10 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Banner from '../Banner';
 import './LoginForm.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function LoginForm() {
+    
     const [email, setEmail] = useState("")
     const [passwd, setPasswd] = useState("")
 
@@ -22,21 +23,30 @@ function LoginForm() {
         setPasswd(event.currentTarget.value)
       }
 
-
       const goBackend = () => {
-        fetch('/test', {
+        fetch('/login', {
           method: 'post',
           body: JSON.stringify({
               email:email,
               passwd:passwd,
           })
-      })
-      .then(res => res.json())
-      .then(res => {
-          if (res.success) {
-              alert("저장 완료");
-          }
-      })
+        })
+        .then(res => res.json())
+        res();
+      }
+
+      const res = () => {
+        fetch('/login')
+        .then(response => response.json())
+        .then(response => {
+            if(JSON.parse(response)) {
+                alert("로그인 성공");
+            
+            } else {
+                alert("로그인 실패");
+            }
+            window.location.replace("/LoginForm")
+        });
       }
     return(
 
@@ -69,6 +79,9 @@ function LoginForm() {
                     control={<Checkbox value="remember" color="primary" />}
                     label="아이디 기억하기" />
                 <Button id='submit' type="submit" onClick={goBackend} fullWidth variant="contained">로그인</Button>
+                <script>
+                    console.log(bool);
+                </script>
                 <Grid container>
                     <Grid item xs='4'>
                         <Link to='/FindId'>아이디 찾기</Link>

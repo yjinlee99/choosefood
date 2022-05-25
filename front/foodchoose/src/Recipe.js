@@ -17,7 +17,7 @@ function Recipe() {
                 setDtos(dtos);
             });
     },[])
-    
+
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
         { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
@@ -66,7 +66,7 @@ function Recipe() {
                             </div>
 
                             <h4 className="Title">
-                                <Link to=""><div className="Title-link">{ a.title }</div></Link>
+                                <Link to=""><div className="Title-link">{ a.name }</div></Link>
                             </h4>
                             
                             <div>
