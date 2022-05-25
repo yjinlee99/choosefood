@@ -19,91 +19,37 @@ import java.util.List;
 public class FoodController {
     @Autowired
     FoodRepository foodRepository;
+
     @Autowired
-    FoodRepositoryImpl foodRepositorylmpl;
-    @Autowired
-    FoodService foodService;
+    private FoodService foodService;
 
-    static int cnt;
-    String [] themeList;
-    String [] tasteList;
-    String [] ingredientList;
-    String [] situationList;
-    String [] refList;
+    @PostMapping("/option")
+    public List<FoodDto> option(@RequestBody FoodOptionDto dto) {
+        System.out.println(dto);
 
-    @PostMapping(value = "/option")
-    public String option(@RequestBody String str) {
-        cnt = 0;
-        System.out.println(str);
+        List<String> notnull = Arrays.asList("");
+        if(dto.getTheme() == null) dto.setTheme(notnull);
+        if(dto.getTaste() == null) dto.setTaste(notnull);
+        if(dto.getSituations() == null) dto.setSituations(notnull);
+        if(dto.getIngredients() == null) dto.setIngredients(notnull);
 
-        JSONObject jObject = new JSONObject(str);
-        JSONArray theme = jObject.getJSONArray("theme");
-        JSONArray taste = jObject.getJSONArray("taste");
-        JSONArray ingredient = jObject.getJSONArray("ingredient");
-        JSONArray situation = jObject.getJSONArray("situation");
+        System.out.println(dto);
 
-        themeList = new String[theme.length()];
-        tasteList = new String[taste.length()];
-        ingredientList = new String[ingredient.length()];
-        situationList = new String[situation.length()];
-
-        for (int i = 0; i < theme.length(); ++i) {
-            themeList[i] = theme.getString(i);
-            System.out.println(themeList[i]);
-        }
-        for (int i = 0; i < taste.length(); ++i) {
-            tasteList[i] = taste.getString(i);
-            System.out.println(tasteList[i]);
-        }
-        for (int i = 0; i < ingredient.length(); ++i) {
-            ingredientList[i] = ingredient.getString(i);
-            System.out.println(ingredientList[i]);
-        }
-        for (int i = 0; i < situation.length(); ++i) {
-            situationList[i] = situation.getString(i);
-            System.out.println(situationList[i]);
-        }
-
-        return "text";
+        List<FoodDto> foodsInSearch2 = foodRepository.findBySearchOption(dto.getTheme(), dto.getTaste(), dto.getIngredients(), dto.getSituations());
+        return foodsInSearch2;
     }
 
     @PostMapping(value = "/ref")
     public String ref(@RequestBody String str) {
-        cnt = 1;
-        System.out.println(str);
-
-        JSONObject jObject = new JSONObject(str);
-        JSONArray refArr = jObject.getJSONArray("users");
-        refList = new String[refArr.length()];
-
-        for (int i = 0; i < refArr.length(); ++i) {
-            JSONObject ref = refArr.getJSONObject(i);
-            refList[i] = ref.getString("username");
-            System.out.println(refList[i]);
-        }
 
         return "text";
     }
 
-    @GetMapping("/dtos")
-    public List<Food> getDtos(){
-        FoodOptionDto condition;
-        List<Food> foodsInSearch2;
-        if(cnt == 0) {
-            condition = new FoodOptionDto(Arrays.asList(themeList), Arrays.asList(tasteList),
-                    Arrays.asList(ingredientList), Arrays.asList(situationList));
-            foodsInSearch2 = foodRepositorylmpl.findBySearchOption(condition.getTheme(),
-                    condition.getTaste(), condition.getIngredients(), condition.getSituations());
-        } else {
-            condition = new FoodOptionDto(
-                    Arrays.asList(""),
-                    Arrays.asList(""),
-                    Arrays.asList(refList),
-                    Arrays.asList(""));
-            foodsInSearch2 = foodRepositorylmpl.findBySearchRefigerator(condition.getIngredients());
-        }
-        return foodsInSearch2;
-    }
+//    @GetMapping("/dtos")
+//    public List<FoodDto> getDtos(FoodOptionDto dto){
+//
+//
+//    }
 
 //    @GetMapping("/api/foodOption")
 //    public String foodOption(@RequestParam FoodOptionDto foodOptionDto){

@@ -1,11 +1,13 @@
 package food.foodproject.repository;
 
 import com.querydsl.core.BooleanBuilder;
+import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import static food.foodproject.domain.QFood.food;
 
 import food.foodproject.domain.Food;
+import food.foodproject.dto.FoodDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,16 +16,23 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @RequiredArgsConstructor
+@Repository
 public class FoodRepositoryImpl implements FoodRepositoryCustom {
 
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public List<Food> findBySearchRefigerator(List<String> ingredients) {
-        return jpaQueryFactory.select(food).from(food)
-                .where(foodIsNotNull())
-                .where(refEq(ingredients))
-                .fetch();
+    public List<FoodDto> findBySearchRefrigerator(List<String> ingredients) {
+        List<FoodDto> foodDto = jpaQueryFactory
+                                    .select(Projections.bean(FoodDto.class,
+                                            food.name,
+                                            food.thumbnail
+                                    ))
+                                    .from(food)
+                                    .where(foodIsNotNull())
+                                    .where(refEq(ingredients))
+                                    .fetch();
+        return foodDto;
     }
 
     private BooleanBuilder refEq(List<String> ingredients){
@@ -36,15 +45,23 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
     }
 
     @Override
-    public List<Food> findBySearchOption(List<String> themes, List<String> tastes, List<String> ingredients, List<String> situations) {
+    public List<FoodDto> findBySearchOption(List<String> themes, List<String> tastes, List<String> ingredients, List<String> situations) {
 
-        return jpaQueryFactory.select(food).from(food)
-                .where(foodIsNotNull())
-                .where(themeEq(themes))
-                .where(tasteEq(tastes))
-                .where(ingredientEq(ingredients))
-                .where(situationEq(situations))
-                .fetch();
+        System.out.println(themes);
+        List<FoodDto> foodDto = jpaQueryFactory
+                                    .select(Projections.bean(FoodDto.class,
+                                            food.name,
+                                            food.thumbnail
+                                    ))
+                                    .from(food)
+                                    .where(foodIsNotNull())
+                                    .where(themeEq(themes))
+                                    .where(tasteEq(tastes))
+                                    .where(ingredientEq(ingredients))
+                                    .where(situationEq(situations))
+                                    .fetch();
+
+        return foodDto;
     }
 
 
@@ -53,6 +70,7 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
     }
 
     private BooleanBuilder themeEq(List<String> themeCondition){
+        System.out.println(themeCondition);
         BooleanBuilder builder = new BooleanBuilder();
 
         if(themeCondition.contains("한식")) {

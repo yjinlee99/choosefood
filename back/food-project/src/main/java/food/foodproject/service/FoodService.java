@@ -15,14 +15,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class FoodService {
 
-    private final FoodRepository foodRepository;
+    @Autowired
+    FoodRepository foodRepository;
 
 
-    public List<Food> selectOption(FoodOptionDto option){
 
-        List<Food> foods = foodRepository.findBySearchOption(option.getTheme(),option.getTaste(),option.getIngredients(),option.getSituations());
-
-        return foods;
-    }
 }
 
