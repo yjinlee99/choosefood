@@ -1,4 +1,5 @@
 import React, { useState, useEffect }  from 'react';
+import axios from 'axios';
 import './Recipe.css';
 import SearchIcon from '@material-ui/icons/Search';
 import StarIcon from '@material-ui/icons/StarRounded';
@@ -9,14 +10,14 @@ import { Link } from "react-router-dom";
 
 function Recipe() {
     
-    const [dtos, setDtos] = useState([[]]);
+    const [data, setData] = useState([[]]);
     useEffect(() => {
         fetch('/dtos')
-            .then(response => response.json())
-            .then(dtos => {
-                setDtos(dtos);
-            });
-    },[])
+            .then((response) => {
+                setData(response.data);
+            })
+            
+    },[]);
 
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
@@ -26,7 +27,7 @@ function Recipe() {
         { id: 5, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
         { id: 6, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
     ];
-                
+              
     return (
         <div className="Recipe">
 
@@ -48,7 +49,7 @@ function Recipe() {
             
             <div id='info-con'>
             <div id="Container">
-                { dtos.map((a) => (
+                { data && data.map((a) => (
                     <div className="Content">  
                         <div className="Thump">
                             <Link to="/SingleRecipe">
