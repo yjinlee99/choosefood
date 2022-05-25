@@ -28,6 +28,7 @@ public class Food {
     private String ingredient;
 
     //레시피
+    @Column(columnDefinition = "text")
     private String recipe;
 
     //테마별
@@ -39,6 +40,10 @@ public class Food {
     //상황별
     private String situation;
 
-    //이미지 주소
-    private String img;
+    //썸네일 이미지
+    private String thumbnail;
+    
+    //스텝 이미지
+    @Column(columnDefinition = "text")
+    private String stepImg;
 }

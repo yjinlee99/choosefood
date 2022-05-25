@@ -22,12 +22,14 @@ public class Member {
     private String password;
 
     //닉네임
+    @Column (unique = true)
     private String nickname;
 
     //핸드폰 번호
     private String phone;
 
     //이메일
+    @Column (unique = true)
     private String email;
 
     //이미지

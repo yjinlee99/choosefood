@@ -1,6 +1,7 @@
 package food.foodproject.service;
 
 import food.foodproject.domain.Member;
+import food.foodproject.dto.MemberHavingIngredientDto;
 import food.foodproject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,13 @@ public interface MemberService {
 
     /*
     * 회원가입
-    * 정보수정
-    * 아이디 찾기
-    * 비밀번호 찾기
+    * 로그인
+    * 정보수정(나중에)
+    * 아이디 찾기(나중에)
+    * 비밀번호 찾기(나중에)
     * 냉장고 수정
     * */
 
     public void join(Member member);
-    public void update()
+    public void UpdateHavingIngredient(long id, MemberHavingIngredientDto memberHavingIngredientDto);
 }

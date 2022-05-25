@@ -13,7 +13,8 @@ public class FoodDto {
     private String theme;
     private String taste;
     private String situation;
-    private String img;
+    private String thumbnail;
+    private String stepImg;
 
     @SneakyThrows
     @QueryProjection
@@ -24,6 +25,7 @@ public class FoodDto {
         this.theme = food.getTheme();
         this.taste = food.getTaste();
         this.situation = food.getSituation();
-        this.img = food.getImg();
+        this.thumbnail = food.getThumbnail();
+        this.stepImg = food.getStepImg();
     }
 }
