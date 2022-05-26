@@ -34,15 +34,6 @@ function Refrigerator() {
     const onRemove = (id) => {
       setUsers(users.filter((user) => user.id !== id));
     };
-
-    const goBackend = () => {
-      fetch('/ref', {
-        method: 'post',
-        body: JSON.stringify({
-          users: users,
-        })
-      })
-    }
       
     return (
       <div>
@@ -70,9 +61,11 @@ function Refrigerator() {
         </div>
 
         <div>
-        <Link to="/Recipe">
-          <input id='searchRecipe' type='submit' value="레시피 검색!" onClick={goBackend}></input>
-          </Link>
+        <Link to={{
+  pathname: `/Recipe?theme=""&taste=""&ingredient=""&situation=""&refrigerator="true"`,
+}}>
+  <button id="searchRecipe">"레시피 검색!"</button>
+  </Link>
           
         </div>
 

@@ -160,7 +160,7 @@ const OptionTable = () => {
       </div>
 
       <Link to={{
-          pathname: `/Recipe?theme=${optionchecked1}&taste=${optionchecked2}&ingredient=${optionchecked3}&situation=${optionchecked4}`,
+          pathname: `/Recipe?theme=${optionchecked1}&taste=${optionchecked2}&ingredient=${optionchecked3}&situation=${optionchecked4}&refrigerator=""`,
         //   state:{
         //     theme: optionchecked1,
         //     taste: optionchecked2,

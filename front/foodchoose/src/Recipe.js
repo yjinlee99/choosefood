@@ -13,44 +13,66 @@ function Recipe() {
     
     const [dtos, setDtos] = useState([[]]);
     const location = useLocation();
-    // useEffect(() => {
-    //     fetch('/option',{
-    //         params:{
-    //             theme: location.state.theme,
-    //             taste: location.state.taste,
-    //             ingredient: location.state.ingredient,
-    //             situation: location.state.situation,
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(dtos => {
-    //             setDtos(dtos);
-    //         });
-    // },[])
+    useEffect(() => {
+        getParameters()
+    },[])
 
     var getParameters = function (paramName) {
         var returnValue;
 
-        var url = document.location.href;
-
+        var url = decodeURI(document.location.href);
+        console.log(decodeURI(url));
         var parameters=(url.slice(url.indexOf('?') + 1, url.length)).split('&');
-        console.log(parameters);
-        for(var i=0; i<parameters.length; i++){
-            var varName = parameters[i].split('=')[0];
-            console.log(decodeURIComponent(varName))
-            console.log(paramName)
-            if(varName.toUpperCase()===paramName.toUpperCase()) {
-                returnValue = parameters[i].split('=')[1];
-                console.log("returnValue : ",returnValue)
-                return decodeURIComponent(returnValue);
-            }
+        var a = url.slice(url.indexOf('?')+1);
+        var themeop = [];
+        var tasteop = [];
+        var ingredientop = [];
+        var situationop = [];
+        // var b = a.slice(a.indexOf('&')+1);
+        var b = a.split('&');
+        b.map((data)=>{
+            let d=data.split('=');{
+                if(d[0] === 'theme') {
+                    themeop = d[1];
+                }
+                else if(d[0] === 'taste') {
+                    tasteop = d[1];
+                }
+                else if(d[0] === 'ingredient') {
+                    ingredientop = d[1];
+                }
+                else if(d[0] === 'situation') {
+                    situationop = d[1];
+                }
+        }});
+        themeop=themeop.split(',');
+        tasteop=tasteop.split(',');
+        ingredientop=ingredientop.split(',');
+        situationop=situationop.split(',');
+        console.log(themeop)
+    
+        const requestOptions = {
+            method:'post',  
+            headers: { 'Content-Type': 'application/json' },
+            body:JSON.stringify({
+                theme: themeop,
+                taste: tasteop,
+                ingredient: ingredientop,
+                situation: situationop,
+            })
         }
-    };
+        
+        
+        fetch('/option',requestOptions)
+            .then(response => response.json())
+            .then(dtos => {
+                setDtos(dtos);
+            });
 
-    useEffect(()=>{
-        const result = getParameters(document.location.search)
-        console.log(result);
-    },[])
+        console.log(themeop);
+        
+        
+    };
 
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
@@ -85,7 +107,7 @@ function Recipe() {
                 { dtos && dtos.map((a) => (
                     <div className="Content">  
                         <div className="Thump">
-                            <Link to="/SingleRecipe">
+                            <Link to={"/SingleRecipe?food=" + a.name}>
                                 <div className="Thump-link"> 
                                     <img src={a.thumbnail} width="350" height="160" />
                                 </div>
