@@ -30,6 +30,7 @@ public class LoginController {
 
         return "text";
     }
+
     @GetMapping("/login")
     public Boolean getLogin(){
         System.out.println(DAO.checkLogin(email, passwd));

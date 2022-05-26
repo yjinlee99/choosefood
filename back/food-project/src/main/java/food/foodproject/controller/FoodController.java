@@ -4,6 +4,7 @@ import SQL.DAO;
 import food.foodproject.domain.Food;
 import food.foodproject.dto.FoodDto;
 import food.foodproject.dto.FoodOptionDto;
+import food.foodproject.dto.SingleFoodDto;
 import food.foodproject.repository.FoodRepository;
 import food.foodproject.repository.FoodRepositoryImpl;
 import food.foodproject.service.FoodService;
@@ -32,12 +33,30 @@ public class FoodController {
         if(dto.getTaste() == null) dto.setTaste(notnull);
         if(dto.getSituations() == null) dto.setSituations(notnull);
         if(dto.getIngredients() == null) dto.setIngredients(notnull);
+        if(dto.getRefrigerator() == null) dto.setRefrigerator("");
 
         System.out.println(dto);
 
-        List<FoodDto> foodsInSearch2 = foodRepository.findBySearchOption(dto.getTheme(), dto.getTaste(), dto.getIngredients(), dto.getSituations());
-        return foodsInSearch2;
+        if(dto.getRefrigerator() == "true") {
+            List<FoodDto> foods = foodRepository.findBySearchRefrigerator(Arrays.asList("고기"));
+            return foods;
+        }
+        else {
+            List<FoodDto> foodsInSearch2 = foodRepository.findBySearchOption(dto.getTheme(), dto.getTaste(), dto.getIngredients(), dto.getSituations());
+            return foodsInSearch2;
+        }
+
     }
+
+    @PostMapping("/singlefood")
+    public Food singleFood(@RequestBody SingleFoodDto singleFoodDto) {
+        Food food = foodRepository.findByName(singleFoodDto.getFood());
+        System.out.println(food.getId());
+        System.out.println(food);
+        return food;
+    }
+
+
 
     @PostMapping(value = "/ref")
     public String ref(@RequestBody String str) {

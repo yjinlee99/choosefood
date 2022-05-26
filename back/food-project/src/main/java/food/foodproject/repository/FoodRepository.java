@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface FoodRepository extends JpaRepository<Food, Long>, FoodRepositoryCustom {
+    Food findByName(String name);
 }

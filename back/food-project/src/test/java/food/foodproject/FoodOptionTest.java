@@ -50,11 +50,9 @@ public class FoodOptionTest {
 //            foodRepository.save(food);
 //        }
 
-        FoodOptionDto condition = new FoodOptionDto(Arrays.asList("한식", "중식"), Arrays.asList("매콤","달콤"), Arrays.asList(""), Arrays.asList(""));
+
         
 
-        System.out.println("---------------- 원하는 음식 검색2 ------------- ");
-        List<FoodDto> foodsInSearch2 = foodRepositorylmpl.findBySearchOption(condition.getTheme(), condition.getTaste(), condition.getIngredients(), condition.getSituations());
 
     }
 }
