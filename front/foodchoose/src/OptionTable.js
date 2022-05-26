@@ -89,27 +89,7 @@ const OptionTable = () => {
     optionchecked4.push($optionchecked4[i].value);
   }
 
-  const goBackend = () => {
-    alert('옵션선택완료!');
-    fetch('/option', {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        theme: optionchecked1,
-        taste: optionchecked2,
-        ingredient: optionchecked3,
-        situation: optionchecked4,
-      }),
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res.success) {
-          alert('저장 완료');
-        }
-      });
-  };
+  
 
   return (
     <div className="Option">
@@ -179,8 +159,16 @@ const OptionTable = () => {
         </div>
       </div>
 
-      <Link to="/Recipe">
-        <input type="submit" id="Find" value="찾기" onClick={goBackend} />
+      <Link to={{
+          pathname: `/Recipe?theme=${optionchecked1}&taste=${optionchecked2}&ingredient=${optionchecked3}&situation=${optionchecked4}`,
+        //   state:{
+        //     theme: optionchecked1,
+        //     taste: optionchecked2,
+        //     ingredient: optionchecked3,
+        //     situation: optionchecked4,
+        //   }
+      }}>
+        <button className="findRecipe" id="Find">검색</button>
       </Link>
     </div>
   );

@@ -5,19 +5,52 @@ import SearchIcon from '@material-ui/icons/Search';
 import StarIcon from '@material-ui/icons/StarRounded';
 import Banner from './Banner';
 import Tab from './Tab';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+
 
 
 function Recipe() {
     
-    const [data, setData] = useState([[]]);
-    useEffect(() => {
-        fetch('/dtos')
-            .then((response) => {
-                setData(response.data);
-            })
-            
-    },[]);
+    const [dtos, setDtos] = useState([[]]);
+    const location = useLocation();
+    // useEffect(() => {
+    //     fetch('/option',{
+    //         params:{
+    //             theme: location.state.theme,
+    //             taste: location.state.taste,
+    //             ingredient: location.state.ingredient,
+    //             situation: location.state.situation,
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(dtos => {
+    //             setDtos(dtos);
+    //         });
+    // },[])
+
+    var getParameters = function (paramName) {
+        var returnValue;
+
+        var url = document.location.href;
+
+        var parameters=(url.slice(url.indexOf('?') + 1, url.length)).split('&');
+        console.log(parameters);
+        for(var i=0; i<parameters.length; i++){
+            var varName = parameters[i].split('=')[0];
+            console.log(decodeURIComponent(varName))
+            console.log(paramName)
+            if(varName.toUpperCase()===paramName.toUpperCase()) {
+                returnValue = parameters[i].split('=')[1];
+                console.log("returnValue : ",returnValue)
+                return decodeURIComponent(returnValue);
+            }
+        }
+    };
+
+    useEffect(()=>{
+        const result = getParameters(document.location.search)
+        console.log(result);
+    },[])
 
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
@@ -27,7 +60,7 @@ function Recipe() {
         { id: 5, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
         { id: 6, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
     ];
-              
+
     return (
         <div className="Recipe">
 
@@ -49,7 +82,7 @@ function Recipe() {
             
             <div id='info-con'>
             <div id="Container">
-                { data && data.map((a) => (
+                { dtos && dtos.map((a) => (
                     <div className="Content">  
                         <div className="Thump">
                             <Link to="/SingleRecipe">
