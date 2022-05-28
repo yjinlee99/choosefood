@@ -12,7 +12,6 @@ import './LoginForm.css';
 import { useState, useEffect } from 'react';
 
 function LoginForm() {
-    
     const [email, setEmail] = useState("")
     const [passwd, setPasswd] = useState("")
 
@@ -24,30 +23,34 @@ function LoginForm() {
       }
 
       const goBackend = () => {
+        if(email == "") {
+            alert("이메일을 입력하세요.")
+            return;
+        }
+        if(passwd == "") {
+            alert("비밀번호를 입력하세요.")
+            return;
+        }
         fetch('/login', {
-          method: 'post',
-          body: JSON.stringify({
-              email:email,
-              passwd:passwd,
-          })
+            method: 'post',
+            body: JSON.stringify({
+                email:email,
+                passwd:passwd,
+            })
         })
         .then(res => res.json())
-        res();
-      }
-
-      const res = () => {
-        fetch('/login')
-        .then(response => response.json())
         .then(response => {
             if(JSON.parse(response)) {
-                alert("로그인 성공");
-            
+                alert("환영합니다.");
+                sessionStorage.setItem("email", email);
+                window.location.replace("/Main")
             } else {
-                alert("로그인 실패");
+                alert("이메일이 존재하지 않거나 올바르지 않은 입력입니다.");
+                window.location.replace("/LoginForm")
             }
-            window.location.replace("/LoginForm")
         });
-      }
+    }
+
     return(
 
         <><div>
@@ -79,9 +82,6 @@ function LoginForm() {
                     control={<Checkbox value="remember" color="primary" />}
                     label="아이디 기억하기" />
                 <Button id='submit' type="submit" onClick={goBackend} fullWidth variant="contained">로그인</Button>
-                <script>
-                    console.log(bool);
-                </script>
                 <Grid container>
                     <Grid item xs='4'>
                         <Link to='/FindId'>아이디 찾기</Link>

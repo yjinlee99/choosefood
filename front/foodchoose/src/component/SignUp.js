@@ -28,6 +28,22 @@ function SignUp() {
   }
 
   const goBackend = () => {
+    if(name == "") {
+      alert("이름(닉네임)을 입력하세요.")
+      return;
+    }
+    if(email == "") {
+      alert("이메일을 입력하세요.")
+      return;
+    }
+    if(phone == "") {
+      alert("전화번호를 입력하세요.")
+      return;
+    }
+    if(passwd == "") {
+      alert("비밀번호를 입력하세요.")
+      return;
+    }
     fetch('/join', {
       method: 'post',
       body: JSON.stringify({
@@ -38,22 +54,16 @@ function SignUp() {
       })
     })
     .then(res => res.json())
-    res()
-  }
-
-  const res = () => {
-    fetch('/join')
-    .then(response => response.json())
     .then(response => {
-        if(JSON.parse(response)) {
-          alert("이미 존재하는 계정입니다");
-        } else {
-          alert(name+"님의 회원가입이 완료되었습니다!")
-        }
+      if(JSON.parse(response)) {
+        alert(name+"님의 회원가입이 완료되었습니다!")
         window.location.replace("/LoginForm")
+      } else {
+        alert("이미 존재하는 계정입니다");
+        window.location.replace("/SignUp")
+      }
     });
   }
-  
     return(
         <div>
         <div className="Header"><Banner /></div>

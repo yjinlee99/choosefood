@@ -78,7 +78,7 @@
     display: none;
 }
 #OptionLabel {
-    border: 1px solid black;
+    border: 1px solid gray;
     position: relative;
     align-items: center;
     text-align: center;
