@@ -1,2 +1,8 @@
-package food.foodproject.dto;public class CommentShowDto {
+package food.foodproject.dto;
+
+import lombok.Data;
+
+@Data
+public class CommentShowDto {
+    Long id;
 }

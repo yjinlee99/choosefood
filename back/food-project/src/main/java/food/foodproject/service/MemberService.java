@@ -18,9 +18,25 @@ public class MemberService {
 
     @Transactional
     public Long join(Member member) {
+        validateDuplicateMember(member);
         memberRepository.save(member);
         return member.getId();
     }
+
+    private void validateDuplicateMember(Member member) {
+        List<Member> findEmail =
+                memberRepository.findByEmail(member.getEmail());
+        if (!findEmail.isEmpty()) {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        }
+
+        List<Member> findNickname =
+                memberRepository.findByNickname(member.getNickname());
+        if (!findNickname.isEmpty()) {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
+        }
+    }
+
 
     public Member findOne(Long id) {
         return memberRepository.findOne(id);

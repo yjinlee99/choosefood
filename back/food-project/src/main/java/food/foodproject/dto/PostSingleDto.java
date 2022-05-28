@@ -1,2 +1,8 @@
-package food.foodproject.dto;public class PostSingleDto {
+package food.foodproject.dto;
+
+import lombok.Data;
+
+@Data
+public class PostSingleDto {
+    private String title;
 }

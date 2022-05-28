@@ -1,22 +1,27 @@
 package food.foodproject.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import food.foodproject.domain.Member;
+import food.foodproject.dto.MemberIdDto;
 import food.foodproject.dto.MemberJoinDto;
 import food.foodproject.dto.MemberLoginDto;
 import food.foodproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.json.JSONParser;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
 public class MemberController {
+
     private final MemberService memberService;
 
-    @PostMapping("/test")
+    @PostMapping("/join")
     public Long join(@RequestBody MemberJoinDto memberJoinDto) {
         Member member= new Member();
         member.setNickname(memberJoinDto.getNickname());
@@ -35,5 +40,6 @@ public class MemberController {
         if(login == null) return -1L;
         else return login.getId();
     }
+
 
 }

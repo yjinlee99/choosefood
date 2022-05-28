@@ -2,7 +2,6 @@ package food.foodproject.repository;
 
 import food.foodproject.domain.Member;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -31,4 +30,19 @@ public class MemberRepository{
         return em.createQuery("select m from Member m where m.email like :email and m.password like :password ", Member.class)
                 .getSingleResult();
     }
+
+    public List<Member> findByNickname(String nickname) {
+        return em.createQuery("select m from Member m where m.nickname = :nickname",
+                        Member.class)
+                .setParameter("nickname", nickname)
+                .getResultList();
+    }
+
+    public List<Member> findByEmail(String email) {
+        return em.createQuery("select m from Member m where m.email = :email",
+                        Member.class)
+                .setParameter("email", email)
+                .getResultList();
+    }
+
 }

@@ -15,6 +15,8 @@ public class FoodOptionDto {
     private List<String> situations;
     private String refrigerator;
 
+    public FoodOptionDto() {}
+
     public FoodOptionDto(List<String> theme,  List<String> taste, List<String> ingredients, List<String> situations, String refrigerator) {
 
         this.theme = theme;

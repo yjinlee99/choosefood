@@ -1,2 +1,8 @@
-package food.foodproject.dto;public class refrigeratorDto {
+package food.foodproject.dto;
+
+import lombok.Data;
+
+@Data
+public class refrigeratorDto {
+    private String refrigerator;
 }
