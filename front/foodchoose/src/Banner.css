@@ -18,7 +18,7 @@
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.Login {
+.Logout {
     position: absolute;
     top: 50%;
     right: 100px;
@@ -35,7 +35,7 @@
     color: black;
 }
 
-.MyPage {
+.Login, .MyPage {
     position: absolute;
     top: 50%;
     right: 30px;

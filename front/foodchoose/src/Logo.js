@@ -7,7 +7,7 @@ function App() {
     <div>
         <Link to="/Main">
         <div class="AppLogo">
-            <div className="App-logo"> LivingCoral </div>
+            <div className="App-logo"> FOOD FINDER </div>
             <div className="line"></div>
         </div>
         </Link>

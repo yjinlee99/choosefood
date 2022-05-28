@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect }  from 'react';
 import './SearchedRecipe.css';
 import SearchIcon from '@material-ui/icons/Search';
 import StarIcon from '@material-ui/icons/StarRounded';
@@ -8,6 +8,15 @@ import { Link } from "react-router-dom";
 
 
 function SearchedRecipe() {
+    const [dtos, setDtos] = useState([[]]);
+    useEffect(() => {
+        fetch('/dtos')
+            .then(response => response.json())
+            .then(dtos => {
+                setDtos(dtos);
+            });
+    },[])
+
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
         { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
@@ -16,6 +25,25 @@ function SearchedRecipe() {
         { id: 5, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
         { id: 6, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
     ];
+
+    const [search, setSearch] = useState("")
+    const onSearchHandler = (event) => {
+        setSearch(event.currentTarget.value)
+    }
+    const goBackend = () => {
+        if(search == "") {
+            alert("검색어를 입력하세요.")
+            return;
+        } else {
+            fetch('/search', {
+                method: 'post',
+                body: JSON.stringify({
+                    search: search
+                })
+            })
+            window.location.replace("/SearchedRecipe")
+        }
+    }
                 
     return (
         <div className="Recipe">
@@ -26,8 +54,8 @@ function SearchedRecipe() {
             </div>
 
             <div className="Search">
-                <input className="Search-input" type="text" />
-                <Link to="/SearchedRecipe"><SearchIcon className="Search-icon"/></Link>
+                <input className="Search-input" placeholder=" 통합 검색" type="text" onChange={onSearchHandler}/>
+                <Link to="/SearchedRecipe"><SearchIcon className="Search-icon" onClick={goBackend}/></Link>
             </div>
         
             <select id="Array">
@@ -38,11 +66,13 @@ function SearchedRecipe() {
             
             <div id='info-con'>
             <div id="Container">
-                { Info.map((a) => (
+                { dtos.map((a) => (
                     <div className="Content">  
                         <div className="Thump">
-                            <Link to="/SingleRecipe">
-                                <div className="Thump-link"> { a.thump } </div>
+                            <Link to={"/SingleRecipe/?" + a.name}>
+                                <div className="Thump-link"> 
+                                    <img src={a.thumbnail} width="350" height="160" />
+                                </div>
                             </Link>
                         </div>
                         
@@ -54,7 +84,7 @@ function SearchedRecipe() {
                             </div>
 
                             <h4 className="Title">
-                                <Link to=""><div className="Title-link">{ a.title }</div></Link>
+                                <Link to={"/SingleRecipe/?" + a.name}><div className="Title-link">{ a.name }</div></Link>
                             </h4>
                             
                             <div>

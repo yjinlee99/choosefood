@@ -58,13 +58,27 @@
     display: flex;
 }
 
-.optionBox {
+.optionBox1 {
     position: relative;
     display: none;
 }
 
+.optionBox2 {
+    position: relative;
+    display: none;
+}
+
+.optionBox3 {
+    position: relative;
+    display: none;
+}
+
+.optionBox4 {
+    position: relative;
+    display: none;
+}
 #OptionLabel {
-    border: 1px solid black;
+    border: 1px solid gray;
     position: relative;
     align-items: center;
     text-align: center;
