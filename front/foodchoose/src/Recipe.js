@@ -28,6 +28,7 @@ function Recipe() {
         var tasteop = [];
         var ingredientop = [];
         var situationop = [];
+        var refrigeratorop;
         // var b = a.slice(a.indexOf('&')+1);
         var b = a.split('&');
         b.map((data)=>{
@@ -44,6 +45,10 @@ function Recipe() {
                 else if(d[0] === 'situation') {
                     situationop = d[1];
                 }
+                else if(d[0] === 'refrigerator') {
+                    refrigeratorop = d[1];
+                    console.log(refrigeratorop);
+                }
         }});
         themeop=themeop.split(',');
         tasteop=tasteop.split(',');
@@ -57,8 +62,9 @@ function Recipe() {
             body:JSON.stringify({
                 theme: themeop,
                 taste: tasteop,
-                ingredient: ingredientop,
-                situation: situationop,
+                ingredients: ingredientop,
+                situations: situationop,
+                refrigerator: refrigeratorop,
             })
         }
         
