@@ -7,6 +7,15 @@ import { Link } from "react-router-dom";
 
 
 function Board() {
+    const [posts, setPosts] = useState([[]]);
+    useEffect(() => {
+        fetch('/posts')
+            .then(response => response.json())
+            .then(posts => {
+                setPosts(posts);
+            });
+    },[])
+
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
         { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
@@ -15,6 +24,25 @@ function Board() {
         { id: 5, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
         { id: 6, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
     ];
+
+    const [board, setBoard] = useState("")
+    const onBoardHandler = (event) => {
+        setBoard(event.currentTarget.value)
+    }
+    const goBackend = () => {
+        if(board == "") {
+            alert("검색어를 입력하세요.")
+            return;
+        } else {
+            fetch('/board', {
+                method: 'post',
+                body: JSON.stringify({
+                    board: board
+                })
+            })
+            window.location.replace("/Board")
+        }
+    }
                 
     return (
         <div className="Board">
@@ -24,8 +52,8 @@ function Board() {
             </div>
 
             <div className="Search">
-                <input className="Search-input" type="text" />
-                <Link to="/SearchedRecipe"><SearchIcon className="Search-icon"/></Link>
+                <input className="Search-input" placeholder=" 통합 검색" type="text" onChange={onBoardHandler}/>
+                <Link to="/Board"><SearchIcon className="Search-icon" onClick={goBackend}/></Link>
             </div>
         
             <select id="Array">
@@ -38,23 +66,23 @@ function Board() {
             
             <div id='info-con'>
             <div id="Container">
-                { Info.map((a) => (
+                { posts.map((a) => (
                     <div className="Content">  
                         <div className="Thump">
                             <Link to="/SingleRecipe">
-                                <div className="Thump-link"> { a.thump } </div>
+                                <div className="Thump-link"> { a.thumbnail } </div>
                             </Link>
                         </div>
                         
                         <div className="Detail">
                             <div className="Profile">
                                 <Link to="">
-                                    <div className="Profile-link"> { a.profile }</div>
+                                    <div className="Profile-link"><img src="/img/profile.png" width="50px"></img> { a.profile }</div>
                                 </Link>
                             </div>
 
                             <h4 className="Title">
-                                <Link to=""><div className="Title-link">{ a.title }</div></Link>
+                                <Link to=""><div className="Title-link">{ a.name }</div></Link>
                             </h4>
                             
                             <div>

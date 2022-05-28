@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import './Refrigerator.css';
 import Banner from '../Banner';
 import { Link } from 'react-router-dom';
@@ -7,6 +7,23 @@ import CreateIngredient from "./CreateIngredient";
 
 
 function Refrigerator() {
+    const [userInfo, setUserInfo] = useState([[]]);
+    useEffect(() => {
+        fetch('/user')
+            .then(response => response.json())
+            .then(userInfo => {
+                setUserInfo(userInfo);
+            });
+    },[])
+  
+    const [userRef, setUserRef] = useState([[]]);
+    useEffect(() => {
+        fetch('/userRef')
+            .then(response => response.json())
+            .then(userRef => {
+                setUserRef(userRef);
+            });
+    },[])
 
     const [inputs, setInputs] = useState({ username: "" });
     const { username } = inputs;
@@ -21,6 +38,10 @@ function Refrigerator() {
     ]);
     const nextId = useRef(4);
     const onCreate = () => {
+      if(username == "") {
+        alert("재료를 입력하세요.")
+        return;
+      } 
       const user = {
         id: nextId.current, username
       };
@@ -34,6 +55,26 @@ function Refrigerator() {
     const onRemove = (id) => {
       setUsers(users.filter((user) => user.id !== id));
     };
+
+    const goBackend = () => {
+      fetch('/ref', {
+        method: 'post',
+        body: JSON.stringify({
+          users: users,
+        })
+      })
+    }
+
+    const onUpdate = () => {
+      fetch('/refUpdate', {
+        method: 'post',
+        body: JSON.stringify({
+          users: users,
+        })
+      })
+      alert("냉장고 재료가 수정 되었습니다.");
+      window.location.replace("/Refrigerator")
+    }
       
     return (
       <div>
@@ -53,16 +94,14 @@ function Refrigerator() {
           </div>
 
           <div>
-          <input id="edit" type='submit' value="수정하기" onClick={()=>{
-            alert("수정되었습니다!\n(DB저장 구현해야함)")
-          }}></input>
+          <input id="edit" type='submit' value="수정하기" onClick={onUpdate}></input>
           </div>
 
         </div>
 
         <div>
         <Link to="/Recipe">
-          <input id='searchRecipe' type='submit' value="레시피 검색!" ></input>
+          <input id='searchRecipe' type='submit' value="레시피 검색" onClick={goBackend}></input>
           </Link>
           
         </div>

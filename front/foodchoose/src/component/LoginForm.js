@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Banner from '../Banner';
 import './LoginForm.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function LoginForm() {
     const [email, setEmail] = useState("")
@@ -22,22 +22,35 @@ function LoginForm() {
         setPasswd(event.currentTarget.value)
       }
 
-
       const goBackend = () => {
-        fetch('/test', {
-          method: 'post',
-          body: JSON.stringify({
-              email:email,
-              passwd:passwd,
-          })
-      })
-      .then(res => res.json())
-      .then(res => {
-          if (res.success) {
-              alert("저장 완료");
-          }
-      })
-      }
+        if(email == "") {
+            alert("이메일을 입력하세요.")
+            return;
+        }
+        if(passwd == "") {
+            alert("비밀번호를 입력하세요.")
+            return;
+        }
+        fetch('/login', {
+            method: 'post',
+            body: JSON.stringify({
+                email:email,
+                passwd:passwd,
+            })
+        })
+        .then(res => res.json())
+        .then(response => {
+            if(JSON.parse(response)) {
+                alert("환영합니다.");
+                sessionStorage.setItem("email", email);
+                window.location.replace("/Main")
+            } else {
+                alert("이메일이 존재하지 않거나 올바르지 않은 입력입니다.");
+                window.location.replace("/LoginForm")
+            }
+        });
+    }
+
     return(
 
         <><div>
