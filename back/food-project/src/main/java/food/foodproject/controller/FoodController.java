@@ -35,9 +35,10 @@ public class FoodController {
         if(dto.getIngredients() == null) dto.setIngredients(notnull);
         if(dto.getRefrigerator() == null) dto.setRefrigerator("");
 
-        System.out.println(dto);
+        System.out.println(dto.getIngredients());
 
-        if(dto.getRefrigerator() == "true") {
+        if(dto.getRefrigerator().contains("true")) {
+            System.out.println("true");
             List<FoodDto> foods = foodRepository.findBySearchRefrigerator(Arrays.asList("고기"));
             return foods;
         }

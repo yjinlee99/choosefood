@@ -23,6 +23,7 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
 
     @Override
     public List<FoodDto> findBySearchRefrigerator(List<String> ingredients) {
+        System.out.println(ingredients);
         List<FoodDto> foodDto = jpaQueryFactory
                                     .select(Projections.bean(FoodDto.class,
                                             food.name,
