@@ -8,6 +8,7 @@ import food.foodproject.dto.MemberLoginDto;
 import food.foodproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.json.JSONParser;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +24,8 @@ public class MemberController {
 
     @PostMapping("/join")
     public Long join(@RequestBody MemberJoinDto memberJoinDto) {
+
+        System.out.println(memberJoinDto);
         Member member= new Member();
         member.setNickname(memberJoinDto.getNickname());
         member.setEmail(memberJoinDto.getEmail());
@@ -41,5 +44,15 @@ public class MemberController {
         else return login.getId();
     }
 
+    @PostMapping("/user")
+    public Member showMember(@RequestBody Long id) {
+        Member member = memberService.findOne(id);
 
+        return member;
+    }
+
+    @GetMapping("/userRef")
+    public String showRefrigerator(Long id) {
+
+    }
 }

@@ -28,6 +28,8 @@ public class MemberRepository{
 
     public Member login (String email, String password) {
         return em.createQuery("select m from Member m where m.email like :email and m.password like :password ", Member.class)
+                .setParameter("email", email)
+                .setParameter("password", password)
                 .getSingleResult();
     }
 
