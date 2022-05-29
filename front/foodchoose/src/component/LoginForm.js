@@ -33,16 +33,11 @@ function LoginForm() {
         }
         fetch('/login', {
             method: 'post',
-<<<<<<< HEAD
+
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 email:email,
                 password:passwd,
-=======
-            body: JSON.stringify({
-                email:email,
-                passwd:passwd,
->>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
             })
         })
         .then(res => res.json())
