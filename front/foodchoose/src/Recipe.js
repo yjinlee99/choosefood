@@ -74,80 +74,12 @@ function Recipe() {
             .then(dtos => {
                 setDtos(dtos);
             });
-<<<<<<< HEAD
 
         console.log(themeop);
         
         
     };
 
-=======
-    },[])
-
-    // const [dtos, setDtos] = useState([[]]);
-    // const location = useLocation();
-    // useEffect(() => {
-    //     getParameters()
-    // },[])
-
-    // var getParameters = function (paramName) {
-    //     var returnValue;
-
-    //     var url = decodeURI(document.location.href);
-    //     console.log(decodeURI(url));
-    //     var parameters=(url.slice(url.indexOf('?') + 1, url.length)).split('&');
-    //     var a = url.slice(url.indexOf('?')+1);
-    //     var themeop = [];
-    //     var tasteop = [];
-    //     var ingredientop = [];
-    //     var situationop = [];
-    //     // var b = a.slice(a.indexOf('&')+1);
-    //     var b = a.split('&');
-    //     b.map((data)=>{
-    //         let d=data.split('=');{
-    //             if(d[0] === 'theme') {
-    //                 themeop = d[1];
-    //             }
-    //             else if(d[0] === 'taste') {
-    //                 tasteop = d[1];
-    //             }
-    //             else if(d[0] === 'ingredient') {
-    //                 ingredientop = d[1];
-    //             }
-    //             else if(d[0] === 'situation') {
-    //                 situationop = d[1];
-    //             }
-    //     }});
-    //     themeop=themeop.split(',');
-    //     tasteop=tasteop.split(',');
-    //     ingredientop=ingredientop.split(',');
-    //     situationop=situationop.split(',');
-    //     console.log(themeop)
-    
-    //     const requestOptions = {
-    //         method:'post',  
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body:JSON.stringify({
-    //             theme: themeop,
-    //             taste: tasteop,
-    //             ingredient: ingredientop,
-    //             situation: situationop,
-    //         })
-    //     }
-        
-        
-    //     fetch('/option',requestOptions)
-    //         .then(response => response.json())
-    //         .then(dtos => {
-    //             setDtos(dtos);
-    //         });
-
-    //     console.log(themeop);
-        
-        
-    // };
-    
->>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
         { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
@@ -156,8 +88,6 @@ function Recipe() {
         { id: 5, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
         { id: 6, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
     ];
-<<<<<<< HEAD
-=======
                 
     const [search, setSearch] = useState("")
     const onSearchHandler = (event) => {
@@ -176,15 +106,6 @@ function Recipe() {
             })
         }
     }
-    // const views = (name) => {
-    //     fetch('/views', {
-    //         method: 'post',
-    //         body: JSON.stringify({
-    //             name: name
-    //         })
-    //     })
-    // }
->>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
 
     return (
         <div className="Recipe">
@@ -210,11 +131,7 @@ function Recipe() {
                 { dtos && dtos.map((a) => (
                     <div className="Content">  
                         <div className="Thump">
-<<<<<<< HEAD
                             <Link to={"/SingleRecipe?food=" + a.name}>
-=======
-                            <Link to={"/SingleRecipe/?" + a.name}>
->>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
                                 <div className="Thump-link"> 
                                     <img src={a.thumbnail} width="350" height="160" />
                                 </div>
@@ -229,11 +146,7 @@ function Recipe() {
                             </div>
 
                             <h4 className="Title">
-<<<<<<< HEAD
-                                <Link to=""><div className="Title-link">{ a.name }</div></Link>
-=======
                                 <Link to={"/SingleRecipe/?" + a.name}><div className="Title-link">{ a.name }</div></Link>
->>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
                             </h4>
                             
                             <div>
