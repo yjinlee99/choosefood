@@ -10,7 +10,7 @@ function Main() {
             <div className="Choose">
                 <ul className="Choose-table">
                     <li><Link to="/Option"> 레시피 </Link></li>       
-                    <li><Link to="/Restaurant"> 식당 추천 </Link></li>
+                    <li><Link to="/MapOption"> 식당 추천 </Link></li>
                 </ul>
                 <ul className="Choose-table">                        
                     <li><Link to="/Refrigerator"> 냉장고 </Link></li>

@@ -8,7 +8,12 @@ function Writing() {
     const [ Naming, setNaming ] = useState("");
     const [ Introducing, setIntroducing ] = useState("");
     const [ Need, setNeed ] = useState("");
+<<<<<<< HEAD
     const [ Step, setStep ] = useState("");
+=======
+    const [ Step, setStep ] = useState([]);
+    const [ StepImg, setStepImg ] = useState([]);
+>>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
 
 
     const onNamingHandler = (event) => {
@@ -27,6 +32,7 @@ function Writing() {
         setStep(event.currentTarget.value)
     }
 
+<<<<<<< HEAD
     var $optionchecked1 = document.querySelectorAll(".option-Box1:checked");
     var $optionchecked2 = document.querySelectorAll(".option-Box2:checked");
     var $optionchecked3 = document.querySelectorAll(".option-Box3:checked");
@@ -48,6 +54,10 @@ function Writing() {
     const optionchecked4 = [];
     for (let i = 0; i < $optionchecked4.length; i++) {
         optionchecked4.push($optionchecked4[i].value)
+=======
+    const onStepImgHandler = (event) => {
+        setStepImg(event.currentTarget.value)
+>>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
     }
 
     const goBackend = () => {
@@ -58,7 +68,12 @@ function Writing() {
                 name: Naming,
                 intro: Introducing,
                 ingredient: Need,
+<<<<<<< HEAD
                 recipe: Step
+=======
+                recipe: Step[0],
+                stepimg: StepImg
+>>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
                 })
             }) 
         }
@@ -77,17 +92,30 @@ function Writing() {
 
         num += 1
     }
+<<<<<<< HEAD
 
     const DetailList = (props) => {
 
+=======
+
+    const DetailList = (props) => {
+
+>>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
         return (
             <div>
                 {props.countList && props.countList.map((i, num) => (
                     <div key={i} >
+<<<<<<< HEAD
                         <div className="Condition" id="Steps" >
                             <div className="Step" id="stepWord"> STEP {num+1} </div>
                             <textarea id="Step-textarea" className="Step1"/> 
                             <input type="file" id="Step-photo" className="Step1" />
+=======
+                        <div className="Condition" id="Steps">
+                            <div className="Step" id="stepWord"> STEP {num+1} </div>
+                            <textarea id="Step-textarea" className="Step1" onChange={onStepHandler}/> 
+                            <input type="file" id="Step-photo" className="Step1" onChange={onStepImgHandler} />
+>>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
                         </div>
                     </div>
                 ))}
@@ -108,6 +136,7 @@ function Writing() {
                 <div  className="Condition" id="Introducing">
                     <div className="Con"> 요리 소개 </div>
                     <textarea className="Introducing-textarea" id="Introducing-text" onChange={onIntroducingHandler}/>
+<<<<<<< HEAD
                 </div>
 
                 <div className="Condition" id="Cataloging">
@@ -175,6 +204,8 @@ function Writing() {
                             <label for="기타">기타</label>
                         </div>
                     </div>
+=======
+>>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
                 </div>
 
                 <div className="Condition" id="Need">
