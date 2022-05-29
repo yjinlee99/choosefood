@@ -9,10 +9,7 @@ import food.foodproject.dto.MemberRefrigeratorDto;
 import food.foodproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.json.JSONParser;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -39,22 +36,22 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public Member login(@RequestBody MemberLoginDto dto) {
+    public Long login(@RequestBody MemberLoginDto dto) {
         Member login = memberService.login(dto.getEmail(), dto.getPassword());
         if(login == null) return null;
-        else return login;
+        else return login.getId();
     }
 
-    @PostMapping("/user")
-    public Member showMember(@RequestBody MemberIdDto dto) {
-        Member member = memberService.findOne(dto.getId());
+    @GetMapping("/user")
+    public Member showMember(@RequestParam Long id) {
+        Member member = memberService.findOne(id);
 
         return member;
     }
 
-    @PostMapping
-    public Member updateRefrigerator(@RequestBody MemberRefrigeratorDto dto) {
-        return null;
+    @PostMapping("/ref")
+    public String updateRefrigerator(@RequestBody MemberRefrigeratorDto dto) {
+        return memberService.refrigeratorUpdate(dto);
     }
 
 }

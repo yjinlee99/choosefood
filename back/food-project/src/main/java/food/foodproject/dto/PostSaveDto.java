@@ -9,8 +9,10 @@ import java.time.LocalDateTime;
 @Data
 public class PostSaveDto {
     private Long memberId;
-    private String foodName;
     private String title;
+    private String introduce;
+    private String thumbImg;
     private String ingredient;
+    private String stepImg;
     private String recipe;
 }

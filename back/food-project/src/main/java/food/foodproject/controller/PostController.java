@@ -6,10 +6,7 @@ import food.foodproject.dto.PostShowAllDto;
 import food.foodproject.dto.PostSingleDto;
 import food.foodproject.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,19 +15,30 @@ import java.util.List;
 public class PostController {
     private final PostService postService;
 
-    @PostMapping("/savepost")
+    //게시물 저장
+    @PostMapping("/post/save")
     public Long savePost(@RequestBody PostSaveDto postSaveDto) {
         return postService.save(postSaveDto);
     }
 
+    //모든 게시물 보여주기
     @GetMapping("/posts")
     public List<PostShowAllDto> showPost(){
         return postService.findAll();
     }
 
-    @PostMapping("/singlepost")
-    public Post showSinglePost(@RequestBody PostSingleDto dto) {
-        return postService.findOne(dto.getTitle());
+    //게시물 하나 보여주기
+    @GetMapping("/post/single")
+    public PostSingleDto showSinglePost(@RequestParam String title) {
+        return postService.findOne(title);
     }
+
+
+    //내 게시물
+    @GetMapping("/post/my")
+    public List<PostShowAllDto> showMyPost(@RequestParam Long id) {
+        return postService.findByUser(id);
+    }
+
 
 }

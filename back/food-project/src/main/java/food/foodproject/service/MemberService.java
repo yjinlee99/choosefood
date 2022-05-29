@@ -1,6 +1,7 @@
 package food.foodproject.service;
 
 import food.foodproject.domain.Member;
+import food.foodproject.dto.MemberRefrigeratorDto;
 import food.foodproject.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -48,5 +49,12 @@ public class MemberService {
 
     public Member login(String email, String password) {
         return memberRepository.login(email, password);
+    }
+
+    @Transactional
+    public String refrigeratorUpdate(MemberRefrigeratorDto dto) {
+        Member member = memberRepository.findOne(dto.getId());
+        member.updateHavingIngredient(dto.getRefrigerator());
+        return member.getHavingIngredient();
     }
 }

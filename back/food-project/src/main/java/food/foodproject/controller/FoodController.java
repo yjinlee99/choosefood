@@ -37,15 +37,8 @@ public class FoodController {
 
         System.out.println(dto.getIngredients());
 
-        if(dto.getRefrigerator().contains("true")) {
-            System.out.println("true");
-            List<FoodDto> foods = foodRepository.findBySearchRefrigerator(Arrays.asList("고기"));
-            return foods;
-        }
-        else {
-            List<FoodDto> foodsInSearch2 = foodRepository.findBySearchOption(dto.getTheme(), dto.getTaste(), dto.getIngredients(), dto.getSituations());
-            return foodsInSearch2;
-        }
+
+        return foodService.findFoodByOption(dto);
 
     }
 
@@ -59,11 +52,7 @@ public class FoodController {
 
 
 
-    @PostMapping(value = "/ref")
-    public String ref(@RequestBody String str) {
 
-        return "text";
-    }
 
 //    @GetMapping("/dtos")
 //    public List<FoodDto> getDtos(FoodOptionDto dto){

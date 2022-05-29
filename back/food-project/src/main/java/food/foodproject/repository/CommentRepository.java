@@ -1,6 +1,7 @@
 package food.foodproject.repository;
 
 import food.foodproject.domain.Comment;
+import food.foodproject.dto.CommentShowDto;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -21,13 +22,22 @@ public class CommentRepository {
         return em.find(Comment.class, id);
     }
 
-    public List<Comment> findByPostId (Long id) {
-        return em.createQuery("select * from Comment m where m.post_id like :id")
+    public List<CommentShowDto> findByPostId (Long id) {
+        return em.createQuery("select new food.foodproject.dto.CommentShowDto(m.nickname, m.img, c.content)"
+                    + " from Comment c "
+                    + " join c.member m "
+                    + " join c.post p "
+                    + " where p.id = :id", CommentShowDto.class)
+                .setParameter("id", id)
                 .getResultList();
     }
 
-    public List<Comment> findByUserId (Long id) {
-        return em.createQuery("select * from Comment m where m.user_id like :id")
+    public List<CommentShowDto> findByUserId (Long id) {
+        return em.createQuery("select new food.foodproject.dto.CommentShowDto(m.nickname, m.img, c.content)"
+                        + " from Comment c "
+                        + " join c.member m "
+                        + " where m.id = :id", CommentShowDto.class)
+                .setParameter("id", id)
                 .getResultList();
     }
  }
