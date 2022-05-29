@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import StarIcon from '@material-ui/icons/StarRounded';
+import Favorite from '@material-ui/icons/Favorite';
 import Banner from './Banner';
 import './SingleRecipe.css';
 
-function SingleRecipe() {
-
-    const [dtos, setDtos] = useState([[]]);
+function SinglePost() {
+    const [posts, setPosts] = useState([[]]);
     useEffect(() => {
         var url = decodeURI(document.location.href);
         var str = url.split("?");
@@ -18,20 +16,20 @@ function SingleRecipe() {
             })
         }
 
-        fetch('/singleRecipe', requestOptions)
+        fetch('/singlePost', requestOptions)
             .then(response => {
                 return response.json()
             })
-            .then(dtos => {
-                setDtos(dtos);
+            .then(posts => {
+                setPosts(posts);
             });
     },[])
+
     const [ comment, setComment ] = useState("");
 
     const onCommentHandler = (event) => {
         setComment(event.currentTarget.value)
     }
-
 
     const goBackend = () => {
         alert("댓글 등록 완료!")
@@ -62,16 +60,28 @@ function SingleRecipe() {
 
         <div className="Single-recipe">
             <div className="Recipe-img">
-                <img src={dtos.thumbnail} />
+                <img src={posts.thumbnail} /> 
             </div>
 
-            <div className="Recipe-info">
-                <div className="Recipe-name"> &nbsp; 요리명: {dtos.name}
-                    <div className="Hit">조회수</div>
+            <div className="likehit">
+                <div id="like">
+                    <div className="likes"><Favorite /></div>
+                    <div className="likes-text">10,000</div>
                 </div>
-                <div className="Recipe-intro"> &nbsp; 요리 소개: {dtos.intro}</div>
-                <div className="Recipe-Ingre"> &nbsp; 재료: {dtos.ingredient}</div>
-                <div className="Recipe-detail"> &nbsp; 조리 순서: {dtos.recipe}</div>
+                <div className="hit">조회수 {posts[0].views}</div>
+            </div>
+            <div className="Recipe-info">
+                <div>
+                    <div className="Recipe-name"> {posts[0].name} </div>
+                    <div className="Recipe-intro"> {posts[0].intro} </div>
+                    <div className="Recipe-Ingre"> {posts[0].ingredient} </div>
+                </div>
+                <div>
+                    <div className="Recipe-detail"> {posts[0].recipe} </div>
+                    <div className="Recipe-detail"> <img src={posts[0].stepImg} /> </div>
+                </div>
+            </div>
+                    
                 <div className="comment-container"> &nbsp; 댓글 
                     <div className="writing-comment">
                         <textarea className="comment-textarea" id="comment-text" onChange={onCommentHandler}/>
@@ -100,7 +110,6 @@ function SingleRecipe() {
                     </div>
                 </div>
             </div>
-        </div>
     );
 }
-export default SingleRecipe;
+export default SinglePost;

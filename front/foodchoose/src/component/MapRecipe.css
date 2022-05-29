@@ -1,0 +1,159 @@
+.Header { 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 80px;
+    z-index: 100;
+    border-bottom: 3px solid #ff6f61;
+    background-color: white;
+}
+
+.Search {
+     position: fixed;
+     width: 100%;
+     display: flex;
+     top: 83px;
+     height: 150px;
+     align-items: center;
+     background-color: white;
+     z-index: 100;
+}
+
+.Search-input {
+    position: fixed;
+    transform: translate(76%);
+    height: 50px;
+    width: 39%;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: large;
+}
+
+.Search-icon {
+    position: absolute;
+    right: 30%;
+    top: 50px;
+    padding: 14px;
+    color: black;
+}
+
+#Array {
+    position: fixed;
+    left: 72%;
+    top: 135px;
+    width: 95px;
+    height: 40px;
+    background-color: white;
+    border: 2px solid black;
+    display: inline-block;
+    line-height: 32px;
+    padding: 3px 15px 0px 15px;
+    z-index: 100;
+    
+    margin: 0 auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    
+    background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    radial-gradient(#ddd 70%, transparent 76%);
+    background-position:
+    calc(100% - 19.3px) calc(1em + 3px),
+    calc(100% - 14.5px) calc(1em + 3px),
+    calc(100% - 0.7em) 0.7em;
+    background-size:
+    5px 5px,
+    5px 5px,
+    1.5em 1.5em;
+    background-repeat: no-repeat;
+}
+
+#Container {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    top: 225px;
+    overflow: hidden;
+}
+
+.Content {
+    position: relative;
+    width: 360px;
+    height: 222px;
+    padding: 3px;
+    margin: 10px;
+}
+
+.Thump {
+    position: relative;
+    border: 1px solid black;
+    width: 350px;
+    height: 160px;
+    line-height: 150px;
+    text-align: center;
+}
+
+.Detail {
+    position: relative;
+    top: 5px; 
+    width: 350px;
+    height: 53px;
+}
+
+.Profile {
+    position: relative;
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    top: 3px;
+    text-align: center;
+    font-size: 10px;
+}
+
+.Title {
+    position: relative;
+    border: 1px solid black;
+    top: -70px;
+    left: 60px;
+    width: 290px;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+}
+
+.Title-link:first-child {
+    white-space: nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.Stars {
+    position: relative;
+    border: 1px solid black;
+    top: -88px;
+    left: 60px;
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    color: rgba(255, 234, 0, 0.905);
+}
+
+
+.Hits {
+    position: relative;
+    border: 1px solid black;
+    top: -131.5px;
+    left: 265px;
+    width: 85px;
+    height: 20.5px;
+    line-height: 20.5px;
+    font-size: 12px;
+    text-align: center;
+}
