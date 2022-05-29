@@ -82,11 +82,7 @@ function Board() {
                             </div>
 
                             <h4 className="Title">
-<<<<<<< HEAD
-                                <Link to=""><div className="Title-link">{ a.name }</div></Link>
-=======
                                 <Link to={"/SinglePost/?" + a.name}><div className="Title-link">{ a.name }</div></Link>
->>>>>>> fec8b577a62f15a08512fe42d64af4e2efb84621
                             </h4>
                             
                             <div>
