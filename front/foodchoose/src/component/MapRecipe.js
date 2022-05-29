@@ -1,21 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import './Board.css';
+import React, { useState, useEffect }  from 'react';
+import './MapRecipe.css';
 import SearchIcon from '@material-ui/icons/Search';
 import StarIcon from '@material-ui/icons/StarRounded';
-import Banner from './Banner';
+import Banner from '../Banner';
+import Tab from '../Tab';
 import { Link } from "react-router-dom";
 
 
-function Board() {
-    const [posts, setPosts] = useState([[]]);
+function MapRecipe() {
+    
+    const [dtos, setDtos] = useState([[]]);
     useEffect(() => {
-        fetch('/posts')
+        fetch('/dtos')
             .then(response => response.json())
-            .then(posts => {
-                setPosts(posts);
+            .then(dtos => {
+                setDtos(dtos);
             });
     },[])
-
+    
     let Info = [
         { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
         { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
@@ -24,36 +26,18 @@ function Board() {
         { id: 5, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
         { id: 6, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
     ];
-
-    const [board, setBoard] = useState("")
-    const onBoardHandler = (event) => {
-        setBoard(event.currentTarget.value)
-    }
-    const goBackend = () => {
-        if(board == "") {
-            alert("검색어를 입력하세요.")
-            return;
-        } else {
-            fetch('/board', {
-                method: 'post',
-                body: JSON.stringify({
-                    board: board
-                })
-            })
-            window.location.replace("/Board")
-        }
-    }
                 
     return (
-        <div className="Board">
+        <div className="Recipe">
 
             <div className="Header">
                 <Banner/>
+                <Tab />
             </div>
 
             <div className="Search">
-                <input className="Search-input" placeholder=" 통합 검색" type="text" onChange={onBoardHandler}/>
-                <Link to="/Board"><SearchIcon className="Search-icon" onClick={goBackend}/></Link>
+                <input className="Search-input" type="text" />
+                <Link to="/SearchedRecipe"><SearchIcon className="Search-icon"/></Link>
             </div>
         
             <select id="Array">
@@ -61,28 +45,28 @@ function Board() {
                 <option> 조회순 </option>
                 <option> 별점순 </option>
             </select>
-
-            <Link to="/Writing"><div className="GotoWrite"> 글쓰기 </div></Link>
             
             <div id='info-con'>
             <div id="Container">
-                { posts.map((a) => (
+                { dtos.map((a) => (
                     <div className="Content">  
                         <div className="Thump">
-                            <Link to="/SingleRecipe">
-                                <div className="Thump-link"> { a.thumbnail } </div>
+                            <Link to={"/MapContainer/?" + a.name}>
+                                <div className="Thump-link"> 
+                                    <img src={a.thumbnail} width="350" height="160" />
+                                </div>
                             </Link>
                         </div>
                         
                         <div className="Detail">
                             <div className="Profile">
                                 <Link to="">
-                                    <div className="Profile-link"><img src="/img/profile.png" width="50px"></img> { a.profile }</div>
+                                    <div className="Profile-link"> { a.profile }</div>
                                 </Link>
                             </div>
 
                             <h4 className="Title">
-                                <Link to={"/SinglePost/?" + a.name}><div className="Title-link">{ a.name }</div></Link>
+                                <Link to=""><div className="Title-link">{ a.name }</div></Link>
                             </h4>
                             
                             <div>
@@ -98,4 +82,4 @@ function Board() {
     );   
 }
 
-export default Board;
+export default MapRecipe;

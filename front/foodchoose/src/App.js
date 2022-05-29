@@ -25,6 +25,11 @@ import MyMenu from './component/MyMenu';
 import MyRestaurant from './component/MyRestaurant';
 import MyWriting from './component/MyWriting';
 import Tab from './Tab';
+import MapContainer from './component/MapContainer';
+import MapOption from './component/MapOption';
+import MapOptionTable from './component/MapOptionTable';
+import MapRecipe from './component/MapRecipe';
+import SinglePost from './SinglePost';
 
 function App() {
   return (
@@ -38,6 +43,7 @@ function App() {
       <Route path="/SearchedRecipe" element={<SearchedRecipe />} />
       <Route path="/Writing" element={<Writing />} />
       <Route path="/Tab" element={<Tab />} />
+      <Route path="/SinglePost" element={<SinglePost />} />
             
       <Route path="/Refrigerator" element={<Refrigerator />} />
       <Route path="/LoginForm" element={<LoginForm />} />
@@ -54,7 +60,10 @@ function App() {
       <Route path="/MyMenu" element={<MyMenu />} />
       <Route path="/MyRestaurant" element={<MyRestaurant />} />
       <Route path="/MyWriting" element={<MyWriting />} />
-      
+      <Route path="/MapContainer" element={<MapContainer />} />
+      <Route path="/MapOption" element={<MapOption />} />
+      <Route path="/MapOptionTable" element={<MapOptionTable />} />
+      <Route path="/MapRecipe" element={<MapRecipe />} />
     </Routes>
   );
 }
