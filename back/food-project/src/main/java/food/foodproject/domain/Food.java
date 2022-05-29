@@ -14,23 +14,28 @@ import java.util.List;
 @Entity
 @Getter @Setter
 public class Food {
-    
-    //이름(기본키)
+
+    //기본키
     @Id
-    @Column(name = "food_name")
+    @GeneratedValue
+    @Column(name = "food_id",unique = true)
+    private Long id;
+
+    //이름
     private String name;
 
+    //소개
+    private String intro;
+
     //재료
-    private String ingredients;
+    private String ingredient;
 
     //레시피
+    @Column(columnDefinition = "text")
     private String recipe;
 
     //테마별
     private String theme;
-
-    //조리별
-    private String cook;
 
     //미각별
     private String taste;
@@ -38,6 +43,10 @@ public class Food {
     //상황별
     private String situation;
 
-    //이미지 주소
-    private String img;
+    //썸네일 이미지
+    private String thumbnail;
+
+    //스텝 이미지
+    @Column(columnDefinition = "text")
+    private String stepImg;
 }

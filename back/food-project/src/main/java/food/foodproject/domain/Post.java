@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -21,5 +22,24 @@ public class Post {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
+
+    //음식 이름
+    private String foodName;
+
+    //날짜
+    private LocalDateTime uploadDate;
+
+    //제목
+    private String title;
+
+    //재료
+    private String ingredient;
+
+    //내용
+    private String recipe;
+
+    //조회수
+    @Column(columnDefinition = "integer default 0", nullable = false)
+    private int view;
 
 }
