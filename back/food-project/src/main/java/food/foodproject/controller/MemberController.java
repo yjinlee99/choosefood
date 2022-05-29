@@ -5,6 +5,7 @@ import food.foodproject.domain.Member;
 import food.foodproject.dto.MemberIdDto;
 import food.foodproject.dto.MemberJoinDto;
 import food.foodproject.dto.MemberLoginDto;
+import food.foodproject.dto.MemberRefrigeratorDto;
 import food.foodproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.json.JSONParser;
@@ -38,21 +39,22 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public Long login(@RequestBody MemberLoginDto dto) {
+    public Member login(@RequestBody MemberLoginDto dto) {
         Member login = memberService.login(dto.getEmail(), dto.getPassword());
-        if(login == null) return -1L;
-        else return login.getId();
+        if(login == null) return null;
+        else return login;
     }
 
     @PostMapping("/user")
-    public Member showMember(@RequestBody Long id) {
-        Member member = memberService.findOne(id);
+    public Member showMember(@RequestBody MemberIdDto dto) {
+        Member member = memberService.findOne(dto.getId());
 
         return member;
     }
 
-    @GetMapping("/userRef")
-    public String showRefrigerator(Long id) {
-
+    @PostMapping
+    public Member updateRefrigerator(@RequestBody MemberRefrigeratorDto dto) {
+        return null;
     }
+
 }

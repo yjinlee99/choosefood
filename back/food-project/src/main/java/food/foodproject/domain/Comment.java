@@ -15,12 +15,12 @@ public class Comment {
     @Column(name = "comment_id")
     private Long id;
 
-    //게시판 일련 번호
+    //게시판
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;
 
-    //회원 아이디
+    //회원
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
