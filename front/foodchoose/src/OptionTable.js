@@ -124,7 +124,6 @@ const OptionTable = () => {
               </label>
             ))}
           </div>
-
         </div>
 
         <div id="optionL2">
@@ -162,12 +161,6 @@ const OptionTable = () => {
 
       <Link to={{
           pathname: `/Recipe?theme=${optionchecked1}&taste=${optionchecked2}&ingredient=${optionchecked3}&situation=${optionchecked4}&refrigerator=""`,
-        //   state:{
-        //     theme: optionchecked1,
-        //     taste: optionchecked2,
-        //     ingredient: optionchecked3,
-        //     situation: optionchecked4,
-        //   }
       }}>
         <button className="findRecipe" id="Find">검색</button>
       </Link>
@@ -176,3 +169,4 @@ const OptionTable = () => {
 };
 
 export default OptionTable;
+

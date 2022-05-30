@@ -66,7 +66,7 @@ function Board() {
             
             <div id='info-con'>
             <div id="Container">
-                { posts.map((a) => (
+                { posts && posts.map((a) => (
                     <div className="Content">  
                         <div className="Thump">
                             <Link to="/SingleRecipe">
@@ -82,7 +82,7 @@ function Board() {
                             </div>
 
                             <h4 className="Title">
-                                <Link to={"/SinglePost/?" + a.name}><div className="Title-link">{ a.name }</div></Link>
+                                <Link to={"/SinglePost/?" + a.title}><div className="Title-link">{ a.title }</div></Link>
                             </h4>
                             
                             <div>

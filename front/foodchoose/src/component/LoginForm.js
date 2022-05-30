@@ -33,7 +33,6 @@ function LoginForm() {
         }
         fetch('/login', {
             method: 'post',
-
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 email:email,
@@ -42,9 +41,10 @@ function LoginForm() {
         })
         .then(res => res.json())
         .then(response => {
+            console.log(response)
             if(JSON.parse(response)) {
                 alert("환영합니다.");
-                sessionStorage.setItem("email", email);
+                sessionStorage.setItem("id", response);
                 window.location.replace("/Main")
             } else {
                 alert("이메일이 존재하지 않거나 올바르지 않은 입력입니다.");

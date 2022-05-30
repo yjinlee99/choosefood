@@ -8,15 +8,10 @@ function SinglePost() {
     useEffect(() => {
         var url = decodeURI(document.location.href);
         var str = url.split("?");
-        const requestOptions = {
-            method: 'post',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                name: str[1],
-            })
-        }
 
-        fetch('/singlePost', requestOptions)
+        fetch('/post/single?'+ new URLSearchParams({
+            title: str[1],
+        }))
             .then(response => {
                 return response.json()
             })
@@ -68,17 +63,17 @@ function SinglePost() {
                     <div className="likes"><Favorite /></div>
                     <div className="likes-text">10,000</div>
                 </div>
-                <div className="hit">조회수 {posts[0].views}</div>
+                <div className="hit">조회수 {posts.views}</div>
             </div>
             <div className="Recipe-info">
                 <div>
-                    <div className="Recipe-name"> {posts[0].name} </div>
-                    <div className="Recipe-intro"> {posts[0].intro} </div>
-                    <div className="Recipe-Ingre"> {posts[0].ingredient} </div>
+                    <div className="Recipe-name"> {posts.name} </div>
+                    <div className="Recipe-intro"> {posts.intro} </div>
+                    <div className="Recipe-Ingre"> {posts.ingredient} </div>
                 </div>
                 <div>
-                    <div className="Recipe-detail"> {posts[0].recipe} </div>
-                    <div className="Recipe-detail"> <img src={posts[0].stepImg} /> </div>
+                    <div className="Recipe-detail"> {posts.recipe} </div>
+                    <div className="Recipe-detail"> <img src={posts.stepImg} /> </div>
                 </div>
             </div>
                     

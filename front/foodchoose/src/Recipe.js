@@ -106,6 +106,14 @@ function Recipe() {
             })
         }
     }
+    // const views = (name) => {
+    //     fetch('/views', {
+    //         method: 'post',
+    //         body: JSON.stringify({
+    //             name: name
+    //         })
+    //     })
+    // }
 
     return (
         <div className="Recipe">
