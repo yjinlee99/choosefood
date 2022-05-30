@@ -38,7 +38,7 @@ public class MemberController {
     @PostMapping("/login")
     public Long login(@RequestBody MemberLoginDto dto) {
         Member login = memberService.login(dto.getEmail(), dto.getPassword());
-        if(login == null) return null;
+        if(login == null) return -1L;
         else return login.getId();
     }
 

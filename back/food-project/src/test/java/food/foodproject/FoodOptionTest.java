@@ -1,5 +1,7 @@
 package food.foodproject;
 
+import SQL.DAO;
+import SQL.DTO;
 import food.foodproject.domain.Food;
 import food.foodproject.dto.FoodDto;
 import food.foodproject.dto.FoodOptionDto;
@@ -21,37 +23,47 @@ public class FoodOptionTest {
     @Autowired
     FoodRepositoryImpl foodRepositorylmpl;
 
+    String[] names, intros, tastes, theme, ingredients, situations, recipe, thumbnail, stepImg;
     @Test
     void contextLoads() {
-//        String[] names = {"쭈꾸미", "배", "사과", "고기"};
-//        String[] tastes = {"매콤", "달콤", "고소", "짭짤"};
-//        String[] theme = {"한식","중식","양식","일식","분식"};
-//        String[] ingredients = {"쭈꾸미", "사과", "닭", "돼지"};
-//        String[] situations = {"간식", "식사", "후식", "야식"};
-//
-//        List<Long> foodIdxs = new ArrayList<>();
-//        for(int i=0; i<names.length; i++) {
-//            Food food = new Food();
-//            food.setName(names[i]);
-//            food.setTaste(tastes[i]);
-//            food.setTheme(theme[i]);
-//            food.setIngredient(ingredients[i]);
-//            food.setSituation(situations[i]);
-//            foodRepository.save(food);
-//        }
-//
-//        for(int i=0; i<5; i++) {
-//            Food food = new Food();
-//            food.setName(names[0]+i+"입니다.");
-//            food.setTaste(tastes[0]);
-//            food.setTheme(theme[0]);
-//            food.setIngredient(ingredients[0]);
-//            food.setSituation(situations[0]);
-//            foodRepository.save(food);
-//        }
 
 
-        
+        ArrayList<DTO> dtos = DAO.getFoods();
+        names = new String[dtos.size()];
+        intros = new String[dtos.size()];
+        tastes = new String[dtos.size()];
+        theme = new String[dtos.size()];
+        ingredients = new String[dtos.size()];
+        situations = new String[dtos.size()];
+        recipe = new String[dtos.size()];
+        thumbnail = new String[dtos.size()];
+        stepImg = new String[dtos.size()];
+        for(int i=0;i<dtos.size();i++) {
+            DTO dto = dtos.get(i);
+            names[i] = dto.getTitle();
+            intros[i] = dto.getIntro();
+            tastes[i] = dto.getTaste();
+            theme[i] = dto.getThema();
+            ingredients[i] = dto.getIngredient();
+            situations[i] = dto.getSituation();
+            recipe[i] = dto.getStep();
+            thumbnail[i] = dto.getThumbnail();
+            stepImg[i] = dto.getStepimg();
+        }
+        List<Long> foodIdxs = new ArrayList<>();
+        for(int i=0; i<dtos.size(); i++) {
+            Food food = new Food();
+            food.setName(names[i]);
+            food.setIntro(intros[i]);
+            food.setTaste(tastes[i]);
+            food.setTheme(theme[i]);
+            food.setIngredient(ingredients[i]);
+            food.setSituation(situations[i]);
+            food.setRecipe(recipe[i]);
+            food.setThumbnail(thumbnail[i]);
+            food.setStepImg(stepImg[i]);
+            foodRepository.save(food);
+        }
 
 
     }

@@ -33,7 +33,6 @@ public class FoodController {
         if(dto.getTaste() == null) dto.setTaste(notnull);
         if(dto.getSituations() == null) dto.setSituations(notnull);
         if(dto.getIngredients() == null) dto.setIngredients(notnull);
-        if(dto.getRefrigerator() == null) dto.setRefrigerator("");
 
         System.out.println(dto.getIngredients());
 

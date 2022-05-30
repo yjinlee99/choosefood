@@ -24,6 +24,9 @@ public class Food {
     //이름
     private String name;
 
+    //소개
+    private String intro;
+
     //재료
     private String ingredient;
 

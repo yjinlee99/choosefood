@@ -275,11 +275,11 @@ public class DAO {
 			ArrayList<DTO> dtosTest;
 			Connection con = ConnectionPool.cp.getConnection();
 
-//			getThemaQuery(dataList[0], con);
-//			getTasteQuery(dataList[1], con);
-//			getIngredientQuery(dataList[2], con);
-//			dtosTest = getSituationQuery(dataList[3], con);
-			dtosTest = getTest(dataList, con);
+			getThemaQuery(dataList[0], con);
+			getTasteQuery(dataList[1], con);
+			getIngredientQuery(dataList[2], con);
+			dtosTest = getSituationQuery(dataList[3], con);
+			//dtosTest = getTest(dataList, con);
 
 			if (con != null) {
 				ConnectionPool.cp.releaseConnection(con);
@@ -400,7 +400,7 @@ public class DAO {
 	// 재료별 쿼리
 	public static String ingredientQuery(String data, int num) {
 		String query = "";
-		int cnt = 1;
+		int cnt = 0;
 		if(num == 1) {
 			return query;
 		} else {
@@ -845,6 +845,7 @@ public class DAO {
 		}
 	}
 
+
 	// 해당하는 번호의 방이 있는지 체크
 	public static Boolean checkLogin(String email, String passwd) {
 		try {
@@ -857,8 +858,15 @@ public class DAO {
 			ResultSet result = statement.executeQuery();
 			if(result.next()) {
 				int cnt = result.getInt("cnt");
-				if (cnt>0)
+				if (cnt>0) {
+					if (con != null) {
+						ConnectionPool.cp.releaseConnection(con);
+					}
 					return true;
+				}
+			}
+			if (con != null) {
+				ConnectionPool.cp.releaseConnection(con);
 			}
 		} catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -866,14 +874,96 @@ public class DAO {
 		return false;
 	}
 
+	public static Boolean checkJoin(String email, String name) {
+		try {
+			Connection con = ConnectionPool.cp.getConnection();
+			String sql = "SELECT COUNT(*) cnt FROM users" +
+					" where email = ? or name = ?";
+			PreparedStatement statement = con.prepareStatement(sql);
+			statement.setString(1, email);
+			statement.setString(2, name);
+			ResultSet result = statement.executeQuery();
+			if(result.next()) {
+				int cnt = result.getInt("cnt");
+				if (cnt>0) {
+					if (con != null) {
+						ConnectionPool.cp.releaseConnection(con);
+					}
+					return true;
+				}
+			}
+			if (con != null) {
+				ConnectionPool.cp.releaseConnection(con);
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		return false;
+	}
+
+	// 냉장고 재료 추가
+	public static void updateFoodName(String str, String result) {
+		try {
+			Connection con = ConnectionPool.cp.getConnection();
+			PreparedStatement statement = con.prepareStatement(""
+					+ "Update food set name = ?"
+					+ "where name like ?");
+			statement.setString(1, result);
+			statement.setString(2, "%" + str + "%");
+			statement.executeUpdate();
+			if (con != null) {
+				ConnectionPool.cp.releaseConnection(con);
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	// 냉장고 재료 추가
+	public static void addRefValues(String ref, String email) {
+		try {
+			Connection con = ConnectionPool.cp.getConnection();
+			PreparedStatement statement = con.prepareStatement(""
+					+ "Update users set ref = ?"
+					+ "where email = ?");
+			statement.setString(1, ref);
+			statement.setString(2, email);
+			statement.executeUpdate();
+			if (con != null) {
+				ConnectionPool.cp.releaseConnection(con);
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
+	// 게시판 값 추가
+	public static void addPostValues(String email, String name, String intro, String ingredient,
+									 String recipe, String thumbnail, String stepImg, String date, int views) {
+		try {
+			Connection con = ConnectionPool.cp.getConnection();
+			PreparedStatement insert = con.prepareStatement(""
+					+ "INSERT INTO posts (email, name, intro, ingredient, recipe, thumbnail, stepImg, date, views) VALUES "
+					+ "('" + email + "', '" + name + "', '" + intro + "', '" + ingredient
+					+ "', '" + recipe + "', '" + thumbnail + "', '" + stepImg
+					+ "', '" + date + "', '" + views + "')");
+			insert.executeUpdate();
+			if (con != null) {
+				ConnectionPool.cp.releaseConnection(con);
+			}
+		} catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+
 	// 값 추가
-	public static void addUserValues(String email, String passwd, String name, String phone) {
+	public static void addUserValues(String email, String passwd, String name, String phone, String ref) {
 		try {
 			//Connection con = getConnection();
 			Connection con = ConnectionPool.cp.getConnection();
 			PreparedStatement insert = con.prepareStatement(""
 					+ "INSERT INTO users VALUES "
-					+ "('" + email + "', '" + passwd + "', '" + name + "', '" + phone + "')");
+					+ "('" + email + "', '" + passwd + "', '" + name + "', '" + phone + "', '" + ref + "')");
 			insert.executeUpdate();
 			if (con != null) {
 				ConnectionPool.cp.releaseConnection(con);
@@ -885,7 +975,7 @@ public class DAO {
 
 	// 테스트 값 추가
 	public static void addTestValues(String title, String intro,
-								 String ingredient, String step, String thumbnail, String stepimg,
+									 String ingredient, String step, String thumbnail, String stepimg,
 									 String thema, String taste, String situation, Connection con) {
 		try {
 			System.out.println(1);
@@ -944,6 +1034,49 @@ public class DAO {
 	}
 
 	// 사용자 테이블
+	public static void AlterPostTable() {
+		try {
+			Connection con = ConnectionPool.cp.getConnection();
+			PreparedStatement statement = con
+					.prepareStatement("ALTER TABLE posts ADD id INT PRIMARY KEY AUTO_INCREMENT");
+			statement.execute();
+			if (con != null) {
+				ConnectionPool.cp.releaseConnection(con);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			System.out.println("Table successfully created");
+		}
+	}
+
+	// 사용자 테이블
+	public static void createPostTable() {
+		try {
+			Connection con = ConnectionPool.cp.getConnection();
+			PreparedStatement statement = con
+					.prepareStatement("CREATE TABLE IF NOT EXISTS posts("
+							+ "email varChar(255),"
+							+ "name varChar(255),"
+							+ "intro varChar(255),"
+							+ "ingredient varChar(255),"
+							+ "recipe text(10000),"
+							+ "thumbnail varChar(255),"
+							+ "stepImg text(255),"
+							+ "date varChar(255),"
+							+ "views BIGINT(255))");
+			statement.execute();
+			if (con != null) {
+				ConnectionPool.cp.releaseConnection(con);
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			System.out.println("Table successfully created");
+		}
+	}
+
+	// 사용자 테이블
 	public static void createUserTable() {
 		try {
 			//Connection con = getConnection();
@@ -954,6 +1087,7 @@ public class DAO {
 							+ "passwd varChar(255),"
 							+ "name varChar(255),"
 							+ "phone varChar(255),"
+							+ "ref varChar(255),"
 							+ "PRIMARY KEY(email))");
 			statement.execute();
 			if (con != null) {
