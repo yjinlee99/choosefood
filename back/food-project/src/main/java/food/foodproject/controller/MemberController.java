@@ -6,10 +6,11 @@ import food.foodproject.dto.*;
 import food.foodproject.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.apache.tomcat.util.json.JSONParser;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.Map;
+import java.util.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -49,9 +50,45 @@ public class MemberController {
         return member;
     }
 
-    @PostMapping("/ref")
-    public String updateRefrigerator(@RequestBody MemberRefrigeratorDto dto) {
+    @PostMapping("/ref/update")
+    public String updateRefrigerator(@RequestBody String str) {
+        System.out.println(str);
+        JSONObject jObject = new JSONObject(str);
+        Long id = jObject.getLong("id");
+        JSONArray jsonArray = jObject.getJSONArray("havingIngredient");
+        String refrigerator = "";
+        for(int i=0;i<jsonArray.length();i++) {
+            JSONObject arr = jsonArray.getJSONObject(i);
+            if(i==0) {
+                refrigerator = arr.getString("username");
+            } else {
+                refrigerator = refrigerator + "," + arr.getString("username");
+            }
+        }
+        MemberRefrigeratorDto dto = new MemberRefrigeratorDto();
+        dto.setId(id);
+        dto.setRefrigerator(refrigerator);
         return memberService.refrigeratorUpdate(dto);
+    }
+
+    @PostMapping("/ref/member")
+    public List<MemberRefrigeratorDto> memberRefrigerator(@RequestBody String str) {
+        System.out.println(str);
+        JSONObject jObject = new JSONObject(str);
+        Long id = jObject.getLong("id");
+        Member member = memberService.findOne(id);
+        String ref = member.getHavingIngredient();
+        String[] arr = ref.split(",");
+        String[] list = new String[arr.length];
+        List<MemberRefrigeratorDto> dtoList = new ArrayList<>();
+        for(int i=0;i< arr.length;i++) {
+            MemberRefrigeratorDto dto = new MemberRefrigeratorDto();
+            dto.setId(i+1L);
+            dto.setRefrigerator(arr[i]);
+            dtoList.add(dto);
+        }
+        System.out.println(dtoList);
+        return dtoList;
     }
 
     @PostMapping("/updateinfo")
