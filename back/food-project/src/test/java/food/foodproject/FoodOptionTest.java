@@ -29,7 +29,6 @@ public class FoodOptionTest {
 
         /*
         ArrayList<DTO> dtos = DAO.getFoods();
-
         names = new String[dtos.size()];
         intros = new String[dtos.size()];
         tastes = new String[dtos.size()];
@@ -39,7 +38,6 @@ public class FoodOptionTest {
         recipe = new String[dtos.size()];
         thumbnail = new String[dtos.size()];
         stepImg = new String[dtos.size()];
-
         for(int i=0;i<dtos.size();i++) {
             DTO dto = dtos.get(i);
             names[i] = dto.getTitle();
@@ -52,7 +50,6 @@ public class FoodOptionTest {
             thumbnail[i] = dto.getThumbnail();
             stepImg[i] = dto.getStepimg();
         }
-
         List<Long> foodIdxs = new ArrayList<>();
         for(int i=0; i<dtos.size(); i++) {
             Food food = new Food();
@@ -69,14 +66,5 @@ public class FoodOptionTest {
         }
         */
 
-
-        FoodOptionDto condition = new FoodOptionDto(Arrays.asList("한식","중식"), Arrays.asList("매콤","짭짤"), Arrays.asList("고기","밥"), Arrays.asList("야식","해장"));
-
-
-        System.out.println("---------------- 원하는 음식 검색2 ------------- ");
-        List<Food> foodsInSearch2 = foodRepositorylmpl.findBySearchOption(condition.getTheme(), condition.getTaste(), condition.getIngredients(), condition.getSituations());
-        for(Food food : foodsInSearch2) {
-            System.out.println(food.getId() + " " + food.getName() + " " + food.getTheme() + " " +food.getTaste() +" "+ food.getIngredient() + " " + food.getSituation());
-        }
     }
 }

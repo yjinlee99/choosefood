@@ -22,12 +22,14 @@ public class Member {
     private String password;
 
     //닉네임
+    @Column (unique = true)
     private String nickname;
 
     //핸드폰 번호
     private String phone;
 
     //이메일
+    @Column (unique = true)
     private String email;
 
     //이미지
@@ -60,6 +62,9 @@ public class Member {
     public void updateHavingIngredient(String havingIngredient){
         this.havingIngredient = havingIngredient;
     }
+
+    //이미지 수정
+    public void updateImg(String img) { this.img = img; }
 
 
 }

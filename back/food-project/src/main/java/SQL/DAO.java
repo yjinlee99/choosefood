@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import food.foodproject.dto.UserDto;
-
 public class DAO {
 	public static void main(String[] args) {
 
@@ -847,130 +845,6 @@ public class DAO {
 		}
 	}
 
-	public static void getUserDto(String data) {
-		try {
-			Connection con = ConnectionPool.cp.getConnection();
-			PreparedStatement statement = con.prepareStatement(
-					"SELECT * FROM users where email = ?");
-			statement.setString(1, data);
-			ResultSet results = statement.executeQuery();
-			results.next();
-			UserDto.email = results.getString("email");
-			UserDto.passwd = results.getString("passwd");
-			UserDto.name = results.getString("name");
-			UserDto.phone = results.getString("phone");
-			UserDto.ref = results.getString("ref");
-			System.out.println("The data has been fetched");
-			if (con != null) {
-				ConnectionPool.cp.releaseConnection(con);
-			}
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-		}
-	}
-
-	public static ArrayList<POSTS> getPost(String data) {
-		try {
-			Connection con = ConnectionPool.cp.getConnection();
-			PreparedStatement statement = con.prepareStatement(
-					"SELECT * FROM posts where name = ?");
-			statement.setString(1, data);
-			ResultSet results = statement.executeQuery();
-			ArrayList<POSTS> posts = new ArrayList<POSTS>();
-			results.next();
-			String email = results.getString("email");
-			String name = results.getString("name");
-			String intro =	results.getString("intro");
-			String ingredient = results.getString("ingredient");
-			String recipe = results.getString("recipe");
-			String thumbnail = results.getString("thumbnail");
-			String stepImg = results.getString("stepImg");
-			String date = results.getString("date");
-			int views = results.getInt("views");
-			int id = results.getInt("id");
-			POSTS post = new POSTS(email, name, intro, ingredient, recipe, thumbnail, stepImg, date, views, id);
-			posts.add(post);
-			System.out.println("The data has been fetched");
-			if (con != null) {
-				ConnectionPool.cp.releaseConnection(con);
-			}
-			return posts;
-
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-			return null;
-		}
-	}
-
-	// 전체 음식 정보 반환
-	public static ArrayList<POSTS> getPosts() {
-		try {
-			Connection con = ConnectionPool.cp.getConnection();
-			PreparedStatement statement = con.prepareStatement(
-					"SELECT * FROM posts");
-			ResultSet results = statement.executeQuery();
-			ArrayList<POSTS> dtos = new ArrayList<POSTS>();
-			DAO.createPostTable();
-			while(results.next()) {
-				String email = results.getString("email");
-				String name = results.getString("name");
-				String intro =	results.getString("intro");
-				String ingredient = results.getString("ingredient");
-				String recipe = results.getString("recipe");
-				String thumbnail = results.getString("thumbnail");
-				String stepImg = results.getString("stepImg");
-				String date = results.getString("date");
-				int views = results.getInt("views");
-				int id = results.getInt("id");
-				POSTS posts = new POSTS(email, name, intro, ingredient, recipe, thumbnail, stepImg, date, views, id);
-				dtos.add(posts);
-			}
-			System.out.println("The data has been fetched");
-			if (con != null) {
-				ConnectionPool.cp.releaseConnection(con);
-			}
-			return dtos;
-
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-			return null;
-		}
-	}
-
-	// 전체 음식 정보 반환
-	public static ArrayList<POSTS> getBoards(String str) {
-		try {
-			Connection con = ConnectionPool.cp.getConnection();
-			PreparedStatement statement = con.prepareStatement(
-					"SELECT * FROM posts where name like ?");
-			statement.setString(1, "%" + str + "%");
-			ResultSet results = statement.executeQuery();
-			ArrayList<POSTS> dtos = new ArrayList<POSTS>();
-			while(results.next()) {
-				String email = results.getString("email");
-				String name = results.getString("name");
-				String intro =	results.getString("intro");
-				String ingredient = results.getString("ingredient");
-				String recipe = results.getString("recipe");
-				String thumbnail = results.getString("thumbnail");
-				String stepImg = results.getString("stepImg");
-				String date = results.getString("date");
-				int views = results.getInt("views");
-				int id = results.getInt("id");
-				POSTS posts = new POSTS(email, name, intro, ingredient, recipe, thumbnail, stepImg, date, views, id);
-				dtos.add(posts);
-			}
-			System.out.println("The data has been fetched");
-			if (con != null) {
-				ConnectionPool.cp.releaseConnection(con);
-			}
-			return dtos;
-
-		} catch(Exception e) {
-			System.out.println(e.getMessage());
-			return null;
-		}
-	}
 
 	// 해당하는 번호의 방이 있는지 체크
 	public static Boolean checkLogin(String email, String passwd) {
@@ -1101,7 +975,7 @@ public class DAO {
 
 	// 테스트 값 추가
 	public static void addTestValues(String title, String intro,
-								 String ingredient, String step, String thumbnail, String stepimg,
+									 String ingredient, String step, String thumbnail, String stepimg,
 									 String thema, String taste, String situation, Connection con) {
 		try {
 			System.out.println(1);

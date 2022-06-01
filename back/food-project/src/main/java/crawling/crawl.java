@@ -47,7 +47,7 @@ public class crawl {
                 if (i == 1) // 값 존재 안하면
                     ingredient = str;
                 else // 값 존재 하면
-                    ingredient = ingredient + "_" + str;
+                    ingredient = ingredient + "<br/>" + str;
                 System.out.println(str);
                 i++;
             }
@@ -59,7 +59,7 @@ public class crawl {
                 if (i == 1) // 값 존재 안하면
                     step = str;
                 else // 값 존재 하면
-                    step = step + "_" + str;
+                    step = step + "<br/>" + str;
                 System.out.println(i + ") " + str);
                 i++;
             }
@@ -73,7 +73,7 @@ public class crawl {
                 if (j == 1)
                     stepimg = str;
                 else
-                    stepimg = stepimg + " " + str;
+                    stepimg = stepimg + "<br/>" + str;
             }
 
 
