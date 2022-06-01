@@ -2,10 +2,7 @@ package food.foodproject.controller;
 
 import SQL.DAO;
 import food.foodproject.domain.Food;
-import food.foodproject.dto.FoodDto;
-import food.foodproject.dto.FoodOptionDto;
-import food.foodproject.dto.FoodRefDto;
-import food.foodproject.dto.SingleFoodDto;
+import food.foodproject.dto.*;
 import food.foodproject.repository.FoodRepository;
 import food.foodproject.repository.FoodRepositoryImpl;
 import food.foodproject.service.FoodService;
@@ -13,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
@@ -25,7 +23,8 @@ public class FoodController {
     private final FoodService foodService;
 
     @PostMapping("/option")
-    public List<FoodDto> option(@RequestBody FoodOptionDto dto) {
+    public List<FoodDto> option(@RequestBody FoodOptionDto dto, @RequestParam(defaultValue = "0") int start,
+                                @RequestParam(defaultValue = "12") int limit) {
         System.out.println(dto);
 
         List<String> notnull = Arrays.asList("");
@@ -34,14 +33,17 @@ public class FoodController {
         if(dto.getSituations() == null) dto.setSituations(notnull);
         if(dto.getIngredients() == null) dto.setIngredients(notnull);
 
-        System.out.println(dto.getIngredients());
 
-        if(dto.getRefrigerator().toString() == "") {
+        if(StringUtils.hasText(dto.getRefrigerator().toString())) {
             dto.setRefrigerator(notnull);
-            return foodService.findFoodByOption(dto);
+            List<FoodDto> foods = foodService.findFoodByOption(dto, start, limit);
+            FoodResultDto foodResultDto = new FoodResultDto(foods, false);
+            return foods;
         }
         else {
-            return foodService.findFoodByRef(dto.getRefrigerator());
+            List<FoodDto> foods = foodService.findFoodByRef(dto.getRefrigerator(), start, limit);
+            FoodResultDto foodResultDto = new FoodResultDto(foods, false);
+            return foods;
         }
 
 
@@ -52,7 +54,10 @@ public class FoodController {
         return foodService.findSingleFood(dto);
     }
 
-
+    @GetMapping("/search")
+    public List<FoodDto> search(@RequestParam String search) {
+        return foodService.findFoodBySearch(search);
+    }
 
 
 }
