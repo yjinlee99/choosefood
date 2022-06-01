@@ -8,6 +8,7 @@ import CreateIngredient from "./CreateIngredient";
 
 function Refrigerator() {
     const Id = sessionStorage.getItem("id", Id);
+    const [users, setUsers] = useState([{}]);
     const [userRef, setUserRef] = useState([[]]);
     useEffect(() => {
       fetch('/ref/member', {
@@ -20,6 +21,7 @@ function Refrigerator() {
     .then(res => res.json())
     .then(userRef => {
         setUserRef(userRef);
+        setUsers(userRef);
     })
     },[])
 
@@ -29,11 +31,11 @@ function Refrigerator() {
       const { name, value } = e.target;
       setInputs({ ...inputs, [name]: value,});
     };
-    const [users, setUsers] = useState([
-      { id: 1, username: "딸기"},
-      { id: 2, username: "초코"},
-      { id: 3, username: "바나나"},
-    ]);
+    // const [users, setUsers] = useState([
+    //   { id: 1, username: "딸기"},
+    //   { id: 2, username: "초코"},
+    //   { id: 3, username: "바나나"},
+    // ]);
     const nextId = useRef(4);
     const onCreate = () => {
       if(username == "") {
