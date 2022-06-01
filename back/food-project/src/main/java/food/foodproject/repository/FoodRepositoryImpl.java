@@ -48,14 +48,15 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
     }
 
     @Override
-    public List<FoodDto> findBySearchRefrigerator(List<String> ingredients) {
-        System.out.println(ingredients);
+    public List<FoodDto> findBySearchRefrigerator(List<String> ingredients, int start, int limit) {
+//        System.out.println(ingredients);
         List<FoodDto> foodDto = jpaQueryFactory
                                     .select(Projections.bean(FoodDto.class,
                                             food.name,
                                             food.thumbnail
                                     ))
                                     .from(food)
+                .offset(start).limit(limit)
                                     .where(foodIsNotNull())
                                     .where(refEq(ingredients))
                                     .fetch();
@@ -72,7 +73,7 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
     }
 
     @Override
-    public List<FoodDto> findBySearchOption(List<String> themes, List<String> tastes, List<String> ingredients, List<String> situations) {
+    public List<FoodDto> findBySearchOption(List<String> themes, List<String> tastes, List<String> ingredients, List<String> situations, int start, int limit) {
 
         System.out.println(themes);
         List<FoodDto> foodDto = jpaQueryFactory
@@ -81,6 +82,8 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
                                             food.thumbnail
                                     ))
                                     .from(food)
+                                    .offset(start)
+                                    .limit(limit)
                                     .where(foodIsNotNull())
                                     .where(themeEq(themes))
                                     .where(tasteEq(tastes))

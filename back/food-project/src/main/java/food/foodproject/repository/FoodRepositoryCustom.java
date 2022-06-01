@@ -7,7 +7,7 @@ import java.util.List;
 
 @Repository
 public interface FoodRepositoryCustom {
-    List<FoodDto> findBySearchRefrigerator(List<String> ingredients);
-    List<FoodDto> findBySearchOption(List<String> themes, List<String> tastes, List<String> ingredients, List<String> situations);
+    List<FoodDto> findBySearchRefrigerator(List<String> ingredients, int start, int limit);
+    List<FoodDto> findBySearchOption(List<String> themes, List<String> tastes, List<String> ingredients, List<String> situations, int start, int limit);
     public List<FoodDto> findBySearch(String str);
 }

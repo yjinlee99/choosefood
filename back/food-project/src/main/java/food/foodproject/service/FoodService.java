@@ -17,8 +17,9 @@ public class FoodService {
 
     private final FoodRepository foodRepository;
 
-    public List<FoodDto> findFoodByOption(FoodOptionDto dto) {
-        List<FoodDto> foods = foodRepository.findBySearchOption(dto.getTheme(), dto.getTaste(), dto.getIngredients(), dto.getSituations());
+    public List<FoodDto> findFoodByOption(FoodOptionDto dto, int start, int limit) {
+        List<FoodDto> foods = foodRepository.findBySearchOption(dto.getTheme(), dto.getTaste(), dto.getIngredients(), dto.getSituations(), start, limit);
+
         return foods;
     }
 
@@ -28,8 +29,8 @@ public class FoodService {
         System.out.println(food);
         return food;
     }
-    public List<FoodDto> findFoodByRef(List<String> refrigerator) {
-        List<FoodDto> foods = foodRepository.findBySearchRefrigerator(refrigerator);
+    public List<FoodDto> findFoodByRef(List<String> refrigerator, int start, int limit) {
+        List<FoodDto> foods = foodRepository.findBySearchRefrigerator(refrigerator, start,  limit);
         return foods;
     }
 
