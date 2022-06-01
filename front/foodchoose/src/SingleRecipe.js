@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import StarIcon from '@material-ui/icons/StarRounded';
 import Banner from './Banner';
 import './SingleRecipe.css';
+import Comment from './Comment';
+
 var datas=[];
 function SingleRecipe() {
     const [dtos, setDtos] = useState([]);
@@ -44,35 +46,6 @@ function SingleRecipe() {
                  setStepImg(data.stepImg.split("<br/>"));
             });
     },[])
-
-    const [ comment, setComment ] = useState("");
-
-    const onCommentHandler = (event) => {
-        setComment(event.currentTarget.value)
-    }
-
-    const goBackend = () => {
-        alert("댓글 등록 완료!")
-        fetch('/join', {
-          method: 'post',
-          body: JSON.stringify({
-            댓글: comment
-          })
-      })
-      .then(res => res.json())
-      .then(res => {
-          if (res.success) {
-              alert("등록 완료!");
-          }
-      })
-      }
-
-    let Comment = [
-        { id: 1, profile: "프로필", username: "뽀로로", comment: "맛있겠다", time: ""},
-        { id: 2, profile: "프로필", username: "크롱", comment: "별로야", time: ""},
-        { id: 3, profile: "프로필", username: "에디", comment: "좋다", time: ""},
-        
-    ];
     
     return(
         <div>
@@ -97,32 +70,9 @@ function SingleRecipe() {
                     { Recipe.map((a) => (
                     <span>{Recipe.indexOf(a)+1 + ") " + a}<br/><img src={StepImg[Recipe.indexOf(a)]} width="700"/><br/><br/><br/></span>
                     ))}</div>
-                    <div className="comment-container"> &nbsp; 댓글 
-                        <div className="writing-comment">
-                            <textarea className="comment-textarea" id="comment-text" onChange={onCommentHandler}/>
-                            <input type="submit" value="등록" className="comment-btn" onClick={goBackend} />
-                        </div>
-                        { Comment.map((a) => (
-                            <div className="comments"> 
-                                <div className="user-info">
-                                    <div className="Profile">
-                                        <div className="Profile-link"> { a.profile }</div>
-                                    </div>
-    
-                                    <div className="username">
-                                        <div className="username-link">{ a.username }</div>
-                                    </div>
-                                </div>                        
-    
-                                <div className="comment-info">
-                                    <div className="comment"> { a.comment } </div>
-                                    <div className="comment-time">  { a.time } </div>
-                                </div>
-    
-                                <input type="submit" value="삭제" className="comment-delbtn"></input> 
-                            </div>
-                        ))}
-                        </div>
+                    <div className="comment-area">
+	                    <Comment />
+                    </div>
                     </div>
                 </div>
             </div>
