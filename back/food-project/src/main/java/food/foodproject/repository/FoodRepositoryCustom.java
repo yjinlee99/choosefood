@@ -9,4 +9,5 @@ import java.util.List;
 public interface FoodRepositoryCustom {
     List<FoodDto> findBySearchRefrigerator(List<String> ingredients);
     List<FoodDto> findBySearchOption(List<String> themes, List<String> tastes, List<String> ingredients, List<String> situations);
+    public List<FoodDto> findBySearch(String str);
 }

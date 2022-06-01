@@ -33,4 +33,10 @@ public class FoodService {
         return foods;
     }
 
+    public List<FoodDto> findFoodBySearch(String str) {
+        List<FoodDto> foods = foodRepository.findBySearch(str);
+
+        return foods;
+    }
+
 }

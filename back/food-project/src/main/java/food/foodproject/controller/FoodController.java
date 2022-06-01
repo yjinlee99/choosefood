@@ -52,7 +52,10 @@ public class FoodController {
         return foodService.findSingleFood(dto);
     }
 
-
+    @GetMapping("/search")
+    public List<FoodDto> search(@RequestParam String search) {
+        return foodService.findFoodBySearch(search);
+    }
 
 
 }

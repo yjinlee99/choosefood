@@ -22,6 +22,32 @@ public class FoodRepositoryImpl implements FoodRepositoryCustom {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
+    public List<FoodDto> findBySearch(String str) {
+        return jpaQueryFactory
+                                    .select(Projections.bean(FoodDto.class,
+                                            food.name,
+                                            food.thumbnail
+                                    ))
+                                    .from(food)
+                                    .where(foodIsNotNull())
+                                    .where(searchEq(str))
+                                    .fetch();
+    }
+
+    private BooleanBuilder searchEq(String str) {
+        BooleanBuilder builder = new BooleanBuilder();
+
+        builder.or(food.name.contains(str))
+                .or(food.ingredient.contains(str))
+                .or(food.situation.contains(str))
+                .or(food.intro.contains(str))
+                .or(food.taste.contains(str))
+                .or(food.theme.contains(str));
+
+        return builder;
+    }
+
+    @Override
     public List<FoodDto> findBySearchRefrigerator(List<String> ingredients) {
         System.out.println(ingredients);
         List<FoodDto> foodDto = jpaQueryFactory
