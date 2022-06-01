@@ -7,22 +7,20 @@ import CreateIngredient from "./CreateIngredient";
 
 
 function Refrigerator() {
-    const [userInfo, setUserInfo] = useState([[]]);
-    useEffect(() => {
-        fetch('/user')
-            .then(response => response.json())
-            .then(userInfo => {
-                setUserInfo(userInfo);
-            });
-    },[])
-  
+    const Id = sessionStorage.getItem("id", Id);
     const [userRef, setUserRef] = useState([[]]);
     useEffect(() => {
-        fetch('/userRef')
-            .then(response => response.json())
-            .then(userRef => {
-                setUserRef(userRef);
-            });
+      fetch('/ref/member', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id: Id
+        })
+    })
+    .then(res => res.json())
+    .then(userRef => {
+        setUserRef(userRef);
+    })
     },[])
 
     const [inputs, setInputs] = useState({ username: "" });
@@ -71,10 +69,11 @@ function Refrigerator() {
     }
 
     const onUpdate = () => {
-      fetch('/refUpdate', {
+      fetch('/ref/update', {
         method: 'post',
         body: JSON.stringify({
-          users: users,
+          id: Id,
+          havingIngredient: users,
         })
       })
       alert("냉장고 재료가 수정 되었습니다.");
