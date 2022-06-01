@@ -46,11 +46,12 @@ function SignUp() {
     }
     fetch('/join', {
       method: 'post',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-          name: name,
+          nickname: name,
           email:email,
           phone:phone,
-          passwd:passwd,
+          password:passwd,
       })
     })
     .then(res => res.json())

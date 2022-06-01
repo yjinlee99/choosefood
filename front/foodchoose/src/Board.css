@@ -146,7 +146,7 @@
     text-align: center;
 }
 
-.Stars {
+.Date {
     position: relative;
     border: 1px solid black;
     top: -88px;
@@ -154,7 +154,9 @@
     width: 200px;
     height: 20px;
     text-align: center;
-    color: rgba(255, 234, 0, 0.905);
+    color: gray;
+    font-weight: bold;
+    font-style: italic;
 }
 
 
@@ -168,4 +170,6 @@
     line-height: 20.5px;
     font-size: 12px;
     text-align: center;
+    color: blue;
+    font-weight: bold;
 }

@@ -93,8 +93,10 @@
 .Thump {
     position: relative;
     border: 1px solid black;
-    width: 350px;
-    height: 160px;
+    /* width: 350px;
+    height: 160px; */
+    width: 50%;
+    min-height: 45%;
     line-height: 150px;
     text-align: center;
 }
@@ -142,7 +144,7 @@
     width: 200px;
     height: 20px;
     text-align: center;
-    color: rgba(255, 234, 0, 0.905);
+    color: black;
 }
 
 

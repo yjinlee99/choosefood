@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect }  from 'react';
 import './MyWriting.css';
 import Banner from "../Banner";
 import StarIcon from '@material-ui/icons/StarRounded';
@@ -6,6 +6,23 @@ import { Link } from "react-router-dom";
 
 
 function MyWriting(){
+    const id = sessionStorage.getItem("id", id);
+    const [dtos, setDtos] = useState([[]]);
+    useEffect(() => {
+        const requestOptions = {
+            method:'post',  
+            headers: { 'Content-Type': 'application/json' },
+            body:JSON.stringify({
+                id: id
+            })
+        }
+        fetch('/post/my',requestOptions)
+        .then(response => response.json())
+        .then(dtos => {
+            setDtos(dtos);
+        });
+    },[])
+    
     return(
         <div>
             <div className="Header"><Banner/></div>
@@ -26,7 +43,7 @@ function MyWriting(){
                                 </Link>
                             </div>
                             <h4 className="Title">
-                                <Link to=""><div className="Title-link">제목</div></Link>
+                                <Link to=""><div className="Title-link">{dtos[0].title}</div></Link>
                             </h4>
                             <div>
                                 <div className="Stars">

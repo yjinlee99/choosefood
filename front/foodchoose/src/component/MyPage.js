@@ -5,6 +5,9 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 
 function MyPage(){
+  const email = sessionStorage.getItem("email", email);
+  const id = sessionStorage.getItem("id", id);
+  const nickname = sessionStorage.getItem("nickname", nickname);
   const [user, setUser] = useState([[]]);
   useEffect(() => {
       fetch('/user')
@@ -26,10 +29,10 @@ function MyPage(){
               </div>
 
               <div id='idContainer'>
-                <div id='profileName'>{user[2]}
+                <div id='profileName'>{nickname}
                 <Link to='/EditProfile'><EditIcon color='action' fontSize='small' /></Link>
                 </div><br />
-                <div id='profileId'>{user[0]}</div>
+                <div id='profileId'>{email}</div>
               </div>
             
               <div id='wrapEdit'>

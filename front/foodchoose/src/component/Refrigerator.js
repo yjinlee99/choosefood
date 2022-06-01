@@ -56,11 +56,16 @@ function Refrigerator() {
       setUsers(users.filter((user) => user.id !== id));
     };
 
+    const optionchecked4 = [];
+    for (let i = 0; i < users.length; i++) {
+      optionchecked4.push(users[i].username);
+    }
     const goBackend = () => {
-      fetch('/ref', {
+      fetch('/refoption', {
         method: 'post',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          users: users,
+          users: optionchecked4,
         })
       })
     }
@@ -100,7 +105,9 @@ function Refrigerator() {
         </div>
 
         <div>
-        <Link to="/Recipe">
+        <Link to={{
+          pathname: `/Recipe?theme=""&taste=""&ingredient=""&situation=""&refrigerator=${optionchecked4}`,
+      }}>
           <input id='searchRecipe' type='submit' value="레시피 검색" onClick={goBackend}></input>
           </Link>
           

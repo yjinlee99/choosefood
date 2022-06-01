@@ -9,8 +9,8 @@ function Writing() {
     const [ Introducing, setIntroducing ] = useState("");
     const [ Need, setNeed ] = useState("");
     const [ Step, setStep ] = useState([]);
-    const [ StepImg, setStepImg ] = useState([]);
-
+    const [ StepImg, setStepImg ] = useState("");
+    const id = sessionStorage.getItem("id", id);
 
     const onNamingHandler = (event) => {
         setNaming(event.currentTarget.value)
@@ -34,14 +34,17 @@ function Writing() {
 
     const goBackend = () => {
         if(window.confirm("게시물을 등록 하시겠습니까?")) {
-            fetch('/post', {
+            fetch('/post/save', {
             method: 'post',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                name: Naming,
-                intro: Introducing,
+                memberId: id,
+                title: Naming,
+                introduce: Introducing,
+                thumbImg: StepImg[0],
                 ingredient: Need,
-                recipe: Step[0],
-                stepimg: StepImg
+                stepImg: StepImg,
+                recipe: Step[0]
                 })
             }) 
         }
