@@ -20,7 +20,7 @@ function LoginForm() {
     }
     const onPasswdHandler = (event) => {
         setPasswd(event.currentTarget.value)
-      }
+    }
 
       const goBackend = () => {
         if(email == "") {
@@ -33,16 +33,22 @@ function LoginForm() {
         }
         fetch('/login', {
             method: 'post',
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 email:email,
-                passwd:passwd,
+                password:passwd,
             })
         })
         .then(res => res.json())
-        .then(response => {
-            if(JSON.parse(response)) {
+        .then(memberResponse => {
+            console.log(memberResponse);
+            if(memberResponse.id) {
                 alert("환영합니다.");
+                sessionStorage.setItem("id", memberResponse.id);
                 sessionStorage.setItem("email", email);
+                sessionStorage.setItem("password", passwd);
+                sessionStorage.setItem("nickname", memberResponse.nickname);
+                sessionStorage.setItem("phone", memberResponse.phone);
                 window.location.replace("/Main")
             } else {
                 alert("이메일이 존재하지 않거나 올바르지 않은 입력입니다.");

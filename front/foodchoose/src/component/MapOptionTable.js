@@ -92,17 +92,6 @@ const MapOptionTable = () => {
         optionchecked4.push($optionchecked4[i].value)
     }
 
-    const goBackend = () => {
-        fetch('/option', {
-          method: 'post',
-          body: JSON.stringify({
-            theme:optionchecked1,
-            taste:optionchecked2,
-            ingredient:optionchecked3,
-            situation:optionchecked4,
-          })
-      })
-    }
 
     return (
         <div className="Option">         
@@ -144,7 +133,11 @@ const MapOptionTable = () => {
                 </div>
             </div>
 
-            <Link to="/MapRecipe"><input type="submit" id="Find" value="찾기" onClick={goBackend}/></Link>
+            
+            <Link to={{
+          pathname: `/MapRecipe?theme=${optionchecked1}&taste=${optionchecked2}&ingredient=${optionchecked3}&situation=${optionchecked4}&refrigerator=`,
+      }}>  <button className="findRecipe" id="Find">검색</button>
+      </Link>
         </div>
     );
 };

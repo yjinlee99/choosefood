@@ -8,22 +8,32 @@ import { Link } from "react-router-dom";
 
 function Board() {
     const [posts, setPosts] = useState([[]]);
+    const [Date, setDate] = useState([]);
     useEffect(() => {
         fetch('/posts')
             .then(response => response.json())
             .then(posts => {
                 setPosts(posts);
+                var arr = [];
+                var str1, str2;
+                for(var i=0; i<posts.length;i++) {
+                    str1 = posts[i].uploadDate.split("T");
+                    str2 = str1[1].split(".");
+                    str1 = str1[0] + " / " + str2[0];
+                    arr[i] = str1;
+                }
+                setDate(arr);
             });
     },[])
 
-    let Info = [
-        { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
-        { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
-        { id: 3, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
-        { id: 4, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
-        { id: 5, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
-        { id: 6, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
-    ];
+    // let Info = [
+    //     { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
+    //     { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
+    //     { id: 3, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
+    //     { id: 4, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
+    //     { id: 5, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
+    //     { id: 6, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
+    // ];
 
     const [board, setBoard] = useState("")
     const onBoardHandler = (event) => {
@@ -34,7 +44,7 @@ function Board() {
             alert("검색어를 입력하세요.")
             return;
         } else {
-            fetch('/board', {
+            fetch('/posts', {
                 method: 'post',
                 body: JSON.stringify({
                     board: board
@@ -66,7 +76,7 @@ function Board() {
             
             <div id='info-con'>
             <div id="Container">
-                { posts.map((a) => (
+                { posts && posts.map((a) => (
                     <div className="Content">  
                         <div className="Thump">
                             <Link to="/SingleRecipe">
@@ -82,12 +92,12 @@ function Board() {
                             </div>
 
                             <h4 className="Title">
-                                <Link to={"/SinglePost/?" + a.name}><div className="Title-link">{ a.name }</div></Link>
+                                <Link to={"/SinglePost/?" + a.title}><div className="Title-link">{ a.title }</div></Link>
                             </h4>
                             
                             <div>
-                                <div className="Stars"> { a.star } </div> &nbsp;
-                                <div className="Hits">  { a.hit } </div>
+                                <div className="Date">{ Date[posts.indexOf(a)] }</div> &nbsp;
+                                <div className="Hits">조회수 { a.view }</div>
                             </div>
                         </div>
                     </div>

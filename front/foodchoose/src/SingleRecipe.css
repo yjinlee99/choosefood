@@ -11,7 +11,7 @@
     transform: translate(50%);
     width: 50%;
     min-height: 45%;
-    line-height: 280px;
+    object-fit: fill;
 }
 
 .Recipe-name {
@@ -26,7 +26,7 @@
     min-height: 40px;
     line-height: 40px;
     font-weight: bold;
-    font-size: smaller;
+    font-size: 30px;
 }
 
 .likehit {
@@ -80,7 +80,9 @@
     min-height: 60px;
     line-height: 40px;
     font-weight: bold;
-    font-size: smaller;
+    font-size: 18px;
+    color: gray;
+    font-style: italic;
 }
 
 .Recipe-Ingre{
@@ -94,7 +96,7 @@
    min-height: 80px;
    line-height: 40px;
    font-weight: bold;
-   font-size: smaller;
+   font-size: 16px;
 }
 
 .Recipe-detail{
@@ -109,7 +111,7 @@
    min-height: 160px;
    line-height: 45px;
    font-weight: bold;
-   font-size: smaller;
+   font-size: 20px;
 }
 
 .comment-container{
