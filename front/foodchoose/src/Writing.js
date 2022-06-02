@@ -10,26 +10,38 @@ function Writing() {
     const [ Need, setNeed ] = useState("");
     const [ Step, setStep ] = useState([]);
     const [ StepImg, setStepImg ] = useState("");
+    const [ Thumb, setThumb ] = useState("");
+
     const id = sessionStorage.getItem("id", id);
+    const thumbImg = sessionStorage.getItem("thumbImg", thumbImg);
 
     const onNamingHandler = (event) => {
         setNaming(event.currentTarget.value)
     }
     
     const onIntroducingHandler = (event) => {
-        setIntroducing(event.currentTarget.value)
+        setIntroducing(event.target.value)
     }
 
     const onNeedHandler = (event) => {
         setNeed(event.currentTarget.value)
     }
 
-    const onStepHandler = (event) => {
-        setStep(event.currentTarget.value)
+    const onStepHandler = (e) => {
+        setStep(e.target.value);
+        console.log(e.currentTarget.value)
     }
 
     const onStepImgHandler = (event) => {
-        setStepImg(event.currentTarget.value)
+        setStepImg(event.target.files[0].name)
+        setFileImage(URL.createObjectURL(event.target.files[0]));
+        console.log(event.target.files[0].name)
+    }
+
+    const onThumbHandler = (event) => {
+        setThumb(event.target.files[0].name)
+        setFileImage(URL.createObjectURL(event.target.files[0]));
+        console.log(event.target.files[0].name)
     }
 
     const goBackend = () => {
@@ -41,7 +53,7 @@ function Writing() {
                 memberId: id,
                 title: Naming,
                 introduce: Introducing,
-                thumbImg: StepImg[0],
+                thumbImg: Thumb,
                 ingredient: Need,
                 stepImg: StepImg,
                 recipe: Step[0]
@@ -51,41 +63,28 @@ function Writing() {
         window.location.replace("/Board")
     }
 
-    const [ countList, setCountList ] = useState([0]);
-    let num = 1
-    
-    const onAddDetailDiv = () => {
-        let countArr = [ ...countList ]
-        let counter = countArr.slice(-1)[0]
-        counter += 1
-        countArr.push(counter)
-        setCountList(countArr)
+  //파일 미리볼 url을 저장해줄 state
+  const [fileImage, setFileImage] = useState("");
 
-        num += 1
-    }
-
-    const DetailList = (props) => {
-
-        return (
-            <div>
-                {props.countList && props.countList.map((i, num) => (
-                    <div key={i} >
-                        <div className="Condition" id="Steps">
-                            <div className="Step" id="stepWord"> STEP {num+1} </div>
-                            <textarea id="Step-textarea" className="Step1" onChange={onStepHandler}/> 
-                            <input type="file" id="Step-photo" className="Step1" onChange={onStepImgHandler} />
-                        </div>
-                    </div>
-                ))}
-            </div>
-        )
-    }
-
+  // 파일 저장
+  const saveFileImage = (e) => {
+    setFileImage(URL.createObjectURL(e.target.files[0]));
+    document.getElementById("postThumbImg").style.display="none";
+  };
     return (
         <div>         
             <div className="Header"><Banner/></div>
+            
 
             <div id="Conditions">
+                <div className="Condition" id="Thumbnail">
+                    <div className="Con"> 썸네일 </div>
+                        {fileImage && (
+                            <img alt="sample" src={fileImage}/>
+                        )}
+                    <input id="post-thumb" type="file" onChange={onThumbHandler} />
+                </div>
+
                 <div className="Condition" id="Naming">
                     <div className="Con"> 레시피 제목 </div>
                     <textarea className="Naming-textarea" id="Naming-text" onChange={onNamingHandler}/>
@@ -101,18 +100,19 @@ function Writing() {
                     <textarea className="Need-textarea" id="Need-text" onChange={onNeedHandler}/>
                 </div>
 
-                <div className="Con" id="StepsCon"> 레시피 </div>
+                <div className="Condition" id="Step">
+                    <div className="Con" id="StepsCon"> 레시피 </div>    
+                    <textarea id="Step-textarea" onChange={onStepHandler} /> 
+                    <input type="file" id="Step-photo" onChange={onStepImgHandler} />
+                </div>
 
-                <div>
-                <DetailList countList={countList} num={num}/>
-                <div id="Step-add" className="Step" onClick={onAddDetailDiv}> + </div>
-                <div className="Step" id="stepNum"> </div> 
-            
-                <Link to="/SingleRecipe">
-                    <div id="Submit" onClick={goBackend}> 등록하기 </div>
+                <Link to="/SingleRecipe" style={{textDecoration: "none"}}>
+                    <div id="Submit" onClick={() => {
+                         goBackend();
+                         sessionStorage.setItem("thumbImg", Thumb);
+                    }}> 등록하기 </div>
                 </Link>
                 <br />
-                </div>
             </div>
         </div>
     );

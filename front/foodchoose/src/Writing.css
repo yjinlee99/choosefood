@@ -27,9 +27,6 @@
 #StepsCon {
     position: relative;
     text-align: center;
-    top: 82px;
-    left: 10%;
-    margin-left: 15px;
 }
 
 textarea {
@@ -43,47 +40,29 @@ textarea {
     font-size: 15px;
 }
 
+#Naming {
+    margin-bottom: 20px;
+    height: 100px;
+}
+
 .Naming-textarea {
-    height: 20px;
+    position: absolute;
+    align-items: center;
+    width: 60%;
+    resize: none;
+    padding: 10px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
 #Introducing {
     position: relative;
-    top: 10px;
+    top: -5px;    
 }
 
 .Introducing-textarea {
     height: 40px;
-    top: 10px;
-}
-
-#Cataloging {
-    position: relative;
-    top: 40px;
-}
-
-#Catal-options {
-    position: relative;
-    left: 24%;
-    margin-left: 60px;
-}
-
-.Catal-option {
-    position: relative;
-    width: 100%;
-    height: 40px;
-    line-height: 40px;
-    text-align: left;
-}
-
-input {
-    position: relative;
-    margin-left: 20px;
-}
-
-#Need {
-    position: relative;
-    top: 45px;
 }
 
 .Need-textarea {
@@ -91,25 +70,9 @@ input {
     top: 10px;
 }
 
-#Steps {
+#Step {
     position: relative;
-    height: 150px;
-    top: 25px;
-}
-
-#stepWord {
-    position: relative;
-    left: 10%;
-    width: 60px;
-    margin-left: 35px;
-    text-align: center;
-}
-
-#stepNum {
-    position: relative;
-    left: 20%;
-    top: -112.5px;
-    width: 10px;
+    height: 200px;
 }
 
 #Step-textarea {
@@ -138,24 +101,33 @@ input {
     flex-direction: column;
 }
 
-#Step-add {
+#Thumbnail {
+    height: 170px;
+}
+
+#Thumbnail img {
     position: relative;
     border: 1px solid black;
-    border-radius: 20px;
-    top: -90px;
-    width: 30px;
-    height: 30px;
-    left: 85%;
-    text-align: center;
-    margin-left: 80px;
-    line-height: 25px;
-    font-size: x-large;
+    padding: 5px;
+    width: 330px;
+    height: 159px;
+    left: 377px;
+    overflow: hidden;
+}
+
+#post-thumb {
+    position: absolute;
+    width: 16%;
+    left: 60%;
+    margin-left: 65px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 #Submit {
     position: relative;
     border: 2px solid #ff6f61;
-    bottom: 3px;
     left: 40%;
     width: 18%;
     height: 35px;

@@ -31,7 +31,7 @@ function MyWriting(){
             <div id="Container">
             { dtos && dtos.map((a) => (
                     <div className="Content">  
-                            <Link to={"/SinglePost/?" + a.title}><img src={a.thumbnail} width="350px" height="200px" style={{borderRadius:'5px'}}/> </Link>
+                            <Link to={"/SinglePost/?" + a.title}><img src={"\\img\\"+ a.thumbImg} width="350px" height="200px" style={{borderRadius:'5px'}}/> </Link>
                             <div id='infoBoard'>
                                 <Link to=""><div ><img id='profileBoard' src="/img/profile.png" width="50px" style={{borderRadius:'70%'}}></img> { a.profile }</div></Link>
                                 <div id='infoBoard2'>
