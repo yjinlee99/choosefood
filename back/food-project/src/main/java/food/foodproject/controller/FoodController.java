@@ -32,13 +32,14 @@ public class FoodController {
         if(dto.getIngredients() == null) dto.setIngredients(notnull);
 
 
-        if(StringUtils.hasText(dto.getRefrigerator().toString())) {
-            dto.setRefrigerator(notnull);
+        if(dto.getRefrigerator().contains("false")) {
+            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
             List<FoodDto> foods = foodService.findFoodByOption(dto);
             FoodResultDto foodResultDto = new FoodResultDto(foods, false);
             return foods;
         }
         else {
+            System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
             List<FoodDto> foods = foodService.findFoodByRef(dto.getRefrigerator());
             FoodResultDto foodResultDto = new FoodResultDto(foods, false);
             return foods;

@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Data
 public class PostSingleDto {
 
+    private Long id;
     private String title;
     private LocalDateTime uploadDate;
     private String introduce;
@@ -20,7 +21,8 @@ public class PostSingleDto {
 
     public PostSingleDto() {};
 
-    public PostSingleDto(String title, LocalDateTime uploadDate, String introduce, String thumbImg, String ingredient, String recipe, String stepImg, int view, String memberImg) {
+    public PostSingleDto(Long id, String title, LocalDateTime uploadDate, String introduce, String thumbImg, String ingredient, String recipe, String stepImg, int view, String memberImg) {
+        this.id = id;
         this.title = title;
         this.uploadDate = uploadDate;
         this.introduce = introduce;
