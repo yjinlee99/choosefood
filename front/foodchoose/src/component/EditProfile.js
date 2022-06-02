@@ -76,14 +76,14 @@ function EditProfile(){
               <tr>
                 <td><h4 id='editProfileH4'>프로필 사진</h4></td>
                 <td>
-                    {fileImage && (
+                {fileImage && (
                       <img
                         alt="sample"
                         src={fileImage}
-                        style={{ margin: "auto", width:"100px", height:"100px" }}
+                        style={{ margin: "auto", width:"100px", height:"100px", borderRadius:"70%", objectFit:'cover' }}
                       />
                     )}
-                        <img id='editProfileImg' src={"\\img\\"+ img} width='100px' height='100px'/>
+                        <img id='editProfileImg' src={"\\img\\profile\\"+ img} width='100px' height='100px'/>
                         <input id='editProfileInput' 
                         name="imgUpload"
                         accept="image/*"

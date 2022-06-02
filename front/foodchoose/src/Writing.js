@@ -1,4 +1,3 @@
-import { stepClasses } from '@mui/material';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Banner from './Banner';
@@ -56,7 +55,7 @@ function Writing() {
                 thumbImg: Thumb,
                 ingredient: Need,
                 stepImg: StepImg,
-                recipe: Step[0]
+                recipe: Step
                 })
             }) 
         }
@@ -103,7 +102,6 @@ function Writing() {
                 <div className="Condition" id="Step">
                     <div className="Con" id="StepsCon"> 레시피 </div>    
                     <textarea id="Step-textarea" onChange={onStepHandler} /> 
-                    <input type="file" id="Step-photo" onChange={onStepImgHandler} />
                 </div>
 
                 <Link to="/SingleRecipe" style={{textDecoration: "none"}}>

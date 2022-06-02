@@ -74,9 +74,7 @@ const MapContainer=({searchPlace})=>{
         
         var locPosition = new kakao.maps.LatLng(lat, lon), // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성합니다
             message = '<div style="width:50px; text-align:center;">현위치</div>'; // 인포윈도우에 표시될 내용입니다
-        
-            document.getElementById("lat2").innerHTML=lat;
-            document.getElementById("lon2").innerHTML=lon;
+  
         // 마커와 인포윈도우를 표시합니다
         displayMarker(locPosition, message);
 
@@ -200,10 +198,7 @@ function displayMarker(locPosition, message) {
           </div>
 
           {Places.map((item, i) => (
-            <div id='info2' key={i} style={{ paddingTop:'10px', paddingBottom:"10px", borderTop: '1px solid #ff6161' }}
-                  onClick={()=>{
-                    alert(i+1)
-                  }}>
+            <div id='info2' key={i} style={{ paddingTop:'10px', paddingBottom:"10px", borderTop: '1px solid #ff6161' }}>
               <div style={{fontSize:'0.8em' }}>{i + 1}</div>
               <div style={{fontWeight:'bold', fontSize:'1.1em'}}>{item.place_name}</div>
               <div style={{fontSize:'0.8em' }}>{item.road_address_name}</div>
@@ -218,11 +213,6 @@ function displayMarker(locPosition, message) {
         <div id="map" style={{ width: "100%", height: "700px" }}></div>
       
       </div>
-
-        <div> 현재위치: 
-          <span>위도</span><span id="lat2"></span>/
-        <span>경도</span><span id="lon2"></span>
-        </div>
 
         </div>
 

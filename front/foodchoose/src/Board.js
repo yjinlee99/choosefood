@@ -76,47 +76,32 @@ function Board() {
             <div className="Header">
                 <Banner/>
             </div>
-
-            <div className="Search">
-                <input className="Search-input" placeholder=" 통합 검색" type="text" onChange={onBoardHandler}/>
-                <Link to="/Board"><SearchIcon className="Search-icon" onClick={goBackend}/></Link>
-            </div>
-        
-            <select id="Array" onChange={handleSelect}>
-                <option value="name"> 이름순 </option>
+            
+            <select id="Board-Array" onChange={handleSelect}>
                 <option value="view"> 조회순 </option>
+                <option value="name"> 이름순 </option>
             </select>
-
             <Link to="/Writing"><div className="GotoWrite"> 글쓰기 </div></Link>
             
             <div id='info-con'>
             <div id="Container">
-                { posts && posts.map((a) => (
+            { posts && posts.map((a) => (
                     <div className="Content">  
-                        <div className="Thump">
-                            <Link to={"/SinglePost/?" + a.title}>
-                                <div className="Thump-link"> <img src={"\\img\\"+ a.thumbImg} width="350" height="160" /> </div>
-                            </Link>
-                        </div>
-                        
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <div className="Profile-link"><img src="/img/profile.png" width="50px"></img> { a.profile }</div>
-                                </Link>
-                            </div>
+                            <Link to={"/SinglePost/?" + a.title}><img src={"\\img\\"+ a.thumbImg} width="350px" height="200px" style={{borderRadius:'5px', objectFit: 'cover'}}/> </Link>
 
-                            <h4 className="Title">
-                                <Link to={"/SinglePost/?" + a.title}><div className="Title-link">{ a.title }</div></Link>
-                            </h4>
-                            
-                            <div>
-                                <div className="Date">{ Date[posts.indexOf(a)] }</div> &nbsp;
-                                <div className="Hits">조회수 { a.view }</div>
+                            <div id='infoBoard'>
+                                <Link to=""><div ><img id='profileBoard' src={"\\img\\profile\\"+ a.profileImg} width="50px" style={{borderRadius:'70%'}}></img> { a.profile }</div></Link>
+                                <div id='infoBoard2'>
+                                    <Link id='titleBoard' to={"/SinglePost/?" + a.title}><div id='titleBoard'>{ a.title }</div></Link>
+                                    <div id="datehit">
+                                        <div id="dateBoard">{ Date[posts.indexOf(a)] }</div> &nbsp;
+                                        <div id="hitBoard">조회수 { a.view }</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 ))}
+
             </div>
             </div>
         </div>

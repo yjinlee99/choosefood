@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import StarIcon from '@material-ui/icons/StarRounded';
 import Banner from './Banner';
 import './SingleRecipe.css';
-import Comment from './Comment';
 
 var datas=[];
 function SingleRecipe() {
@@ -70,9 +69,6 @@ function SingleRecipe() {
                     { Recipe.map((a) => (
                     <span>{Recipe.indexOf(a)+1 + ") " + a}<br/><img src={StepImg[Recipe.indexOf(a)]} width="700"/><br/><br/><br/></span>
                     ))}</div>
-                    <div className="comment-area">
-	                    <Comment />
-                    </div>
                     </div>
                 </div>
             </div>

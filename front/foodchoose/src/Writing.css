@@ -78,25 +78,11 @@ textarea {
 #Step-textarea {
     position: absolute;
     align-items: center;
-    width: 40%;
+    width: 60%;
     height: 140px;
-    left: 8%;
     resize: none;
     padding: 10px;
     font-size: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-#Step-photo {
-    position: absolute;
-    border: 1px solid black;
-    width: 16%;
-    height: 159px;
-    line-height: 159px;
-    left: 67%;
-    margin-left: 65px;
-    padding-left: 30px;
     display: flex;
     flex-direction: column;
 }

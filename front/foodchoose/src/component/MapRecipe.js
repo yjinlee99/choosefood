@@ -3,7 +3,6 @@ import './MapRecipe.css';
 import SearchIcon from '@material-ui/icons/Search';
 import StarIcon from '@material-ui/icons/StarRounded';
 import Banner from '../Banner';
-import Tab from '../Tab';
 import { Link } from "react-router-dom";
 
 
@@ -78,22 +77,12 @@ function MapRecipe() {
         
         
     };
-
-    let Info = [
-        { id: 1, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
-        { id: 2, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
-        { id: 3, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
-        { id: 4, thump: "썸", profile: "프", title: "타", star: <StarIcon />, hit: "조"},
-        { id: 5, thump: "네", profile: "로", title: "이", star: <StarIcon />, hit: "회"},
-        { id: 6, thump: "일", profile: "필", title: "틀", star: <StarIcon />, hit: "수"},
-    ];
                 
     return (
         <div className="Recipe">
 
             <div className="Header">
                 <Banner/>
-                <Tab />
             </div>
 
             <div className="Search">

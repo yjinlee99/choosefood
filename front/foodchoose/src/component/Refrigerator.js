@@ -12,6 +12,10 @@ function Refrigerator() {
     const [userRef, setUserRef] = useState([[]]);
 
     useEffect(() => {
+      if(sessionStorage.getItem("id")==null) {
+        alert("로그인이 필요합니다.");
+        window.location.replace("/Main");
+      }
       fetch('/ref/member', {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
