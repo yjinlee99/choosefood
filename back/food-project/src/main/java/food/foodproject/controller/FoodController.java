@@ -19,12 +19,10 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 public class FoodController {
-
     private final FoodService foodService;
 
     @PostMapping("/option")
-    public List<FoodDto> option(@RequestBody FoodOptionDto dto, @RequestParam(defaultValue = "0") int start,
-                                @RequestParam(defaultValue = "12") int limit) {
+    public List<FoodDto> option(@RequestBody FoodOptionDto dto) {
         System.out.println(dto);
 
         List<String> notnull = Arrays.asList("");
@@ -36,12 +34,12 @@ public class FoodController {
 
         if(StringUtils.hasText(dto.getRefrigerator().toString())) {
             dto.setRefrigerator(notnull);
-            List<FoodDto> foods = foodService.findFoodByOption(dto, start, limit);
+            List<FoodDto> foods = foodService.findFoodByOption(dto);
             FoodResultDto foodResultDto = new FoodResultDto(foods, false);
             return foods;
         }
         else {
-            List<FoodDto> foods = foodService.findFoodByRef(dto.getRefrigerator(), start, limit);
+            List<FoodDto> foods = foodService.findFoodByRef(dto.getRefrigerator());
             FoodResultDto foodResultDto = new FoodResultDto(foods, false);
             return foods;
         }
