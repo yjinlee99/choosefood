@@ -44,8 +44,9 @@
 }
 
 #editProfileImg {
-    border-radius: 5px;
+    border-radius: 70%;
     margin-right: 5px;
+    object-fit:cover;
 }
 
 #editProfileInput {

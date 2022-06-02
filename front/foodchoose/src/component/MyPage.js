@@ -29,7 +29,7 @@ function MyPage(){
            <div id='profileContainer1'>
               
               <div id='imageContainer'>
-                <img id='profileImage' src={"\\img\\"+ img} width='100px' height='100px'/>
+                <img id='profileImage' src={"\\img\\profile\\"+ img} width='100px' height='100px'/>
               </div>
 
               <div id='idContainer'>
@@ -43,16 +43,15 @@ function MyPage(){
                 <Link to='/EditInfo'><button id='editProfile'>회원 정보 수정</button></Link>
               </div>
 
+              <div id='buttonContainer'>
+             <Link to='/MyWriting'><button id='buttonMypage'>내가 쓴 글</button></Link>
+            </div>
+
               
 
             </div>
         
            </div>
-
-           <div id='buttonContainer'>
-             <Link to='/MyWriting'><button id='buttonMypage'>내가 쓴 글</button></Link>
-             <Link to='/MyComment'><button id='buttonMypage'>내가 쓴 댓글</button></Link>
-            </div>
                 
           </div>
         </div>

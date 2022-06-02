@@ -164,7 +164,8 @@ public class crawl {
         URL imgUrl = new URL(url);
         BufferedImage jpg = ImageIO.read(imgUrl);
         if (num == 1) {
-            File file = new File(".\\src\\main\\java\\crawling\\image\\" + folder + "\\TitleImage\\" + name + ".jpg");
+            //File file = new File(".\\src\\main\\java\\crawling\\image\\" + folder + "\\TitleImage\\" + name + ".jpg");
+            File file = new File(".\\src\\main\\java\\crawling\\image\\" + name + ".jpg");
             ImageIO.write(jpg, "jpg", file);
         } else if (num == 2) {
             File file = new File(".\\src\\main\\java\\crawling\\image\\" + folder + "\\StepImage\\" + name + ".jpg");

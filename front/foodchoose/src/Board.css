@@ -8,65 +8,35 @@
     background-color: white;
 }
 
-.Search {
-     position: fixed;
-     width: 100%;
-     display: flex;
-     top: 83px;
-     height: 150px;
-     align-items: center;
-     background-color: white;
-     z-index: 100;
-}
-
-.Search-input {
-    position: fixed;
-    transform: translate(76%);
-    height: 50px;
-    width: 39%;
-    border: 2px solid black;
-    font-weight: bold;
-    font-size: large;
-}
-
-.Search-icon {
-    position: absolute;
-    right: 30%;
-    top: 50px;
-    padding: 14px;
-    color: black;
-}
-
 .GotoWrite {
-    position: fixed;
+    position: relative;
     background-color: white;
     border: 2px solid black;
-    border-radius: 1px;
+    border-radius: 2px;
     display: inline-block;
-    top: 135.55px;
-    left: 75%;
-    transform: translate(80%);
-    width: 91px;
-    height: 35px;
-    line-height: 33px;
+    top: 134px;
+    left: 42%;
+    width: 150px;
+    height: 38px;
+    line-height: 36px;
     text-align: center;
     font-size: smaller;
     color: black;
-    z-index: 100;
+    margin-right: 5px;
 }
 
-#Array {
-    position: fixed;
-    left: 72%;
+#Board-Array {
+    position: relative;
+    left: 38%;
     top: 135px;
-    width: 95px;
-    height: 40px;
+    width: 155px;
+    height: 42px;
     background-color: white;
     border: 2px solid black;
     display: inline-block;
     line-height: 32px;
     padding: 3px 15px 0px 15px;
-    z-index: 100;
+    text-align: center;
     
     margin: 0 auto;
     -webkit-box-sizing: border-box;

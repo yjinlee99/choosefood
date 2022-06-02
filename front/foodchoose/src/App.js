@@ -20,11 +20,9 @@ import Writing from './Writing';
 import Restaurant from './component/Restaurant';
 import EditInfo from './component/EditInfo';
 import EditProfile from './component/EditProfile';
-import MyComment from './component/MyComment';
 import MyMenu from './component/MyMenu';
 import MyRestaurant from './component/MyRestaurant';
 import MyWriting from './component/MyWriting';
-import Tab from './Tab';
 import MapContainer from './component/MapContainer';
 import MapOption from './component/MapOption';
 import MapOptionTable from './component/MapOptionTable';
@@ -42,7 +40,6 @@ function App() {
       <Route path="/Board" element={<Board />} />
       <Route path="/SearchedRecipe" element={<SearchedRecipe />} />
       <Route path="/Writing" element={<Writing />} />
-      <Route path="/Tab" element={<Tab />} />
       <Route path="/SinglePost" element={<SinglePost />} />
             
       <Route path="/Refrigerator" element={<Refrigerator />} />
@@ -56,7 +53,6 @@ function App() {
       <Route path="/Restaurant" element={<Restaurant />} />
       <Route path="/EditInfo" element={<EditInfo />} />
       <Route path="/EditProfile" element={<EditProfile />} />
-      <Route path="/MyComment" element={<MyComment />} />
       <Route path="/MyMenu" element={<MyMenu />} />
       <Route path="/MyRestaurant" element={<MyRestaurant />} />
       <Route path="/MyWriting" element={<MyWriting />} />
