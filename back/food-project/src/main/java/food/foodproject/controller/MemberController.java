@@ -79,7 +79,6 @@ public class MemberController {
         Member member = memberService.findOne(id);
         String ref = member.getHavingIngredient();
         String[] arr = ref.split(",");
-        String[] list = new String[arr.length];
         List<MemberRefrigeratorDto> dtoList = new ArrayList<>();
         for(int i=0;i< arr.length;i++) {
             MemberRefrigeratorDto dto = new MemberRefrigeratorDto();
