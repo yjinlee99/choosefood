@@ -29,177 +29,22 @@ function MyWriting(){
             <h1 id='mywritingMain'>내가 쓴 글</h1>
 
             <div id="Container">
-                <div id="List1" className="Content-list">
-                    <div className="Content">
-                        <Link to="/SingleRecipe">
-                        <div className="Thump">
-                                <img src="" />썸네일
-                        </div>
-                        </Link>
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <img src=""/>프로필
-                                </Link>
+            { dtos && dtos.map((a) => (
+                    <div className="Content">  
+                            <Link to={"/SinglePost/?" + a.title}><img src={a.thumbnail} width="350px" height="200px" style={{borderRadius:'5px'}}/> </Link>
+                            <div id='infoBoard'>
+                                <Link to=""><div ><img id='profileBoard' src="/img/profile.png" width="50px" style={{borderRadius:'70%'}}></img> { a.profile }</div></Link>
+                                <div id='infoBoard2'>
+                                    <Link id='titleBoard' to={"/SinglePost/?" + a.title}><div id='titleBoard'>{ a.title }</div></Link>
+                                    <div id="datehit">
+                                        <div id="dateBoard">{ Date[dtos.indexOf(a)] }</div> &nbsp;
+                                        <div id="hitBoard">조회수 { a.view }</div>
+                                    </div>
+                                </div>
                             </div>
-                            <h4 className="Title">
-                                <Link to=""><div className="Title-link">{dtos[0].title}</div></Link>
-                            </h4>
-                            <div>
-                                <div className="Stars">
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                </div> &nbsp;
-                                <div className="Hits">조회수</div>
-                            </div>
-                        </div>
                     </div>
+                ))}
 
-                    <div className="Content">
-                        <Link to="/SingleRecipe">
-                        <div className="Thump">
-                                <img src="" />썸네일
-                        </div>
-                        </Link>
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <img src=""/>프로필
-                                </Link>
-                            </div>
-                            <h4 className="Title">
-                                <Link to=""><div className="Title-link">제목</div></Link>
-                            </h4>
-                            <div>
-                                <div className="Stars">
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                </div> &nbsp;
-                                <div className="Hits">조회수</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="Content">
-                        <Link to="/SingleRecipe">
-                        <div className="Thump">
-                                <img src="" />썸네일
-                        </div>
-                        </Link>
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <img src=""/>프로필
-                                </Link>
-                            </div>
-                            <h4 className="Title">
-                                <Link to=""><div className="Title-link">제목</div></Link>
-                            </h4>
-                            <div>
-                                <div className="Stars">
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                </div> &nbsp;
-                                <div className="Hits">조회수</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="List2" className="Content-list">
-                    <div className="Content">
-                        <Link to="/SingleRecipe">
-                        <div className="Thump">
-                                <img src="" />썸네일
-                        </div>
-                        </Link>
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <img src=""/>프로필
-                                </Link>
-                            </div>
-                            <h4 className="Title">
-                                <Link to=""><div className="Title-link">제목</div></Link>
-                            </h4>
-                            <div>
-                                <div className="Stars">
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                </div> &nbsp;
-                                <div className="Hits">조회수</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="Content">
-                        <Link to="/SingleRecipe">
-                        <div className="Thump">
-                                <img src="" />썸네일
-                        </div>
-                        </Link>
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <img src=""/>프로필
-                                </Link>
-                            </div>
-                            <h4 className="Title">
-                                <Link to=""><div className="Title-link">제목</div></Link>
-                            </h4>
-                            <div>
-                                <div className="Stars">
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                </div> &nbsp;
-                                <div className="Hits">조회수</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="Content">
-                        <Link to="/SingleRecipe">
-                        <div className="Thump">
-                                <img src="" />썸네일
-                        </div>
-                        </Link>
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <img src=""/>프로필
-                                </Link>
-                            </div>
-                            <h4 className="Title">
-                                <Link to=""><div className="Title-link">제목</div></Link>
-                            </h4>
-                            <div>
-                                <div className="Stars">
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                    <StarIcon className="Star-icon"/>
-                                </div> &nbsp;
-                                <div className="Hits">조회수</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     )

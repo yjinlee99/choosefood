@@ -11,3 +11,33 @@
     margin-top: 130px;
     text-align: center;
 }
+
+#infoBoard {
+    display: flex;
+    margin-top: 10px;
+}
+
+#titleBoard{
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+#datehit {
+    display: inline-flex;
+}
+
+#dateBoard {
+    color: gray;
+    font-size: 0.9em;
+}
+
+#hitBoard {
+    color: gray;
+    font-size: 0.9em;
+}
+
+#infoBoard2{
+    margin-left: 30px;
+}

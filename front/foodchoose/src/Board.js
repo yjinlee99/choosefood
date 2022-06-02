@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 
 function Board() {
+    const img = sessionStorage.getItem("img", img);
     const [posts, setPosts] = useState([[]]);
     const [Date, setDate] = useState([]);
     useEffect(() => {
@@ -76,30 +77,20 @@ function Board() {
             
             <div id='info-con'>
             <div id="Container">
-                { posts && posts.map((a) => (
+            { posts && posts.map((a) => (
                     <div className="Content">  
-                        <div className="Thump">
-                            <Link to="/SingleRecipe">
-                                <div className="Thump-link"> { a.thumbnail } </div>
-                            </Link>
-                        </div>
-                        
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <div className="Profile-link"><img src="/img/profile.png" width="50px"></img> { a.profile }</div>
-                                </Link>
-                            </div>
+                            <Link to={"/SinglePost/?" + a.title}><img src={a.thumbnail} width="350px" height="200px" style={{borderRadius:'5px'}}/> </Link>
 
-                            <h4 className="Title">
-                                <Link to={"/SinglePost/?" + a.title}><div className="Title-link">{ a.title }</div></Link>
-                            </h4>
-                            
-                            <div>
-                                <div className="Date">{ Date[posts.indexOf(a)] }</div> &nbsp;
-                                <div className="Hits">조회수 { a.view }</div>
+                            <div id='infoBoard'>
+                                <Link to=""><div ><img id='profileBoard' src={"\\img\\"+ a.profileImg} width="50px" style={{borderRadius:'70%'}}></img> { a.profile }</div></Link>
+                                <div id='infoBoard2'>
+                                    <Link id='titleBoard' to={"/SinglePost/?" + a.title}><div id='titleBoard'>{ a.title }</div></Link>
+                                    <div id="datehit">
+                                        <div id="dateBoard">{ Date[posts.indexOf(a)] }</div> &nbsp;
+                                        <div id="hitBoard">조회수 { a.view }</div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
                     </div>
                 ))}
             </div>

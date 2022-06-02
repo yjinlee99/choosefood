@@ -160,7 +160,7 @@ const OptionTable = () => {
       </div>
 
       <Link to={{
-          pathname: `/Recipe?theme=${optionchecked1}&taste=${optionchecked2}&ingredient=${optionchecked3}&situation=${optionchecked4}&refrigerator=`,
+          pathname: `/Recipe?theme=${optionchecked1}&taste=${optionchecked2}&ingredient=${optionchecked3}&situation=${optionchecked4}&refrigerator=false`,
       }}>
         <button className="findRecipe" id="Find">검색</button>
       </Link>

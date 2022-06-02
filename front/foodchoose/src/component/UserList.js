@@ -1,10 +1,10 @@
 import React from "react";
 
 function User({ user, onRemove }) {
-    const {username, id} = user;
+    const {refrigerator, id} = user;
     return (
         <div id='addedIngredientContainer'>
-            <span id='addedIngredient'>{username}
+            <span id='addedIngredient'>{refrigerator}
             <button id='deleteButton' onClick={() => onRemove(id)}>x</button>
             </span>
         </div>

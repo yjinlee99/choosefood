@@ -5,9 +5,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Link } from 'react-router-dom';
 
 function MyPage(){
+
   const email = sessionStorage.getItem("email", email);
   const id = sessionStorage.getItem("id", id);
   const nickname = sessionStorage.getItem("nickname", nickname);
+  const img = sessionStorage.getItem("img", img);
+  console.log(img);
+
   const [user, setUser] = useState([[]]);
   useEffect(() => {
       fetch('/user')
@@ -25,7 +29,7 @@ function MyPage(){
            <div id='profileContainer1'>
               
               <div id='imageContainer'>
-                <img id='profileImage' src="/img/profile.png" width='100px' height='100px'/>
+                <img id='profileImage' src={"\\img\\"+ img} width='100px' height='100px'/>
               </div>
 
               <div id='idContainer'>
@@ -39,13 +43,13 @@ function MyPage(){
                 <Link to='/EditInfo'><button id='editProfile'>회원 정보 수정</button></Link>
               </div>
 
-            </div>
+              
 
+            </div>
+        
            </div>
 
-            <div id='buttonContainer'>
-             <Link to='/MyMenu'><button id='buttonMypage'>관심 메뉴</button></Link>
-             <Link to='/MyRestaurant'><button id='buttonMypage'>관심 식당</button></Link>
+           <div id='buttonContainer'>
              <Link to='/MyWriting'><button id='buttonMypage'>내가 쓴 글</button></Link>
              <Link to='/MyComment'><button id='buttonMypage'>내가 쓴 댓글</button></Link>
             </div>

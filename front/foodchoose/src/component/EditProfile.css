@@ -12,45 +12,19 @@
 
 #EditProfile{
     text-align: center;
-    align-items: center;
-}
-
-#EditProfile2{
-    display: flex;
+    display:flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-top: 50px;
 }
 
-#EditProfile3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10px;
+#editImgButton{
+    border: 2px solid #ff6161;
+    border-radius: 5px;
+    background-color: white;
+    margin: 5px;
 }
 
-#EditProfile4{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 50px;
-}
-
-#EditProfile5{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-}
-
-#EditProfile6{
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-}
-
-#editProfileButton{
+#editNicknameButton{
     border: 2px solid #ff6161;
     border-radius: 5px;
     background-color: white;
@@ -62,11 +36,11 @@
     border-radius: 5px;
     background-color: white;
     margin: 5px;
-    width: 200px;
+    /* width: 200px; */
 }
 
 #editProfileH4{
-    width : 100px;
+    /* width : 100px; */
 }
 
 #editProfileImg {
@@ -78,4 +52,10 @@
     border: 2px solid #ff6161;
     height: 20px;
     border-radius: 5px;
+}
+
+#editProfileTable{
+    text-align: center;
+    align-self: center;
+    justify-content: center;
 }

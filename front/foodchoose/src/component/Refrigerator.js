@@ -10,6 +10,7 @@ function Refrigerator() {
     const Id = sessionStorage.getItem("id", Id);
     const [users, setUsers] = useState([{}]);
     const [userRef, setUserRef] = useState([[]]);
+
     useEffect(() => {
       fetch('/ref/member', {
         method: 'post',
@@ -25,29 +26,30 @@ function Refrigerator() {
     })
     },[])
 
-    const [inputs, setInputs] = useState({ username: "" });
-    const { username } = inputs;
+    console.log(userRef)
+    const [inputs, setInputs] = useState({ refrigerator: "" });
+    const { refrigerator } = inputs;
     const onChange = (e) => {
       const { name, value } = e.target;
       setInputs({ ...inputs, [name]: value,});
     };
-    // const [users, setUsers] = useState([
-    //   { id: 1, username: "딸기"},
-    //   { id: 2, username: "초코"},
-    //   { id: 3, username: "바나나"},
-    // ]);
+    //const [users, setUsers] = useState([
+    //  { id: 1, username: "딸기"},
+    //  { id: 2, username: "초코"},
+    //  { id: 3, username: "바나나"},
+    //  ]);
     const nextId = useRef(4);
     const onCreate = () => {
-      if(username == "") {
+      if(refrigerator == "") {
         alert("재료를 입력하세요.")
         return;
       } 
       const user = {
-        id: nextId.current, username
+        id: nextId.current, refrigerator
       };
       setUsers(users.concat(user));
       setInputs({
-        username: ""
+        refrigerator: ""
       });
       nextId.current += 1;
     };
@@ -58,7 +60,7 @@ function Refrigerator() {
 
     const optionchecked4 = [];
     for (let i = 0; i < users.length; i++) {
-      optionchecked4.push(users[i].username);
+      optionchecked4.push(users[i].refrigerator);
     }
     const goBackend = () => {
       fetch('/refoption', {
@@ -69,18 +71,23 @@ function Refrigerator() {
         })
       })
     }
-
     const onUpdate = () => {
       fetch('/ref/update', {
         method: 'post',
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id: Id,
           havingIngredient: users,
         })
+        
       })
+      console.log(userRef)
+      console.log(users)
       alert("냉장고 재료가 수정 되었습니다.");
       window.location.replace("/Refrigerator")
     }
+
+    console.log(userRef)
       
     return (
       <div>
@@ -89,7 +96,7 @@ function Refrigerator() {
       <div id='Refrigerator'>
         <div id='wrap1'>
         <CreateIngredient
-          username={username}
+          refrigerator={refrigerator}
           onChange={onChange}
           onCreate={onCreate}/>
         </div>
@@ -98,6 +105,8 @@ function Refrigerator() {
           <div>
              <UserList users={users} onRemove={onRemove} />
           </div>
+
+        
 
           <div>
           <input id="edit" type='submit' value="수정하기" onClick={onUpdate}></input>

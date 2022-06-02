@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 function EditProfile(){
   const id = sessionStorage.getItem("id", id);
   const nickname = sessionStorage.getItem("nickname", nickname);
+  const img = sessionStorage.getItem("img", img);
 
   const [user, setUser] = useState([[]]);
   useEffect(() => {
@@ -27,33 +28,44 @@ function EditProfile(){
   };
 
 
-  const [img, setImg] = useState("")
+  const [newImg, setImg] = useState("")
   const [newNickname, setName] = useState("")
   
   const onImgHandler = (event) => {
-      setImg(event.currentTarget.value);
+      setImg(event.target.files[0].name);
       setFileImage(URL.createObjectURL(event.target.files[0]));
       document.getElementById("editProfileImg").style.display='none';
+      console.log(event.target.files[0].name)
+      
   }
   const onNameHandler = (event) => {
       setName(event.currentTarget.value)
   }
 
+  const goBackendImg = () => {
+    fetch('/updateprofile', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id:id,
+            img:newImg,
+            nickname:nickname,
+        })
+    })
+    };
 
-  const goBackend = () => {
-      fetch('/updateprofile', {
-          method: 'post',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-              id:id,
-              img:img,
-              nickname:newNickname,
-          })
-      })
-      };
-
-    console.log(img);
-        
+  const goBackendNickname = () => {
+    fetch('/updateprofile', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id:id,
+            img:img,
+            nickname:newNickname,
+        })
+    })
+    };
+  
     return(
         
         <div id='EditProfile'>
@@ -71,12 +83,20 @@ function EditProfile(){
                         style={{ margin: "auto", width:"100px", height:"100px" }}
                       />
                     )}
-                        <img id='editProfileImg' src="/img/profileImage.png" width='100px' height='100px'/>
+                        <img id='editProfileImg' src={"\\img\\"+ img} width='100px' height='100px'/>
                         <input id='editProfileInput' 
                         name="imgUpload"
                         accept="image/*"
                         onChange={onImgHandler}
                         type='file'/>
+                </td>
+                <td>
+                <button id='editImgButton' onClick={()=>{
+                    goBackendImg();
+                    sessionStorage.setItem("img", newImg);
+                    alert("수정되었습니다.");
+                    window.location.replace("/MyPage")
+                  }}>수정</button>
                 </td>
               </tr>
               <tr>
@@ -85,17 +105,16 @@ function EditProfile(){
                 <input id='editProfileInput' onChange={onNameHandler} placeholder={nickname}></input>
 
                 </td>
-              </tr>
-              <tr>
-                <td></td>
                 <td>
-                  <button id='editProfileButton' onClick={()=>{
-                    goBackend();
+                <button id='editNicknameButton' onClick={()=>{
+                    goBackendNickname();
                     sessionStorage.setItem("nickname", newNickname);
                     alert("수정되었습니다.");
+                    window.location.replace("/MyPage")
                   }}>수정</button>
                 </td>
               </tr>
+
             </table>
 
         </div>

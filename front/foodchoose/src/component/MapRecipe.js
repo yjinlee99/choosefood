@@ -100,41 +100,16 @@ function MapRecipe() {
                 <input className="Search-input" type="text" />
                 <Link to="/SearchedRecipe"><SearchIcon className="Search-icon"/></Link>
             </div>
-        
-            <select id="Array">
-                <option> 이름순 </option>
-                <option> 조회순 </option>
-                <option> 별점순 </option>
-            </select>
-            
+
             <div id='info-con'>
             <div id="Container">
                 { dtos.map((a) => (
-                    <div className="Content">  
-                        <div className="Thump">
-                            <Link to={"/MapContainer?food=" + a.name}>
-                                <div className="Thump-link"> 
-                                    <img src={a.thumbnail} width="350" height="160" />
-                                </div>
+                    <div className="Content">
+                            <Link  id="Thump" to={"/MapContainer?food=" + a.name}>
+                                    <img id="ThumpImg" src={a.thumbnail} />
                             </Link>
-                        </div>
                         
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <div className="Profile-link"> { a.profile }</div>
-                                </Link>
-                            </div>
-
-                            <h4 className="Title">
-                                <Link to=""><div className="Title-link">{ a.name }</div></Link>
-                            </h4>
-                            
-                            <div>
-                                <div className="Stars"> { a.star } </div> &nbsp;
-                                <div className="Hits">  { a.hit } </div>
-                            </div>
-                        </div>
+                            <Link id="Title" to={"/MapContainer?food=" + a.name}>{ a.name }</Link>
                     </div>
                 ))}
             </div>

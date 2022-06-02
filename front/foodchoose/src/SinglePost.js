@@ -5,6 +5,7 @@ import './SingleRecipe.css';
 import Comment from './Comment';
 
 function SinglePost() {
+
     const [posts, setPosts] = useState([[]]);
     useEffect(() => {
         var url = decodeURI(document.location.href);
@@ -18,6 +19,7 @@ function SinglePost() {
             })
             .then(posts => {
                 setPosts(posts);
+                sessionStorage.setItem("postId", posts.id);
             });
     },[])
 
