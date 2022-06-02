@@ -7,22 +7,22 @@ import CreateIngredient from "./CreateIngredient";
 
 
 function Refrigerator() {
-    const [userInfo, setUserInfo] = useState([[]]);
-    useEffect(() => {
-        fetch('/user')
-            .then(response => response.json())
-            .then(userInfo => {
-                setUserInfo(userInfo);
-            });
-    },[])
-  
+    const Id = sessionStorage.getItem("id", Id);
+    const [users, setUsers] = useState([{}]);
     const [userRef, setUserRef] = useState([[]]);
     useEffect(() => {
-        fetch('/userRef')
-            .then(response => response.json())
-            .then(userRef => {
-                setUserRef(userRef);
-            });
+      fetch('/ref/member', {
+        method: 'post',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id: Id
+        })
+    })
+    .then(res => res.json())
+    .then(userRef => {
+        setUserRef(userRef);
+        setUsers(userRef);
+    })
     },[])
 
     const [inputs, setInputs] = useState({ username: "" });
@@ -31,11 +31,11 @@ function Refrigerator() {
       const { name, value } = e.target;
       setInputs({ ...inputs, [name]: value,});
     };
-    const [users, setUsers] = useState([
-      { id: 1, username: "딸기"},
-      { id: 2, username: "초코"},
-      { id: 3, username: "바나나"},
-    ]);
+    // const [users, setUsers] = useState([
+    //   { id: 1, username: "딸기"},
+    //   { id: 2, username: "초코"},
+    //   { id: 3, username: "바나나"},
+    // ]);
     const nextId = useRef(4);
     const onCreate = () => {
       if(username == "") {
@@ -71,10 +71,11 @@ function Refrigerator() {
     }
 
     const onUpdate = () => {
-      fetch('/refUpdate', {
+      fetch('/ref/update', {
         method: 'post',
         body: JSON.stringify({
-          users: users,
+          id: Id,
+          havingIngredient: users,
         })
       })
       alert("냉장고 재료가 수정 되었습니다.");

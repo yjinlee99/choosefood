@@ -43,7 +43,7 @@ function LoginForm() {
         .then(memberResponse => {
             console.log(memberResponse);
             if(memberResponse.id) {
-                alert("환영합니다.");
+                alert(memberResponse.nickname + "님, 환영합니다.");
                 sessionStorage.setItem("id", memberResponse.id);
                 sessionStorage.setItem("email", email);
                 sessionStorage.setItem("password", passwd);

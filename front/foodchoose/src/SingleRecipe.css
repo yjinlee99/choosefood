@@ -196,3 +196,12 @@
     border: 1px solid black;
     border-radius: 2px;
 }
+
+.comment-area {
+    position: relative;
+    font-weight: bold;
+    font-size: smaller;
+    left: 25%;
+    width: 60%;
+    padding: 20px;
+}
