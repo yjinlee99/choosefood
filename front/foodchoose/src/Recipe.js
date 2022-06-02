@@ -94,19 +94,6 @@ function Recipe() {
     const onSearchHandler = (event) => {
         setSearch(event.currentTarget.value)
     }
-    const goBackend = () => {
-        if(search == "") {
-            alert("검색어를 입력하세요.")
-            return;
-        } else {
-            fetch('/search', {
-                method: 'post',
-                body: JSON.stringify({
-                    search: search
-                })
-            })
-        }
-    }
 
     return (
         <div className="Recipe">
@@ -118,46 +105,19 @@ function Recipe() {
 
             <div className="Search">
                 <input className="Search-input" placeholder=" 통합 검색" type="text" onChange={onSearchHandler}/>
-                <Link to="/SearchedRecipe"><SearchIcon className="Search-icon" onClick={goBackend}/></Link>
+                <Link to={"/SearchedRecipe?search=" + search}><SearchIcon className="Search-icon"/></Link>
             </div>
-        
-            <select id="Array">
-                <option> 이름순 </option>
-                <option> 조회순 </option>
-                <option> 별점순 </option>
-            </select>
-            
-            <div id='info-con'>
-            <div id="Container">
-                { dtos && dtos.map((a) => (
-                    <div className="Content">  
-                        <div className="Thump">
-                            <Link to={"/SingleRecipe?food=" + a.name}>
-                                <div className="Thump-link"> 
-                                    <img src={a.thumbnail} width="350" height="160"/>
-                                </div>
-                            </Link>
-                        </div>
-                        
-                        <div className="Detail">
-                            <div className="Profile">
-                                <Link to="">
-                                    <div className="Profile-link"> { a.profile }</div>
-                                </Link>
-                            </div>
 
-                            <h4 className="Title">
-                                <Link to={"/SingleRecipe?food=" + a.name}><div className="Title-link">{ a.name }</div></Link>
-                            </h4>
-                            
-                            <div>
-                                <div className="Stars"> { a.star } </div> &nbsp;
-                                <div className="Hits">  { a.hit } </div>
-                            </div>
-                        </div>
+            <div id="Container">
+            { dtos && dtos.map((a) => (
+                    <div className="Content">
+                            <Link id="Thump" to={"/SingleRecipe?food=" + a.name}>
+                                <img id="ThumpImg" src={a.thumbnail}></img>
+                            </Link>
+                        
+                            <Link id="Title" to={"/SingleRecipe?food=" + a.name}>{ a.name }</Link>
                     </div>
                 ))}
-            </div>
             </div>
         </div>
     );   

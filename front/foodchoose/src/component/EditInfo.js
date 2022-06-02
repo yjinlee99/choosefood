@@ -30,7 +30,6 @@ function EditInfo(){
         }
         const onPasswdHandler = (event) => {
             setPasswd(event.currentTarget.value)
-            // if (event.currentTarget.value === user[1]){
                 if (event.currentTarget.value === password){
                 document.getElementById("pwMessage").style.color="black";
                 document.getElementById("pwMessage").innerHTML="비밀번호가 일치합니다";
@@ -120,6 +119,7 @@ function EditInfo(){
                             document.getElementById("editPhoneButton").style.display="";
                             sessionStorage.setItem("phone", phone);
                             alert("전화번호가 변경되었습니다");
+                            window.location.replace("/MyPage")
                             }} style={{display:'none'}}>완료</button>
                     </td>
 
@@ -127,24 +127,25 @@ function EditInfo(){
                 <tr>
                     <td><h4 id='editInfoH4'>기존 비밀번호</h4></td>
                     <td>
-                        <input onChange={onPasswdHandler}></input>
+                        <input type="password" onChange={onPasswdHandler}></input>
                         <div id="pwMessage"></div>
                     </td>
                 </tr>
                 <tr>
                     <td><h4 id='editInfoH4'>새로운 비밀번호</h4></td>
-                    <td><input onChange={onNewPasswdHandler}></input></td>
+                    <td><input type="password" onChange={onNewPasswdHandler}></input></td>
                 </tr>
                 <tr>
                     <td><h4 id='editInfoH4'>새로운 비밀번호 재입력</h4></td>
                     <td>
-                        <input onChange={onNewPasswdHandler2} ></input>
+                        <input type="password" onChange={onNewPasswdHandler2} ></input>
                         <div id="pwMessage2"></div>
                     </td>
                     <td><button id='editPasswdButton' onClick={()=>{
                         goBackendPasswd();
                         sessionStorage.setItem("password", newPasswd2);
                         alert("비밀번호가 변경되었습니다");
+                        window.location.replace("/MyPage")
                     }}>수정</button></td>
                 </tr>
             </table>

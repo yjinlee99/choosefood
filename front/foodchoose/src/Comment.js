@@ -1,6 +1,8 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import "./Comment.css";
 import uuid from "react-uuid";
+import './SinglePost.js';
+import { convertLength } from "@mui/material/styles/cssUtils";
 
 class Comment extends Component {
   constructor(props) {
@@ -16,6 +18,7 @@ class Comment extends Component {
     this.setState({
       comment: e.target.value,
     });
+    sessionStorage.setItem("content", e.target.value);
   };
 
   handleCommentAdd = () => {
@@ -29,6 +32,18 @@ class Comment extends Component {
     this.setState({ comments: addcomments });
     this.setState({ comment: "" });
 
+    const Content = sessionStorage.getItem("content", Content);
+    const postId = sessionStorage.getItem("postId", postId);
+    const userId = sessionStorage.getItem("id", userId);
+    fetch('/comment/save', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        postId: postId,
+        userId: userId,
+        content: Content,
+      })
+    })
   };
 
   handleRemove = (id) => {
@@ -49,6 +64,16 @@ class Comment extends Component {
   render() {
     const { comment, number } = this.state;
     let isLength = comment.length > 0 ? "active" : "";
+    const postId = sessionStorage.getItem("postId", postId);
+    fetch('/comment/show?'+ new URLSearchParams({
+        id: postId,
+    }))
+    .then(response => response.json())
+    .then(dtos => {
+      this.state.comments = dtos;
+      console.log(dtos);
+    });
+
 
     return (
       <div>

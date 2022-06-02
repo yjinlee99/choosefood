@@ -85,17 +85,21 @@
 .Content {
     position: relative;
     width: 360px;
-    height: 222px;
+    height: 270px;
     padding: 3px;
     margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
+/*
 .Thump {
     position: relative;
-    border: 1px solid black;
-    /* width: 350px;
-    height: 160px; */
-    width: 50%;
+    width: 350px;
+    height: 250px;
     min-height: 45%;
     line-height: 150px;
     text-align: center;
@@ -108,54 +112,26 @@
     height: 53px;
 }
 
-.Profile {
-    position: relative;
-    border: 1px solid black;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    top: 3px;
-    text-align: center;
-    font-size: 10px;
-}
-
-.Title {
-    position: relative;
-    border: 1px solid black;
-    top: -70px;
-    left: 60px;
-    width: 290px;
-    height: 25px;
-    line-height: 25px;
-    text-align: center;
-}
-
 .Title-link:first-child {
     white-space: nowrap;
     overflow:hidden;
     text-overflow:ellipsis;
 }
+*/
 
-.Stars {
-    position: relative;
-    border: 1px solid black;
-    top: -88px;
-    left: 60px;
-    width: 200px;
-    height: 20px;
+#Title {
+    height: 30px;
+    text-decoration: none;
+    font-weight: bold;
     text-align: center;
-    color: black;
+    color:black;
+    align-self: center;
+    margin-top: 10px;
 }
 
-
-.Hits {
-    position: relative;
-    border: 1px solid black;
-    top: -131.5px;
-    left: 265px;
-    width: 85px;
-    height: 20.5px;
-    line-height: 20.5px;
-    font-size: 12px;
-    text-align: center;
+#ThumpImg {
+    width: 350px;
+    height: 200px;
+    border-radius: 5px;
+    object-fit: cover;
 }

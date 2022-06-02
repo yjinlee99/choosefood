@@ -28,6 +28,7 @@ function Banner() {
                 alert("로그아웃 성공");
                 window.sessionStorage.clear();
                 window.location.reload();
+                window.location.replace("/Main")
         }
     }
   

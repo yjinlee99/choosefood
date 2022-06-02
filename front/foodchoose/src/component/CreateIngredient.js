@@ -1,13 +1,13 @@
 import React from "react";
 
-function CreateIngredient({ username, onChange, onCreate }) {
+function CreateIngredient({ refrigerator, onChange, onCreate }) {
     return (
         <div>
             <input id='addText'
-                name="username"
+                name="refrigerator"
                 placeholder="재료를 추가하세요."
                 onChange={onChange}
-                value={username}/>
+                value={refrigerator}/>
             <button id="addButton" onClick={onCreate}>추가</button>
         </div>
     );

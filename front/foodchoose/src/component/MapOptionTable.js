@@ -135,7 +135,7 @@ const MapOptionTable = () => {
 
             
             <Link to={{
-          pathname: `/MapRecipe?theme=${optionchecked1}&taste=${optionchecked2}&ingredient=${optionchecked3}&situation=${optionchecked4}&refrigerator=`,
+          pathname: `/MapRecipe?theme=${optionchecked1}&taste=${optionchecked2}&ingredient=${optionchecked3}&situation=${optionchecked4}&refrigerator=false`,
       }}>  <button className="findRecipe" id="Find">검색</button>
       </Link>
         </div>

@@ -49,6 +49,7 @@ function LoginForm() {
                 sessionStorage.setItem("password", passwd);
                 sessionStorage.setItem("nickname", memberResponse.nickname);
                 sessionStorage.setItem("phone", memberResponse.phone);
+                sessionStorage.setItem("img", memberResponse.img);
                 window.location.replace("/Main")
             } else {
                 alert("이메일이 존재하지 않거나 올바르지 않은 입력입니다.");
@@ -78,27 +79,17 @@ function LoginForm() {
                     label="이메일" name="email"
                     autoComplete="email"
                     autoFocus fullWidth 
-                    onChange={onEmailHandler}/>
+                    onChange={onEmailHandler}
+                    sx={{mb:1}}/>
                 <TextField
                     label="비밀번호" name="password" type="password"
                     autoComplete="current-password"
                     fullWidth
-                    onChange={onPasswdHandler} />
-                <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="아이디 기억하기" />
-                <Button id='submit' type="submit" onClick={goBackend} fullWidth variant="contained">로그인</Button>
-                <Grid container>
-                    <Grid item xs='4'>
-                        <Link to='/FindId'>아이디 찾기</Link>
-                    </Grid>
-                    <Grid item xs='4'>
-                        <Link to='/FindPasswd'>비밀번호 찾기</Link>
-                    </Grid>
-                    <Grid item xs='4'>
-                        <Link to='/SignUp'>회원가입</Link>
-                    </Grid>
-                </Grid>
+                    onChange={onPasswdHandler}
+                    sx={{mb:1}} />
+                
+                <Button id='submit' type="submit" onClick={goBackend} fullWidth variant="contained" sx={{mb:1}}>로그인</Button>
+                <Button id='signup' fullWidth variant="contained" ><Link id="signup2" to='/SignUp'>회원가입</Link></Button>
 
             </Container>
             

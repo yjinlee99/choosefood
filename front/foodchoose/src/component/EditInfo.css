@@ -6,32 +6,39 @@
     z-index: 100;
 }
 
+#EditInfo{
+    text-align: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 #main {
     margin-top: 150px;
 }
 
-#EditInfo{
-    text-align: center;
-}
-
-#editInfoButton {
+#editPhoneButton {
     border: 2px solid #ff6161;
     border-radius: 5px;
     background-color: white;
     margin: 5px;
 }
 
-#editInfoDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 800px;
-    margin-left: 25%;
-    margin-right: 25%;
+#editPasswdButton {
+    border: 2px solid #ff6161;
+    border-radius: 5px;
+    background-color: white;
+    margin: 5px;
+}
+
+#edited {
+    border: 2px solid #ff6161;
+    border-radius: 5px;
+    background-color: white;
+    margin: 5px;
 }
 
 #editInfoH4 {
-    width: 200px;
     justify-content: center;
 }
 
@@ -39,13 +46,20 @@
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
-
 }
 
-#editInfoDiv3 {
-    display: inline-flex;
+#pwMessage{
+    color:red;
+    font-size: 0.9em;
+}
+
+#pwMessage2{
+    color:red;
+    font-size: 0.9em;
+}
+
+#editInfoTable {
+    text-align: center;
+    align-self: center;
     justify-content: center;
-    align-items: center;
-    border: 1px solid green;
 }
