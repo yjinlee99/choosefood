@@ -5,26 +5,9 @@ import './Banner.css';
 import LoginForm from './component/LoginForm';
 
 function Banner() {
-    const [user, setUser] = useState([[]]);
-        useEffect(() => {
-            fetch('/user')
-                .then(response => response.json())
-                .then(user => {
-                    setUser(user);
-                });
-            },[])
-    if(user != null) {
-        
-    }
 
     const logOut = () => {
         if(window.confirm("로그아웃 하시겠습니까?")) {
-            fetch('/logout', {
-            method: 'post',
-            body: JSON.stringify({
-                email: user[0],
-            })
-            })
                 alert("로그아웃 성공");
                 window.sessionStorage.clear();
                 window.location.reload();
