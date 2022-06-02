@@ -27,6 +27,8 @@ public class MemberController {
         member.setEmail(memberJoinDto.getEmail());
         member.setPhone(memberJoinDto.getPhone());
         member.setPassword(memberJoinDto.getPassword());
+        member.setHavingIngredient("딸기");
+        member.setImg("profile.png");
 
         memberService.join(member);
 
@@ -60,9 +62,9 @@ public class MemberController {
         for(int i=0;i<jsonArray.length();i++) {
             JSONObject arr = jsonArray.getJSONObject(i);
             if(i==0) {
-                refrigerator = arr.getString("username");
+                refrigerator = arr.getString("refrigerator");
             } else {
-                refrigerator = refrigerator + "," + arr.getString("username");
+                refrigerator = refrigerator + "," + arr.getString("refrigerator");
             }
         }
         MemberRefrigeratorDto dto = new MemberRefrigeratorDto();

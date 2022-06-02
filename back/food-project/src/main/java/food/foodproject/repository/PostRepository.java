@@ -53,7 +53,7 @@ public class PostRepository {
 
     public PostSingleDto findSinglePost(String title) {
         return em.createQuery(
-                "select new food.foodproject.dto.PostSingleDto(p.title, p.uploadDate, p.introduce, p.thumbImg, p.ingredient, p.recipe, p.stepImg, p.view, m.img)"
+                "select new food.foodproject.dto.PostSingleDto(p.id, p.title, p.uploadDate, p.introduce, p.thumbImg, p.ingredient, p.recipe, p.stepImg, p.view, m.img)"
                             + " from Post p "
                             + " join p.member m "
                             + " where p.title = :title ",PostSingleDto.class)
